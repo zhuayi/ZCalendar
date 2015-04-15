@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "ZCalendarView.h"
 
 @interface ViewController ()
 
@@ -17,6 +18,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    ZCalendarView *zcalendarView = [[ZCalendarView alloc] initWithFrame:CGRectMake(0, 100, 320, 300)];
+//    zcalendarScroolView.pageCount = 10;
+    [self.view addSubview:zcalendarView];
 }
 
 - (void)didReceiveMemoryWarning {
