@@ -10,6 +10,6 @@
 
 @interface ZCalendarDrawViewCell : UICollectionViewCell
 
-- (void)setDate:(int)year month:(int)month;
+- (void)setDate:(NSDate *)date;
 
 @end

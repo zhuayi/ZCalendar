@@ -8,7 +8,7 @@
 
 #import "ZCalendarView.h"
 #import "ZCalendarCollectionView.h"
-
+#import "ZCalendarDate.h"
 @implementation ZCalendarView
 
 - (instancetype)initWithFrame:(CGRect)frame
@@ -22,9 +22,14 @@
         
         UICollectionViewFlowLayout *flowLayout=[[UICollectionViewFlowLayout alloc] init];
         [flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
+        flowLayout.minimumLineSpacing = 0;
+        ZCalendarCollectionView *zcalendarCollectionView = [[ZCalendarCollectionView alloc] initWithFrame:CGRectMake(0, 30, self.frame.size.width, self.frame.size.height) collectionViewLayout:flowLayout];
         
-        ZCalendarCollectionView *zcalendarCollectionView = [[ZCalendarCollectionView alloc] initWithFrame:CGRectMake(0, 30, self.frame.size.width, self.frame.size.height + 30) collectionViewLayout:flowLayout];
+        
+        NSDateComponents *today = [ZCalendarDate getDateComponentsByDate:[NSDate date]];
+        [zcalendarCollectionView setYearInterval:1970 endDate:[today year]];
         [self addSubview:zcalendarCollectionView];
+
     }
     return self;
 }

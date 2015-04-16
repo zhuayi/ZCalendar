@@ -11,6 +11,23 @@
 @interface ZCalendarCollectionView : UICollectionView<UICollectionViewDelegate, UICollectionViewDataSource>
 
 
-@property(nonatomic, assign) int pageCount;
+/**
+ *  开始时间
+ */
+@property(nonatomic, assign) NSInteger starYear;
 
+
+/**
+ *  结束时间
+ */
+@property(nonatomic, assign) NSInteger endYear;
+
+
+/**
+ *  设置日历区间
+ *
+ *  @param starDate 开始时间
+ *  @param endData  结束时间
+ */
+- (void)setYearInterval:(NSInteger)starDate endDate:(NSInteger)endData;
 @end
