@@ -10,6 +10,10 @@
 
 @interface ZCalendarCollectionView : UICollectionView<UICollectionViewDelegate, UICollectionViewDataSource>
 
+/**
+ *  每个 cell 的高度
+ */
+@property(nonatomic, assign) CGFloat cellHeight;
 
 /**
  *  开始时间

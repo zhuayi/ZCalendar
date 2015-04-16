@@ -9,10 +9,10 @@
 #import "ZCalendarCollectionView.h"
 #import "ZCalendarDrawViewCell.h"
 #import "ZCalendarDate.h"
-@implementation ZCalendarCollectionView
-{
+@implementation ZCalendarCollectionView {
     NSMutableArray *_dateArray;
 }
+
 - (instancetype)initWithFrame:(CGRect)frame collectionViewLayout:(UICollectionViewLayout *)layout
 {
     self = [super initWithFrame:frame collectionViewLayout:layout];
@@ -54,7 +54,7 @@
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         
-        [self setContentOffset:CGPointMake(0, current* self.frame.size.height) animated:YES];
+        [self setContentOffset:CGPointMake(0, current * _cellHeight) animated:YES];
     });
 }
 
@@ -85,7 +85,7 @@
 //定义每个Item 的大小
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return CGSizeMake(self.frame.size.width, self.frame.size.height);
+    return CGSizeMake(self.frame.size.width, _cellHeight);
 }
 
 //定义每个UICollectionView 的 margin

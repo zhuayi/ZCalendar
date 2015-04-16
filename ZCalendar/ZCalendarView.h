@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "ZCalendarCollectionView.h"
 @interface ZCalendarView : UIView
+
+
+@property(nonatomic, strong) ZCalendarCollectionView *zcalendarCollectionView;
 
 @end

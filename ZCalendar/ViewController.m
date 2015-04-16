@@ -19,7 +19,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    ZCalendarView *zcalendarView = [[ZCalendarView alloc] initWithFrame:CGRectMake(0, 100, 320, 300)];
+    ZCalendarView *zcalendarView = [[ZCalendarView alloc] initWithFrame:CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.height - 64)];
+    zcalendarView.zcalendarCollectionView.cellHeight = self.view.frame.size.height / 2;
 //    zcalendarScroolView.pageCount = 10;
     [self.view addSubview:zcalendarView];
 }
