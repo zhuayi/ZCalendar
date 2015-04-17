@@ -20,6 +20,7 @@
 		38E0BB3D1ADFD84B00874716 /* ZCalendarYearHeardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E0BB3C1ADFD84B00874716 /* ZCalendarYearHeardView.m */; };
 		38E0BB401AE0B9C100874716 /* NSDate+ZCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E0BB3F1AE0B9C100874716 /* NSDate+ZCalendar.m */; };
 		38E0BB431AE0BB1400874716 /* NSString+ZCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E0BB421AE0BB1400874716 /* NSString+ZCalendar.m */; };
+		38E0BB461AE0E3A900874716 /* ZCalendarModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E0BB451AE0E3A900874716 /* ZCalendarModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,8 @@
 		38E0BB3F1AE0B9C100874716 /* NSDate+ZCalendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+ZCalendar.m"; sourceTree = "<group>"; };
 		38E0BB411AE0BB1400874716 /* NSString+ZCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+ZCalendar.h"; sourceTree = "<group>"; };
 		38E0BB421AE0BB1400874716 /* NSString+ZCalendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ZCalendar.m"; sourceTree = "<group>"; };
+		38E0BB441AE0E3A900874716 /* ZCalendarModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCalendarModel.h; sourceTree = "<group>"; };
+		38E0BB451AE0E3A900874716 /* ZCalendarModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCalendarModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +122,8 @@
 				38E0BB3F1AE0B9C100874716 /* NSDate+ZCalendar.m */,
 				38E0BB411AE0BB1400874716 /* NSString+ZCalendar.h */,
 				38E0BB421AE0BB1400874716 /* NSString+ZCalendar.m */,
+				38E0BB441AE0E3A900874716 /* ZCalendarModel.h */,
+				38E0BB451AE0E3A900874716 /* ZCalendarModel.m */,
 			);
 			path = ZCalendar;
 			sourceTree = "<group>";
@@ -249,6 +254,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38E0BB461AE0E3A900874716 /* ZCalendarModel.m in Sources */,
 				38A7EF1D1ADE740000CE7AA6 /* ZCalendarView.m in Sources */,
 				38A7EEF21ADE5E4700CE7AA6 /* ViewController.m in Sources */,
 				38A7EF141ADE61DE00CE7AA6 /* ZCalendarCollectionView.m in Sources */,

@@ -35,5 +35,9 @@ typedef NS_ENUM(NSInteger, CalendarType) {
  */
 @property(nonatomic, strong) UIColor *dateTextColor;
 
+/**
+ *  日期数组
+ */
+@property(nonatomic, strong) NSMutableArray *dateArray;
 
 @end

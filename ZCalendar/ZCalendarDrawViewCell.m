@@ -7,7 +7,7 @@
 //
 
 #import "ZCalendarDrawViewCell.h"
-//#import "ZCalendarDate.h"
+#import "ZCalendarModel.h"
 #import "NSDate+ZCalendar.h"
 
 @implementation ZCalendarDrawViewCell {
@@ -19,29 +19,59 @@
     CGFloat _columnWidth;
     CGFloat _rowHeight;
     NSInteger interval;
+    
+    // 当前日期
+    NSDateComponents *_currentDateComponents;
 }
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
-        
         _columnWidth = self.frame.size.width / 7;
+        _rowHeight = self.frame.size.height / 6;
+        
+        _dateArray = [[NSMutableArray alloc] initWithCapacity:0];
+        
+        
         return self;
     }
     return self;
 }
 
+
+
 - (void)setDate:(NSDate *)date {
     
-    dayCount = [date getDays];;
-    NSDateComponents *dateComponents = [date getDateComponentsByDate];
-    interval = [dateComponents weekday] - 1;
-    _month = [dateComponents month];
-    _year = [dateComponents year];
+    _currentDateComponents = [date getDateComponentsByDate];
+    
+    dayCount = [date getDays];
+    
+    interval = [_currentDateComponents weekday] - 1;
+    _month = [_currentDateComponents month];
+    _year = [_currentDateComponents year];
     rowCount = ceil((dayCount + interval) / 7) + 2;
-    _rowHeight = self.frame.size.height / 6;
-    [self setNeedsDisplay];
+    
+    CGSize rectangleSize = CGSizeMake(_columnWidth * 0.9, _rowHeight * 0.9);
+    for (int i = 0; i< (dayCount + interval); i++) {
+
+        if (i < interval) {
+            continue;
+        }
+        CGFloat x = _columnWidth * fmod(i , 7);
+        CGFloat y = _rowHeight + _rowHeight * ceil(i / 7);
+        
+        ZCalendarModel *zcalendarModel = [[ZCalendarModel alloc] init];
+        zcalendarModel.frame = CGRectMake(x + (_columnWidth - rectangleSize.width) / 2,
+                                          y + (_rowHeight - rectangleSize.height) / 2,
+                                          rectangleSize.width,
+                                          rectangleSize.height);
+        zcalendarModel.rectangleColor = [UIColor blueColor];
+        zcalendarModel.dateText = [NSString stringWithFormat:@"%ld",i + 1 - interval];
+        
+        [_dateArray addObject:zcalendarModel];
+    }
+
 }
 
 - (void)drawRect:(CGRect)rect {
@@ -66,27 +96,13 @@
         }
     }
     // 矩形尺寸
-    CGSize rectangleSize = CGSizeMake(_columnWidth * 0.9, _rowHeight * 0.9);
-    for (int i = 0; i< (dayCount + interval); i++) {
-        NSString *text = [NSString stringWithFormat:@"%ld",i + 1 - interval];
-        CGSize size = [text sizeWithAttributes:[self fontStyle:10.0 textColor:_dateTextColor]];
+    for (ZCalendarModel *zcalendarModel in _dateArray) {
         
-        if (i < interval) {
-            continue;
-        }
+        [zcalendarModel.rectangleColor setFill];
+        [self drawRectangle:zcalendarModel.frame lineWidth:0.0];
         
-        CGFloat x = _columnWidth * fmod(i , 7);
-        CGFloat y = _rowHeight + _rowHeight * ceil(i / 7);
-        
-        [[UIColor blueColor] setFill];
-        
-        [self drawRectangle:CGRectMake(x + (_columnWidth - rectangleSize.width) / 2,
-                                       y + (_rowHeight - rectangleSize.height) / 2,
-                                       rectangleSize.width,
-                                       rectangleSize.height) lineWidth:0.0];
-        
-        [self drawText:CGPointMake(x + (_columnWidth - size.width) / 2, y + (_rowHeight - size.height) / 2)
-                  text:text
+        [self drawText:CGPointMake(zcalendarModel.frame.origin.x, zcalendarModel.frame.origin.y)
+                  text:zcalendarModel.dateText
               fontSize:10.0
              textColor:_dateTextColor];
     }
