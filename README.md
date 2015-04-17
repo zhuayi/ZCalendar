@@ -61,7 +61,8 @@
 
 
 > ```objective-c
-> `> _currentDateComponents = [date getDateComponentsByDate]();	
+> `> 
+> _currentDateComponents = [date getDateComponentsByDate]();	
 > dayCount = [date getDays]();
 > interval = [_currentDateComponents weekday]() - 1;
 > _month = []()_currentDateComponents month];
@@ -86,11 +87,28 @@
 > }
 > ```
 > `
+
+### 架构设计
+- 入口类: ```ZCalendarView```
+	> ZCalendarView作为入口类,所有需要加载日历的控制器只需要addSubview该类即可.
+- 管理类: ```ZCalendarCollectionView```
+	> ZCalendarCollectionView 为 cell 管理类,控制 cell 数量, cell 的展示规则
+- 视图类: ```ZCalendarDrawViewCell```
+	> ZCalendarDrawViewCell 为 cell 绘制类,负责绘制 cell(日历).
+- 模型类: ```ZCalendarModel```
+	> ZCalendarModel 为模型类, 有日历矩形的尺寸,位置,颜色,文字等属性
+- 代理类: ```ZCalendarDelegate```
+	> ZCalendarDelegate为代理类, 负责传递日历的点击回调
+
+![][image-1]
+
+
 ### 代码预览&地址
- ![][image-1]
+ ![][image-2]
 
 > gitHub地址 : [https://github.com/zhuayi/ZCalendar][10]
 
 [10]:	https://github.com/zhuayi/ZCalendar
 
-[image-1]:	http://ww3.sinaimg.cn/bmiddle/687dbab7jw1er8mjqkltij20hs0vk780.jpg
+[image-1]:	http://ww4.sinaimg.cn/large/687dbab7jw1er8q9ojjupj20vw0cpwfq.jpg "架构图"
+[image-2]:	http://ww3.sinaimg.cn/bmiddle/687dbab7jw1er8mjqkltij20hs0vk780.jpg

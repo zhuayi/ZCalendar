@@ -37,23 +37,12 @@
 }
 
 
-
-- (void)setDate:(NSDate *)date {
-    
-    _currentDateComponents = [date getDateComponentsByDate];
-    
-    dayCount = [date getDays];
-    
-    interval = [_currentDateComponents weekday] - 1;
-    _month = [_currentDateComponents month];
-    _year = [_currentDateComponents year];
-    rowCount = ceil((dayCount + interval) / 7) + 1;
-    _rowHeight = self.frame.size.height / rowCount;
+- (void)setNeedsDisplay {
     
     [_dateArray removeAllObjects];
     CGSize rectangleSize = CGSizeMake(_columnWidth * 0.9, _rowHeight * 0.9);
     for (int i = 0; i< (dayCount + interval); i++) {
-
+        
         if (i < interval) {
             continue;
         }
@@ -70,6 +59,22 @@
         
         [_dateArray addObject:zcalendarModel];
     }
+
+    [super setNeedsDisplay];
+}
+
+
+- (void)setDate:(NSDate *)date {
+    
+    _currentDateComponents = [date getDateComponentsByDate];
+    
+    dayCount = [date getDays];
+    
+    interval = [_currentDateComponents weekday] - 1;
+    _month = [_currentDateComponents month];
+    _year = [_currentDateComponents year];
+    rowCount = ceil((dayCount + interval) / 7) + 1;
+    _rowHeight = self.frame.size.height / rowCount;
     
     [self setNeedsDisplay];
 }

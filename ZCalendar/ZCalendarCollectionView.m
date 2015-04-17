@@ -148,26 +148,5 @@
     return reusableview;
 }
 
-//- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-//    
-//    NSDateComponents *today = [ZCalendarDate getDateComponentsByDate:[NSDate date]];
-//    
-//    _columnCount = 1;
-//    NSInteger i = (_starYear + indexPath.section - _starYear);
-//    NSInteger height = (i * (12 / _columnCount) + indexPath.row / _columnCount - 1) * (_cellSize.height + _layout.minimumLineSpacing) + i * _layout.headerReferenceSize.height;
-//    
-//    [collectionView performBatchUpdates:^{
-//        _caledarType = CalendarTypeMonth;
-//        
-//    } completion:^(BOOL finished) {
-//        
-//        [collectionView reloadData];
-//        [self setContentOffset:CGPointMake(0,
-//                                           height) animated:YES];
-//    }];
-//    
-//}
-
-
 
 @end
