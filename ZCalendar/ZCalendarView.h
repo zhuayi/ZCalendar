@@ -7,10 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ZCalendarCollectionView.h"
-#import "NSDate+ZCalendar.h"
-@interface ZCalendarView : UIView
+#import "ZCalendar.h"
 
+@interface ZCalendarView : UIView<ZCalendarDelegate>
+
+/**
+ *  头部 view
+ */
+@property(nonatomic, strong) UIView *header;
+
+/**
+ *  代理
+ */
+@property(nonatomic, weak) id<ZCalendarDelegate> delegate;
 
 @property(nonatomic, strong) ZCalendarCollectionView *zcalendarCollectionView;
 

@@ -8,9 +8,8 @@
 
 #import "ZCalendarView.h"
 
-@implementation ZCalendarView {
-    UIView *_header;
-}
+@implementation ZCalendarView
+
 
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
@@ -20,8 +19,23 @@
                                                                                              _header.frame.size.width,
                                                                                              self.frame.size.width,
                                                                                              self.frame.size.height - _header.frame.size.width)];
+        
     }
     return self;
+}
+
+- (void)setDelegate:(id<ZCalendarDelegate>)delegate {
+    
+    _delegate = delegate;
+    // 接受通知
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(zCalendarCellViewClic:)
+                                                 name:kZCalendarCellViewClick object:nil];
+}
+
+- (void)zCalendarCellViewClic:(NSNotification *)sender {
+    
+    [_delegate didClickdate:[sender.object objectForKey:@"ZCalendarDrawViewCell"] zcalendarModel:[sender.object objectForKey:@"ZCalendarModel"]];
 }
 
 - (void)layoutSubviews {
@@ -63,6 +77,12 @@
 //    if (caledarType == CalendarTypeYear) {
 //        _zcalendarCollectionView.cellEdgeInsets = UIEdgeInsetsMake(5, 5, 5, 5);
 //    }
+}
+
+- (void)dealloc {
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    NSLog(@"%s", __func__);
 }
 
 @end

@@ -21,6 +21,8 @@
     ZCalendarView *zcalendarView = [[ZCalendarView alloc] initWithFrame:CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.height - 64)];
     zcalendarView.cellSize = CGSizeMake(self.view.frame.size.width, 200);
     
+    zcalendarView.delegate = self;
+    
     // 线条颜色
     zcalendarView.zcalendarCollectionView.lineColor = [UIColor redColor];
     
@@ -38,6 +40,12 @@
     [zcalendarView setYearInterval:2010 endDate:[today year]];
     
     [self.view addSubview:zcalendarView];
+}
+
+#pragma mark - delegate
+- (void)didClickdate:(ZCalendarDrawViewCell *)zcalendarDrawViewCell zcalendarModel:(ZCalendarModel *)zcalendarModel {
+ 
+    NSLog(@"didClickDate : %@, zcalendarDrawViewCell: %@", zcalendarModel.dateText, zcalendarDrawViewCell);
 }
 
 - (void)didReceiveMemoryWarning {

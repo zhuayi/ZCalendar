@@ -29,10 +29,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         _columnWidth = self.frame.size.width / 7;
-        _rowHeight = self.frame.size.height / 6;
-        
         _dateArray = [[NSMutableArray alloc] initWithCapacity:0];
-        
         
         return self;
     }
@@ -50,7 +47,8 @@
     interval = [_currentDateComponents weekday] - 1;
     _month = [_currentDateComponents month];
     _year = [_currentDateComponents year];
-    rowCount = ceil((dayCount + interval) / 7) + 2;
+    rowCount = ceil((dayCount + interval) / 7) + 1;
+    _rowHeight = self.frame.size.height / rowCount;
     
     [_dateArray removeAllObjects];
     CGSize rectangleSize = CGSizeMake(_columnWidth * 0.9, _rowHeight * 0.9);
@@ -195,7 +193,7 @@
     
     CGMutablePathRef pathRef = CGPathCreateMutable();
     
-    if (radius<=0) {
+    if (radius <= 0) {
         CGPathMoveToPoint(pathRef, &CGAffineTransformIdentity, x1.x, x1.y);
         CGPathAddLineToPoint(pathRef, &CGAffineTransformIdentity, x2.x, x2.y);
         CGPathAddLineToPoint(pathRef, &CGAffineTransformIdentity, x3.x, x3.y);
@@ -224,6 +222,16 @@
     
     CGPoint touchPoint = [touch locationInView:self];
     
-    NSLog(@"x :%f, y : %f",touchPoint.x,touchPoint.y);
+    for (ZCalendarModel *zcalendarModel in _dateArray) {
+        if (CGRectContainsPoint(zcalendarModel.frame,touchPoint)) {
+            NSLog(@"date :%ld-%ld-%@", _year, _month, zcalendarModel.dateText);
+            
+            NSDictionary *dict = @{ @"ZCalendarModel":zcalendarModel, @"ZCalendarDrawViewCell":self };
+            // 发送点击通知
+            [[NSNotificationCenter defaultCenter] postNotificationName:kZCalendarCellViewClick object:dict];
+            
+            break;
+        }
+    }
 }
 @end

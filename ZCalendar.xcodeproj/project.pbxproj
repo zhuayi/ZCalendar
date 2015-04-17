@@ -61,6 +61,8 @@
 		38E0BB421AE0BB1400874716 /* NSString+ZCalendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ZCalendar.m"; sourceTree = "<group>"; };
 		38E0BB441AE0E3A900874716 /* ZCalendarModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCalendarModel.h; sourceTree = "<group>"; };
 		38E0BB451AE0E3A900874716 /* ZCalendarModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCalendarModel.m; sourceTree = "<group>"; };
+		38E0BB491AE0FCE700874716 /* ZCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCalendar.h; sourceTree = "<group>"; };
+		38E0BB4A1AE0FEF500874716 /* ZCalendarDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCalendarDelegate.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +126,8 @@
 				38E0BB421AE0BB1400874716 /* NSString+ZCalendar.m */,
 				38E0BB441AE0E3A900874716 /* ZCalendarModel.h */,
 				38E0BB451AE0E3A900874716 /* ZCalendarModel.m */,
+				38E0BB491AE0FCE700874716 /* ZCalendar.h */,
+				38E0BB4A1AE0FEF500874716 /* ZCalendarDelegate.h */,
 			);
 			path = ZCalendar;
 			sourceTree = "<group>";

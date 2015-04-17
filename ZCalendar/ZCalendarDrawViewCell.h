@@ -7,18 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
-typedef NS_ENUM(NSInteger, CalendarType) {
-    //以下是枚举成员
-    CalendarTypeYear, // 年视图
-    CalendarTypeMonth // 月视图
-};
-
+#import "ZCalendar.h"
 
 @interface ZCalendarDrawViewCell : UICollectionViewCell
-
-- (void)setDate:(NSDate *)date;
-
 
 /**
  *  视图, 年,月,周
@@ -39,5 +30,12 @@ typedef NS_ENUM(NSInteger, CalendarType) {
  *  日期数组
  */
 @property(nonatomic, strong) NSMutableArray *dateArray;
+
+/**
+ *  设置日期
+ *
+ *  @param date
+ */
+- (void)setDate:(NSDate *)date;
 
 @end

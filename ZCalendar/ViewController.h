@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface ViewController : UIViewController
+#import "ZCalendar.h"
+@interface ViewController : UIViewController<ZCalendarDelegate>
 
 
 @end
