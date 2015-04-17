@@ -51,7 +51,7 @@
 	2. 每一个 cellView 需要显示 N + interval个日期
 		1. 年和月视图, 根据*获取一个月有多少天*扩展方法获取View 需要绘制多少个矩形
 		2. 周视图7个矩形
-	
+
 
 2. 计算每个矩形的位置
 	1. width: ```_columnWidth = self.frame.size.width / 7```
@@ -61,29 +61,35 @@
 
 
 > ```objective-c
->	_currentDateComponents = [date getDateComponentsByDate];	
->	dayCount = [date getDays];
->	interval = [_currentDateComponents weekday] - 1;
->	_month = [_currentDateComponents month];
->	_year = [_currentDateComponents year];
->	rowCount = ceil((dayCount + interval) / 7) + 2;	
->	CGSize rectangleSize = CGSizeMake(_columnWidth * 0.9, _rowHeight * 0.9);
->	for (int i = 0; i< (dayCount + interval); i++) {
->		if (i < interval) {
->			continue;
->		}
->		CGFloat x = _columnWidth * fmod(i , 7);
->		CGFloat y = _rowHeight + _rowHeight * ceil(i / 7);	
->		ZCalendarModel *zcalendarModel = [[ZCalendarModel alloc] init];
->		zcalendarModel.frame = CGRectMake(x + (_columnWidth - rectangleSize.width) / 2,
->										  y + (_rowHeight - rectangleSize.height) / 2,
->										  rectangleSize.width,
->										  rectangleSize.height);
->		zcalendarModel.rectangleColor = [UIColor blueColor];
->		zcalendarModel.dateText = [NSString stringWithFormat:@"%ld",i + 1 - interval];
->		
->		[_dateArray addObject:zcalendarModel];
->	}
+> `> _currentDateComponents = [date getDateComponentsByDate]();	
+> dayCount = [date getDays]();
+> interval = [_currentDateComponents weekday]() - 1;
+> _month = []()_currentDateComponents month];
+> _year = []()_currentDateComponents year];
+> rowCount = ceil((dayCount + interval) / 7) + 2;	
+> CGSize rectangleSize = CGSizeMake(_columnWidth * 0.9, _rowHeight * 0.9);
+> for (int i = 0; i\< (dayCount + interval); i++) {
+> if (i \< interval) {
+> continue;
+> }
+> CGFloat x = _columnWidth * fmod(i , 7);
+> CGFloat y = _rowHeight + _rowHeight * ceil(i / 7);	
+> ZCalendarModel *zcalendarModel = [\[ZCalendarModel alloc]() init];
+> zcalendarModel.frame = CGRectMake(x + (_columnWidth - rectangleSize.width) / 2,
+>   y + (_rowHeight - rectangleSize.height) / 2,
+>   rectangleSize.width,
+>   rectangleSize.height);
+> zcalendarModel.rectangleColor = [UIColor blueColor]();
+> zcalendarModel.dateText = [NSString stringWithFormat:@"%ld",i + 1 - interval]();
+> 
+> [_dateArray addObject:zcalendarModel]();
+> }
 > ```
- 
-> gitHub地址 : [https://github.com/zhuayi/ZCalendar]
+> `
+### 代码预览&地址
+ ![][image-1]
+> gitHub地址 : [https://github.com/zhuayi/ZCalendar][10]
+
+[10]:	https://github.com/zhuayi/ZCalendar
+
+[image-1]:	http://ww3.sinaimg.cn/large/687dbab7jw1er8lxz4r66j20hs0vk0we.jpg
