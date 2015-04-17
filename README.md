@@ -1,6 +1,6 @@
 # 日历
-### 第三方库
-> 目前网上开源的第三方库都是在UICollectionView基础上开发的,每一个日期都是一个 cellView, 如果一个页面单独显示日历,则这些开源的第三方库都支持. 
+### 其他第三方库缺点
+> 目前网上开源的第三方库都是在UICollectionView基础上开发的,每一个日期都是一个 cellView, 1年365天久是365个 view, 虽然UICollectionView有复用机制,但一个试图下显示30个 View, 在性能要求极端的情况无疑不是一个好的方法. 
 > 但是天眼日历需要在一个复杂的页面显示日历, view 太多会造成性能问题, 所以需要一个性能更好地日历库.
 
 
@@ -88,8 +88,9 @@
 > `
 ### 代码预览&地址
  ![][image-1]
+
 > gitHub地址 : [https://github.com/zhuayi/ZCalendar][10]
 
 [10]:	https://github.com/zhuayi/ZCalendar
 
-[image-1]:	http://ww3.sinaimg.cn/large/687dbab7jw1er8lxz4r66j20hs0vk0we.jpg
+[image-1]:	http://ww3.sinaimg.cn/bmiddle/687dbab7jw1er8mjqkltij20hs0vk780.jpg

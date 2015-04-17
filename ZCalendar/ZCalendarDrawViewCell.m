@@ -52,6 +52,7 @@
     _year = [_currentDateComponents year];
     rowCount = ceil((dayCount + interval) / 7) + 2;
     
+    [_dateArray removeAllObjects];
     CGSize rectangleSize = CGSizeMake(_columnWidth * 0.9, _rowHeight * 0.9);
     for (int i = 0; i< (dayCount + interval); i++) {
 
@@ -71,7 +72,8 @@
         
         [_dateArray addObject:zcalendarModel];
     }
-
+    
+    [self setNeedsDisplay];
 }
 
 - (void)drawRect:(CGRect)rect {
@@ -107,11 +109,9 @@
              textColor:_dateTextColor];
     }
     
-    NSString *text;
-    CGSize size;
+    NSString *text = [NSString stringWithFormat:@"%ld月", _month];
+    CGSize size = [text sizeWithAttributes:[self fontStyle:16. textColor:[UIColor blackColor]]];
     CGFloat drawMonthX = 0;
-    text = [NSString stringWithFormat:@"%ld月", _month];
-    size = [text sizeWithAttributes:[self fontStyle:16. textColor:[UIColor blackColor]]];
     if (_caledarType == CalendarTypeMonth) {
         drawMonthX = interval * _columnWidth + (_columnWidth - size.width) /2;
     }
