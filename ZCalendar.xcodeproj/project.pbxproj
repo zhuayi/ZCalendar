@@ -18,6 +18,7 @@
 		38A7EF171ADE624500CE7AA6 /* ZCalendarDrawViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 38A7EF161ADE624500CE7AA6 /* ZCalendarDrawViewCell.m */; };
 		38A7EF1D1ADE740000CE7AA6 /* ZCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 38A7EF1C1ADE740000CE7AA6 /* ZCalendarView.m */; };
 		38E0BB3A1ADF825F00874716 /* ZCalendarDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E0BB391ADF825F00874716 /* ZCalendarDate.m */; };
+		38E0BB3D1ADFD84B00874716 /* ZCalendarYearHeardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E0BB3C1ADFD84B00874716 /* ZCalendarYearHeardView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,8 @@
 		38A7EF1C1ADE740000CE7AA6 /* ZCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCalendarView.m; sourceTree = "<group>"; };
 		38E0BB381ADF825F00874716 /* ZCalendarDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCalendarDate.h; sourceTree = "<group>"; };
 		38E0BB391ADF825F00874716 /* ZCalendarDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCalendarDate.m; sourceTree = "<group>"; };
+		38E0BB3B1ADFD84B00874716 /* ZCalendarYearHeardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCalendarYearHeardView.h; sourceTree = "<group>"; };
+		38E0BB3C1ADFD84B00874716 /* ZCalendarYearHeardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCalendarYearHeardView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +112,8 @@
 				38A7EF1C1ADE740000CE7AA6 /* ZCalendarView.m */,
 				38E0BB381ADF825F00874716 /* ZCalendarDate.h */,
 				38E0BB391ADF825F00874716 /* ZCalendarDate.m */,
+				38E0BB3B1ADFD84B00874716 /* ZCalendarYearHeardView.h */,
+				38E0BB3C1ADFD84B00874716 /* ZCalendarYearHeardView.m */,
 			);
 			path = ZCalendar;
 			sourceTree = "<group>";
@@ -246,6 +251,7 @@
 				38A7EF171ADE624500CE7AA6 /* ZCalendarDrawViewCell.m in Sources */,
 				38A7EEEF1ADE5E4700CE7AA6 /* AppDelegate.m in Sources */,
 				38A7EEEC1ADE5E4700CE7AA6 /* main.m in Sources */,
+				38E0BB3D1ADFD84B00874716 /* ZCalendarYearHeardView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

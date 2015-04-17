@@ -32,39 +32,43 @@
 }
 
 - (void)setDate:(NSDate *)date {
-
+    
     dayCount = [ZCalendarDate getDays:date];
     NSDateComponents *dateComponents = [ZCalendarDate getDateComponentsByDate:date];
     interval = [dateComponents weekday] - 1;
     _month = [dateComponents month];
     _year = [dateComponents year];
     rowCount = ceil((dayCount + interval) / 7) + 2;
-    _rowHeight = self.frame.size.height / (rowCount - 1);
+    _rowHeight = self.frame.size.height / 6;
     [self setNeedsDisplay];
 }
 
 - (void)drawRect:(CGRect)rect {
     _context = UIGraphicsGetCurrentContext();
+    
+    if (_lineColor) {
+        CGContextSetStrokeColorWithColor(_context, _lineColor.CGColor);
+        
+        // 月视图才显示横线
+        if (_caledarType == CalendarTypeMonth) {
+            for (int i = 1; i < 2; i++) {
 
-    CGContextSetStrokeColorWithColor(_context, [UIColor whiteColor].CGColor);
-    
-    for (int i = 1; i < rowCount; i++) {
-        
-        CGFloat intervalWidth = 0;
-        if (i == 1) {
-            intervalWidth = interval * _columnWidth;
+                CGFloat intervalWidth = 0;
+                if (i == 1) {
+                    intervalWidth = interval * _columnWidth;
+                }
+
+                CGContextMoveToPoint(_context, intervalWidth, _rowHeight * i);
+                CGContextAddLineToPoint(_context, self.frame.size.width, _rowHeight * i);
+                CGContextStrokePath(_context);
+            }
         }
-        
-        CGContextMoveToPoint(_context, intervalWidth, _rowHeight * i);
-        CGContextAddLineToPoint(_context, self.frame.size.width, _rowHeight * i);
-        CGContextStrokePath(_context);
     }
-    
     // 矩形尺寸
-    CGSize rectangleSize = CGSizeMake(_columnWidth / 2, _rowHeight / 2);
+    CGSize rectangleSize = CGSizeMake(_columnWidth * 0.9, _rowHeight * 0.9);
     for (int i = 0; i< (dayCount + interval); i++) {
         NSString *text = [NSString stringWithFormat:@"%ld",i + 1 - interval];
-        CGSize size = [text sizeWithAttributes:[self fontStyle]];
+        CGSize size = [text sizeWithAttributes:[self fontStyle:10.0 textColor:_dateTextColor]];
         
         if (i < interval) {
             continue;
@@ -74,22 +78,28 @@
         CGFloat y = _rowHeight + _rowHeight * ceil(i / 7);
         
         [[UIColor blueColor] setFill];
-       
+        
         [self drawRectangle:CGRectMake(x + (_columnWidth - rectangleSize.width) / 2,
                                        y + (_rowHeight - rectangleSize.height) / 2,
                                        rectangleSize.width,
                                        rectangleSize.height) lineWidth:0.0];
         
-        [self drawText:CGPointMake(x + (_columnWidth - size.width) / 2, y + (_rowHeight - size.height) / 2) text:text];
+        [self drawText:CGPointMake(x + (_columnWidth - size.width) / 2, y + (_rowHeight - size.height) / 2)
+                  text:text
+              fontSize:10.0
+             textColor:_dateTextColor];
     }
     
-    NSString *text = [NSString stringWithFormat:@"%ld月", _month];
-    CGSize size = [text sizeWithAttributes:[self fontStyle]];
-    [self drawText:CGPointMake(interval * _columnWidth + (_columnWidth - size.width) /2, (_rowHeight - size.height) / 2)
-              text:[NSString stringWithFormat:@"%ld月 %ld", _month, _year]];
-    
-//    20150415
-    NSLog(@"print date is %f",rowCount);
+    NSString *text;
+    CGSize size;
+    CGFloat drawMonthX = 0;
+    text = [NSString stringWithFormat:@"%ld月", _month];
+    size = [text sizeWithAttributes:[self fontStyle:16. textColor:[UIColor blackColor]]];
+    if (_caledarType == CalendarTypeMonth) {
+        drawMonthX = interval * _columnWidth + (_columnWidth - size.width) /2;
+    }
+    [self drawText:CGPointMake(drawMonthX, (_rowHeight - size.height) / 2)
+              text:text fontSize:16.0 textColor:[UIColor blackColor]];
 }
 
 
@@ -98,22 +108,22 @@
  *
  *  @return NSDictionary 文字样式
  */
-- (NSDictionary *)fontStyle {
+- (NSDictionary *)fontStyle:(CGFloat)fontSize textColor:(UIColor *)textColor {
     NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init]; // 段落样式
     style.alignment = NSTextAlignmentRight;
     NSDictionary *fontDict = @{
-                               NSFontAttributeName: [UIFont systemFontOfSize:16],
-                               NSForegroundColorAttributeName: [UIColor redColor],
+                               NSFontAttributeName: [UIFont systemFontOfSize:fontSize],
+                               NSForegroundColorAttributeName: textColor,
                                NSParagraphStyleAttributeName: style
                                };
     
     return fontDict;
 }
 
-- (void)drawText:(CGPoint)point text:(NSString *)text
+- (void)drawText:(CGPoint)point text:(NSString *)text fontSize:(CGFloat)fontSize textColor:(UIColor *)textColor
 {
     // 兼容不同长度的字符串
-    [text drawAtPoint:point withAttributes:[self fontStyle]];
+    [text drawAtPoint:point withAttributes:[self fontStyle:fontSize textColor:textColor]];
 }
 
 /**

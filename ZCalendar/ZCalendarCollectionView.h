@@ -7,13 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ZCalendarDrawViewCell.h"
 
 @interface ZCalendarCollectionView : UICollectionView<UICollectionViewDelegate, UICollectionViewDataSource>
+
+@property(nonatomic, strong)UICollectionViewFlowLayout *layout;
 
 /**
  *  每个 cell 的高度
  */
-@property(nonatomic, assign) CGFloat cellHeight;
+@property(nonatomic, assign) CGSize cellSize;
 
 /**
  *  开始时间
@@ -26,6 +29,15 @@
  */
 @property(nonatomic, assign) NSInteger endYear;
 
+/**
+ *  cell 的间距
+ */
+@property(nonatomic, assign) UIEdgeInsets cellEdgeInsets;
+
+/**
+ *  视图, 年,月,周
+ */
+@property(nonatomic, assign) CalendarType caledarType;
 
 /**
  *  设置日历区间
@@ -34,4 +46,15 @@
  *  @param endData  结束时间
  */
 - (void)setYearInterval:(NSInteger)starDate endDate:(NSInteger)endData;
+
+/**
+ *  线条颜色
+ */
+@property(nonatomic, strong) UIColor *lineColor;
+
+/**
+ *  日期文字颜色
+ */
+@property(nonatomic, strong) UIColor *dateTextColor;
+
 @end
