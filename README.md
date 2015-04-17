@@ -60,34 +60,6 @@
 	4. Y 轴坐标: ```_rowHeight + _rowHeight * ceil(i / 7)```
 
 
-> ```objective-c
-> `> 
-> _currentDateComponents = [date getDateComponentsByDate]();	
-> dayCount = [date getDays]();
-> interval = [_currentDateComponents weekday]() - 1;
-> _month = []()_currentDateComponents month];
-> _year = []()_currentDateComponents year];
-> rowCount = ceil((dayCount + interval) / 7) + 2;	
-> CGSize rectangleSize = CGSizeMake(_columnWidth * 0.9, _rowHeight * 0.9);
-> for (int i = 0; i\< (dayCount + interval); i++) {
-> if (i \< interval) {
-> continue;
-> }
-> CGFloat x = _columnWidth * fmod(i , 7);
-> CGFloat y = _rowHeight + _rowHeight * ceil(i / 7);	
-> ZCalendarModel *zcalendarModel = [\[ZCalendarModel alloc]() init];
-> zcalendarModel.frame = CGRectMake(x + (_columnWidth - rectangleSize.width) / 2,
->   y + (_rowHeight - rectangleSize.height) / 2,
->   rectangleSize.width,
->   rectangleSize.height);
-> zcalendarModel.rectangleColor = [UIColor blueColor]();
-> zcalendarModel.dateText = [NSString stringWithFormat:@"%ld",i + 1 - interval]();
-> 
-> [_dateArray addObject:zcalendarModel]();
-> }
-> ```
-> `
-
 ### 架构设计
 - 入口类: ```ZCalendarView```
 	> ZCalendarView作为入口类,所有需要加载日历的控制器只需要addSubview该类即可.
@@ -106,9 +78,9 @@
 ### 代码预览&地址
  ![][image-2]
 
-> gitHub地址 : [https://github.com/zhuayi/ZCalendar][10]
+> gitHub地址 : [https://github.com/zhuayi/ZCalendar][1]
 
-[10]:	https://github.com/zhuayi/ZCalendar
+[1]:	https://github.com/zhuayi/ZCalendar
 
 [image-1]:	http://ww4.sinaimg.cn/large/687dbab7jw1er8q9ojjupj20vw0cpwfq.jpg "架构图"
 [image-2]:	http://ww3.sinaimg.cn/bmiddle/687dbab7jw1er8mjqkltij20hs0vk780.jpg
