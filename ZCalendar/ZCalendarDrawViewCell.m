@@ -7,7 +7,8 @@
 //
 
 #import "ZCalendarDrawViewCell.h"
-#import "ZCalendarDate.h"
+//#import "ZCalendarDate.h"
+#import "NSDate+ZCalendar.h"
 
 @implementation ZCalendarDrawViewCell {
     CGContextRef _context;
@@ -33,8 +34,8 @@
 
 - (void)setDate:(NSDate *)date {
     
-    dayCount = [ZCalendarDate getDays:date];
-    NSDateComponents *dateComponents = [ZCalendarDate getDateComponentsByDate:date];
+    dayCount = [date getDays];;
+    NSDateComponents *dateComponents = [date getDateComponentsByDate];
     interval = [dateComponents weekday] - 1;
     _month = [dateComponents month];
     _year = [dateComponents year];
@@ -200,5 +201,13 @@
     }
     CGPathCloseSubpath(pathRef);
     return pathRef;
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    UITouch *touch = [touches anyObject];
+    
+    CGPoint touchPoint = [touch locationInView:self];
+    
+    NSLog(@"x :%f, y : %f",touchPoint.x,touchPoint.y);
 }
 @end

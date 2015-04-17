@@ -20,7 +20,8 @@
         
         self.backgroundColor = [UIColor brownColor];
         
-        label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];        
+        label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+        label.textColor = [UIColor redColor];
         [self addSubview:label];
     }
     return self;

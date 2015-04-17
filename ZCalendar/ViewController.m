@@ -8,7 +8,6 @@
 
 #import "ViewController.h"
 #import "ZCalendarView.h"
-#import "ZCalendarDate.h"
 @interface ViewController ()
 
 @end
@@ -27,7 +26,7 @@
     
     // cell边距
     zcalendarView.cellEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
-    NSDateComponents *today = [ZCalendarDate getDateComponentsByDate:[NSDate date]];
+    NSDateComponents *today = [[NSDate date] getDateComponentsByDate];
     
     // 设置显示的年视图
     zcalendarView.caledarType = CalendarTypeMonth;

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ZCalendarCollectionView.h"
-
+#import "NSDate+ZCalendar.h"
 @interface ZCalendarView : UIView
 
 

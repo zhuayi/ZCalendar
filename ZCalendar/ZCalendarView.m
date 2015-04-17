@@ -7,23 +7,19 @@
 //
 
 #import "ZCalendarView.h"
-#import "ZCalendarDate.h"
-@implementation ZCalendarView
+
+@implementation ZCalendarView {
+    UIView *_header;
+}
 
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
         
-        UIView *header;
-        if (_caledarType != CalendarTypeYear) {
-            header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 30)];
-            header.backgroundColor = [UIColor groupTableViewBackgroundColor];
-            [self addSubview:header];
-        }
         _zcalendarCollectionView = [[ZCalendarCollectionView alloc] initWithFrame:CGRectMake(0,
-                                                                                             header.frame.size.width,
+                                                                                             _header.frame.size.width,
                                                                                              self.frame.size.width,
-                                                                                             self.frame.size.height - header.frame.size.width)];
+                                                                                             self.frame.size.height - _header.frame.size.width)];
     }
     return self;
 }
@@ -31,6 +27,10 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     [self addSubview:_zcalendarCollectionView];
+    
+    if (_header){
+        [self addSubview:_header];
+    }
 }
 
 
@@ -54,6 +54,11 @@
 - (void)setCaledarType:(CalendarType)caledarType {
     _caledarType = caledarType;
     _zcalendarCollectionView.caledarType = caledarType;
+    
+    if (_caledarType != CalendarTypeYear) {
+        _header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 30)];
+        _header.backgroundColor = [UIColor redColor];
+    }
     
 //    if (caledarType == CalendarTypeYear) {
 //        _zcalendarCollectionView.cellEdgeInsets = UIEdgeInsetsMake(5, 5, 5, 5);

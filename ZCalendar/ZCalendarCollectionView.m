@@ -7,13 +7,14 @@
 //
 
 #import "ZCalendarCollectionView.h"
-#import "ZCalendarDate.h"
+#import "NSDate+ZCalendar.h"
+#import "NSString+ZCalendar.h"
 #import "ZCalendarYearHeardView.h"
 @implementation ZCalendarCollectionView {
     NSMutableArray *_dateArray;
     NSInteger _intervalMonth;
     NSInteger _columnCount;
-    BOOL asd;
+    NSDateComponents *_today;
 }
 
 - (instancetype)initWithFrame:(CGRect)frame
@@ -46,8 +47,7 @@
     _starYear = starDate;
     _endYear = endData;
     
-    NSDateComponents *today = [ZCalendarDate getDateComponentsByDate:[NSDate date]];
-    NSInteger current = 0;
+    _today = [[NSDate date] getDateComponentsByDate];
     _intervalMonth = (endData - starDate) + 1;
     
     // 计算一行有几个 cell
@@ -60,20 +60,20 @@
         
         for (int j = 1; j <= 12; j++) {
             
-            NSDate *date = [[ZCalendarDate getFormatter] dateFromString:[NSString stringWithFormat:@"%ld-%d-1", starDate + i, j]];
+            NSDate *date = [[NSString stringWithFormat:@"%ld-%d-1", starDate + i, j] dateFromString];
             [_dateArray addObject:date];
-            
-            // 如果是当月,则记录下来,稍后要滚动到这里
-            if ((starDate + i) == [today year] && j == [today month]) {
-                current = i * (12 / _columnCount) + j / _columnCount - 1;
-            }
         }
     }
     
+    
+    
+    
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         
-        [self setContentOffset:CGPointMake(0,
-                                           current * (_cellSize.height + _layout.minimumLineSpacing) + ([today year] - _starYear) * _layout.headerReferenceSize.height) animated:YES];
+        [self scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:[_today month] inSection:([_today year] - _starYear)]
+                     atScrollPosition:UICollectionViewScrollPositionBottom
+                             animated:YES];
+        
     });
 }
 
