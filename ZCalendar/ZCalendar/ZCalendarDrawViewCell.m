@@ -40,6 +40,8 @@
 - (void)setNeedsDisplay {
     
     [_dateArray removeAllObjects];
+    
+    NSDateComponents *today = [[NSDate date] getDateComponentsByDate];
     CGSize rectangleSize = CGSizeMake(_columnWidth * 0.9, _rowHeight * 0.9);
     for (int i = 0; i< (dayCount + interval); i++) {
         
@@ -54,7 +56,13 @@
                                           y + (_rowHeight - rectangleSize.height) / 2,
                                           rectangleSize.width,
                                           rectangleSize.height);
-        zcalendarModel.rectangleColor = [UIColor blueColor];
+        
+        // 如果是今天,则换个颜色
+        if (_month == [today month] && _year == [today year] && [today day] == (i + 1 - interval)) {
+            zcalendarModel.rectangleColor = [UIColor redColor];
+        } else {
+            zcalendarModel.rectangleColor = [UIColor blueColor];
+        }
         zcalendarModel.dateText = [NSString stringWithFormat:@"%ld",i + 1 - interval];
         
         [_dateArray addObject:zcalendarModel];

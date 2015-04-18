@@ -11,7 +11,7 @@
 @class ZCalendarDrawViewCell;
 @protocol ZCalendarDelegate <NSObject>
 
-- (void)didClickdate:(ZCalendarDrawViewCell *)zcalendarDrawViewCell zcalendarModel:(ZCalendarModel *)zcalendarModel;
+- (void)didClickDate:(ZCalendarDrawViewCell *)zcalendarDrawViewCell zcalendarModel:(ZCalendarModel *)zcalendarModel;
 
 
 @end

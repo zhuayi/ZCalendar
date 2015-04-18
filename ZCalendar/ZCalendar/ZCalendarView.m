@@ -35,7 +35,7 @@
 
 - (void)zCalendarCellViewClic:(NSNotification *)sender {
     
-    [_delegate didClickdate:[sender.object objectForKey:@"ZCalendarDrawViewCell"] zcalendarModel:[sender.object objectForKey:@"ZCalendarModel"]];
+    [_delegate didClickDate:[sender.object objectForKey:@"ZCalendarDrawViewCell"] zcalendarModel:[sender.object objectForKey:@"ZCalendarModel"]];
 }
 
 - (void)layoutSubviews {

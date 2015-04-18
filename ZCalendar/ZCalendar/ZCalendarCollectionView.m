@@ -23,7 +23,7 @@
     [_layout setScrollDirection:UICollectionViewScrollDirectionVertical];
     _layout.minimumLineSpacing = 5;
     _layout.minimumInteritemSpacing = 0;
-    _layout.headerReferenceSize = CGSizeMake(self.frame.size.width, 50);
+//    _layout.headerReferenceSize = CGSizeMake(self.frame.size.width, 50);
     self = [super initWithFrame:frame collectionViewLayout:_layout];
     if (self) {
     
@@ -34,7 +34,7 @@
         //注册Cell，必须要有
         [self registerClass:[ZCalendarDrawViewCell class] forCellWithReuseIdentifier:@"ZCalendarDrawViewCell"];
         
-        [self registerClass:[ZCalendarYearHeardView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView"];
+//        [self registerClass:[ZCalendarYearHeardView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView"];
         
         _dateArray = [NSMutableArray arrayWithCapacity:0];
         
@@ -58,11 +58,14 @@
     
     for (int i = 0 ; i < _intervalMonth; i++) {
         
+        NSMutableArray *monthArray = [[NSMutableArray alloc] initWithCapacity:0];
         for (int j = 1; j <= 12; j++) {
             
             NSDate *date = [[NSString stringWithFormat:@"%ld-%d-1", starDate + i, j] dateFromString];
-            [_dateArray addObject:date];
+            [monthArray addObject:date];
         }
+        
+        [_dateArray addObject:monthArray];
     }
     
     
@@ -108,7 +111,8 @@
     cell.caledarType = _caledarType;
     cell.lineColor = _lineColor;
     cell.dateTextColor = _dateTextColor;
-    [cell setDate:_dateArray[indexPath.row]];
+//    NSLog(@"indexPath.row : %d ", indexPath.row);
+    [cell setDate:_dateArray[indexPath.section][indexPath.row]];
     
     cell.backgroundColor = [UIColor clearColor];
     return cell;
@@ -148,5 +152,12 @@
     return reusableview;
 }
 
+
+#pragma mark - scrollVieDelegate
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+ 
+    NSLog(@"scrollView : %f", _starYear + floor(((scrollView.contentOffset.y) / self.frame.size.height) * (self.frame.size.height / _cellSize.height) / 12));
+//    NSLog(@"scrollView : %f", scrollView.contentOffset.y / _cellSize.height / 12);
+}
 
 @end
