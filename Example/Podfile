@@ -1,0 +1,11 @@
+source 'https://github.com/CocoaPods/Specs.git'
+
+target 'ZCalendar', :exclusive => true do
+  pod "ZCalendar", :path => "../"
+end
+
+target 'Tests', :exclusive => true do
+  pod "ZCalendar", :path => "../"
+
+  pod 'FBSnapshotTestCase'
+end
