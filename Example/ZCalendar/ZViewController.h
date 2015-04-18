@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface ZViewController : UIViewController
+#import "ZCalendar.h"
+@interface ZViewController : UIViewController<ZCalendarDelegate, ZCalendarCollectionViewDelegate>
 
 @end

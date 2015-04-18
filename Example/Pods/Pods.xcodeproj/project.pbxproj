@@ -1,0 +1,752 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		042350783EB82DD711DDA2D8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C4841527B2D68AB4418DFE7 /* Foundation.framework */; };
+		06D58DA2EAA1120CD4AE2EE8 /* UIImage+Diff.m in Sources */ = {isa = PBXBuildFile; fileRef = 03864A75A283B8102C9F35FD /* UIImage+Diff.m */; };
+		1EA5639C280761FC823583DA /* Pods-ZCalendar-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 581E334AF1C59080319A2E86 /* Pods-ZCalendar-dummy.m */; };
+		22FE015530D08882F2600463 /* UIImage+Diff.h in Headers */ = {isa = PBXBuildFile; fileRef = FB5652D87E103CEE7C086998 /* UIImage+Diff.h */; };
+		3CF3AB2BA47D9B8E6DD751C2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C4841527B2D68AB4418DFE7 /* Foundation.framework */; };
+		4E27018C4E0500AC7A1CC155 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C4841527B2D68AB4418DFE7 /* Foundation.framework */; };
+		5687F703A9B96015DD33F147 /* UIImage+Compare.h in Headers */ = {isa = PBXBuildFile; fileRef = 363F49E2E28E665AA0C7BF2B /* UIImage+Compare.h */; };
+		7F9081C00B7D71127A04A20C /* Pods-Tests-FBSnapshotTestCase-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 92939695D43B9D61EEA888EF /* Pods-Tests-FBSnapshotTestCase-dummy.m */; };
+		8069CE27768F838F43778745 /* UIImage+Compare.m in Sources */ = {isa = PBXBuildFile; fileRef = 87CD3E024826ABE191F71AE0 /* UIImage+Compare.m */; };
+		8B82D5D86A87B5242C85D446 /* FBSnapshotTestCase.h in Headers */ = {isa = PBXBuildFile; fileRef = 9E2D21EAD0183DF975C5E289 /* FBSnapshotTestCase.h */; };
+		9928CD18A973A2798DE3E273 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA30C78794239FF0E43997B7 /* XCTest.framework */; };
+		99430EC86FEB286E429A52D8 /* FBSnapshotTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 87CD64818CB849E9BA469F38 /* FBSnapshotTestCase.m */; };
+		B6603F0994E826352E1AC334 /* FBSnapshotTestController.m in Sources */ = {isa = PBXBuildFile; fileRef = 690DDEAA140ABCF05A3CAB9E /* FBSnapshotTestController.m */; };
+		BA70D54DBE411A7CFDDC1E6A /* FBSnapshotTestController.h in Headers */ = {isa = PBXBuildFile; fileRef = F83F08C5B7C5CA28B5FD9FAE /* FBSnapshotTestController.h */; };
+		DC932BE4C3155E47838CEB6E /* Pods-Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ED9102AEB104763145F6530 /* Pods-Tests-dummy.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		39361FC8FD7F7311CA8AE3D5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 11460711FEAC27E5DA1868DB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AE8DAB28AF77204C4F4361F4;
+			remoteInfo = "Pods-Tests-FBSnapshotTestCase";
+		};
+		914570F638DBA42E9E307C01 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 11460711FEAC27E5DA1868DB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8377BB3832D4D739D82525AD;
+			remoteInfo = "Pods-Tests-ZCalendar-ZCalendar";
+		};
+		EE43298017FA458EF926775E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 11460711FEAC27E5DA1868DB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D493FD853BCCCFEB7A542546;
+			remoteInfo = "Pods-ZCalendar-ZCalendar-ZCalendar";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		03864A75A283B8102C9F35FD /* UIImage+Diff.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Diff.m"; path = "FBSnapshotTestCase/UIImage+Diff.m"; sourceTree = "<group>"; };
+		2E400FF1ABA825A22150FF94 /* Pods-Tests-environment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Tests-environment.h"; sourceTree = "<group>"; };
+		363F49E2E28E665AA0C7BF2B /* UIImage+Compare.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+Compare.h"; path = "FBSnapshotTestCase/UIImage+Compare.h"; sourceTree = "<group>"; };
+		4C3F73C7CACB4ED87BE198AB /* ZCalendar.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZCalendar.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		581E334AF1C59080319A2E86 /* Pods-ZCalendar-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ZCalendar-dummy.m"; sourceTree = "<group>"; };
+		5C4841527B2D68AB4418DFE7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		5ED9102AEB104763145F6530 /* Pods-Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Tests-dummy.m"; sourceTree = "<group>"; };
+		62E1AA7B2FD15738F10EC6A8 /* Pods-ZCalendar-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ZCalendar-resources.sh"; sourceTree = "<group>"; };
+		63926C5DC6A9C9391760DD75 /* libPods-Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6600440B0C1F062ADF1CE197 /* Pods-ZCalendar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ZCalendar.debug.xcconfig"; sourceTree = "<group>"; };
+		690DDEAA140ABCF05A3CAB9E /* FBSnapshotTestController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSnapshotTestController.m; path = FBSnapshotTestCase/FBSnapshotTestController.m; sourceTree = "<group>"; };
+		717921FDB16869489E8BDE87 /* Pods-ZCalendar-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ZCalendar-acknowledgements.markdown"; sourceTree = "<group>"; };
+		808C2D119684A6D9793A4545 /* libPods-Tests-FBSnapshotTestCase.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Tests-FBSnapshotTestCase.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		85B35640B178535251726533 /* Pods-Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Tests-resources.sh"; sourceTree = "<group>"; };
+		87CD3E024826ABE191F71AE0 /* UIImage+Compare.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Compare.m"; path = "FBSnapshotTestCase/UIImage+Compare.m"; sourceTree = "<group>"; };
+		87CD64818CB849E9BA469F38 /* FBSnapshotTestCase.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSnapshotTestCase.m; path = FBSnapshotTestCase/FBSnapshotTestCase.m; sourceTree = "<group>"; };
+		87E65ECF31EFE08F101E2D6E /* Pods-Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Tests.release.xcconfig"; sourceTree = "<group>"; };
+		8918C2D59E1F17F7613D4902 /* Pods-ZCalendar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ZCalendar.release.xcconfig"; sourceTree = "<group>"; };
+		9117247ADE27A1E2289848C9 /* Pods-ZCalendar-environment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ZCalendar-environment.h"; sourceTree = "<group>"; };
+		923CCBDCBFE8C9D8BD8AB05D /* Pods-Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Tests-acknowledgements.plist"; sourceTree = "<group>"; };
+		92939695D43B9D61EEA888EF /* Pods-Tests-FBSnapshotTestCase-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Tests-FBSnapshotTestCase-dummy.m"; sourceTree = "<group>"; };
+		9E2D21EAD0183DF975C5E289 /* FBSnapshotTestCase.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSnapshotTestCase.h; path = FBSnapshotTestCase/FBSnapshotTestCase.h; sourceTree = "<group>"; };
+		A2D7122334DC4C281A77DF41 /* Pods-Tests-FBSnapshotTestCase-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Tests-FBSnapshotTestCase-prefix.pch"; sourceTree = "<group>"; };
+		A30EB60822C3F1A72A547766 /* Pods-ZCalendar-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ZCalendar-acknowledgements.plist"; sourceTree = "<group>"; };
+		AD576B16477C0EB39F0A952D /* Pods-Tests-FBSnapshotTestCase.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Tests-FBSnapshotTestCase.xcconfig"; sourceTree = "<group>"; };
+		B2EF431BE6A71A3BF97C668C /* Pods-Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		B39E9E5C303B2F2D9568FA2C /* ZCalendar.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZCalendar.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		C0027FCD0D4CF591F6CDF056 /* Pods-Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		D0630CCF338D209C756B7588 /* libPods-ZCalendar.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ZCalendar.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EFCE34BE1118B2E4A8F6BE9C /* Pods-Tests-FBSnapshotTestCase-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Tests-FBSnapshotTestCase-Private.xcconfig"; sourceTree = "<group>"; };
+		F4A48C87073825D31630EBA4 /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		F83F08C5B7C5CA28B5FD9FAE /* FBSnapshotTestController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSnapshotTestController.h; path = FBSnapshotTestCase/FBSnapshotTestController.h; sourceTree = "<group>"; };
+		FA30C78794239FF0E43997B7 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		FB5652D87E103CEE7C086998 /* UIImage+Diff.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+Diff.h"; path = "FBSnapshotTestCase/UIImage+Diff.h"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4D3E4A8EA639597761D55A05 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4E27018C4E0500AC7A1CC155 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5998B814D66CA88475EAADC3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				042350783EB82DD711DDA2D8 /* Foundation.framework in Frameworks */,
+				9928CD18A973A2798DE3E273 /* XCTest.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B3B510C2F3A717AE29F67012 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3CF3AB2BA47D9B8E6DD751C2 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D10B057E6E0BBE51B5E51F18 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FB71AC6469769FEB2BD85FDD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		085672EDDC57B109FED91769 /* ZCalendar */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ZCalendar;
+			path = ../..;
+			sourceTree = "<group>";
+		};
+		0E395DDABBC006202416A695 /* Pods-ZCalendar */ = {
+			isa = PBXGroup;
+			children = (
+				717921FDB16869489E8BDE87 /* Pods-ZCalendar-acknowledgements.markdown */,
+				A30EB60822C3F1A72A547766 /* Pods-ZCalendar-acknowledgements.plist */,
+				581E334AF1C59080319A2E86 /* Pods-ZCalendar-dummy.m */,
+				9117247ADE27A1E2289848C9 /* Pods-ZCalendar-environment.h */,
+				62E1AA7B2FD15738F10EC6A8 /* Pods-ZCalendar-resources.sh */,
+				6600440B0C1F062ADF1CE197 /* Pods-ZCalendar.debug.xcconfig */,
+				8918C2D59E1F17F7613D4902 /* Pods-ZCalendar.release.xcconfig */,
+			);
+			name = "Pods-ZCalendar";
+			path = "Target Support Files/Pods-ZCalendar";
+			sourceTree = "<group>";
+		};
+		3CFAAEE5CC383DBC33BD1C61 = {
+			isa = PBXGroup;
+			children = (
+				F4A48C87073825D31630EBA4 /* Podfile */,
+				71CE66D0D340FFA1315F26E5 /* Development Pods */,
+				6277F480322593371A470B9A /* Frameworks */,
+				E19920625571676AC5052C41 /* Pods */,
+				73C2130A42DDD1D52FB91BDF /* Products */,
+				91D5D611319C1CD692234A40 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		5288DBCAF592C3CC22E26BF9 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				AD576B16477C0EB39F0A952D /* Pods-Tests-FBSnapshotTestCase.xcconfig */,
+				EFCE34BE1118B2E4A8F6BE9C /* Pods-Tests-FBSnapshotTestCase-Private.xcconfig */,
+				92939695D43B9D61EEA888EF /* Pods-Tests-FBSnapshotTestCase-dummy.m */,
+				A2D7122334DC4C281A77DF41 /* Pods-Tests-FBSnapshotTestCase-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Pods-Tests-FBSnapshotTestCase";
+			sourceTree = "<group>";
+		};
+		6277F480322593371A470B9A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F82A98E23EBD0346456321E9 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		71CE66D0D340FFA1315F26E5 /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				085672EDDC57B109FED91769 /* ZCalendar */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		73C2130A42DDD1D52FB91BDF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4C3F73C7CACB4ED87BE198AB /* ZCalendar.bundle */,
+				B39E9E5C303B2F2D9568FA2C /* ZCalendar.bundle */,
+				63926C5DC6A9C9391760DD75 /* libPods-Tests.a */,
+				808C2D119684A6D9793A4545 /* libPods-Tests-FBSnapshotTestCase.a */,
+				D0630CCF338D209C756B7588 /* libPods-ZCalendar.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		91D5D611319C1CD692234A40 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				9C5C67B19DB23A7FB9084A70 /* Pods-Tests */,
+				0E395DDABBC006202416A695 /* Pods-ZCalendar */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		9C5C67B19DB23A7FB9084A70 /* Pods-Tests */ = {
+			isa = PBXGroup;
+			children = (
+				C0027FCD0D4CF591F6CDF056 /* Pods-Tests-acknowledgements.markdown */,
+				923CCBDCBFE8C9D8BD8AB05D /* Pods-Tests-acknowledgements.plist */,
+				5ED9102AEB104763145F6530 /* Pods-Tests-dummy.m */,
+				2E400FF1ABA825A22150FF94 /* Pods-Tests-environment.h */,
+				85B35640B178535251726533 /* Pods-Tests-resources.sh */,
+				B2EF431BE6A71A3BF97C668C /* Pods-Tests.debug.xcconfig */,
+				87E65ECF31EFE08F101E2D6E /* Pods-Tests.release.xcconfig */,
+			);
+			name = "Pods-Tests";
+			path = "Target Support Files/Pods-Tests";
+			sourceTree = "<group>";
+		};
+		A88B4AC465C644FE5F574366 /* FBSnapshotTestCase */ = {
+			isa = PBXGroup;
+			children = (
+				9E2D21EAD0183DF975C5E289 /* FBSnapshotTestCase.h */,
+				87CD64818CB849E9BA469F38 /* FBSnapshotTestCase.m */,
+				F83F08C5B7C5CA28B5FD9FAE /* FBSnapshotTestController.h */,
+				690DDEAA140ABCF05A3CAB9E /* FBSnapshotTestController.m */,
+				363F49E2E28E665AA0C7BF2B /* UIImage+Compare.h */,
+				87CD3E024826ABE191F71AE0 /* UIImage+Compare.m */,
+				FB5652D87E103CEE7C086998 /* UIImage+Diff.h */,
+				03864A75A283B8102C9F35FD /* UIImage+Diff.m */,
+				5288DBCAF592C3CC22E26BF9 /* Support Files */,
+			);
+			path = FBSnapshotTestCase;
+			sourceTree = "<group>";
+		};
+		E19920625571676AC5052C41 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A88B4AC465C644FE5F574366 /* FBSnapshotTestCase */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		F82A98E23EBD0346456321E9 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				5C4841527B2D68AB4418DFE7 /* Foundation.framework */,
+				FA30C78794239FF0E43997B7 /* XCTest.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		0628DA19B40B28A3C09D80CD /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8B82D5D86A87B5242C85D446 /* FBSnapshotTestCase.h in Headers */,
+				BA70D54DBE411A7CFDDC1E6A /* FBSnapshotTestController.h in Headers */,
+				5687F703A9B96015DD33F147 /* UIImage+Compare.h in Headers */,
+				22FE015530D08882F2600463 /* UIImage+Diff.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		636BC7EE0915949CEF7DED40 /* Pods-Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 00F5D2D67C8E81E530583656 /* Build configuration list for PBXNativeTarget "Pods-Tests" */;
+			buildPhases = (
+				760EA694D126658244B14D37 /* Sources */,
+				4D3E4A8EA639597761D55A05 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DB694BFFF7EC0D4C9CA3F65E /* PBXTargetDependency */,
+				3C830B228437CD7B554C0318 /* PBXTargetDependency */,
+			);
+			name = "Pods-Tests";
+			productName = "Pods-Tests";
+			productReference = 63926C5DC6A9C9391760DD75 /* libPods-Tests.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		8377BB3832D4D739D82525AD /* Pods-Tests-ZCalendar-ZCalendar */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B50C9BF247161B0917C32A84 /* Build configuration list for PBXNativeTarget "Pods-Tests-ZCalendar-ZCalendar" */;
+			buildPhases = (
+				21231B70055BCDE482C46DF6 /* Sources */,
+				D10B057E6E0BBE51B5E51F18 /* Frameworks */,
+				795D90E8DE57FFF52887E7BC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-Tests-ZCalendar-ZCalendar";
+			productName = "Pods-Tests-ZCalendar-ZCalendar";
+			productReference = B39E9E5C303B2F2D9568FA2C /* ZCalendar.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
+		AE8DAB28AF77204C4F4361F4 /* Pods-Tests-FBSnapshotTestCase */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E43F35E40FFFCF77369C45D2 /* Build configuration list for PBXNativeTarget "Pods-Tests-FBSnapshotTestCase" */;
+			buildPhases = (
+				86F8B31391C97CDBCFE8726C /* Sources */,
+				5998B814D66CA88475EAADC3 /* Frameworks */,
+				0628DA19B40B28A3C09D80CD /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-Tests-FBSnapshotTestCase";
+			productName = "Pods-Tests-FBSnapshotTestCase";
+			productReference = 808C2D119684A6D9793A4545 /* libPods-Tests-FBSnapshotTestCase.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		D493FD853BCCCFEB7A542546 /* Pods-ZCalendar-ZCalendar-ZCalendar */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9FDE3352CDBF477B7F45998D /* Build configuration list for PBXNativeTarget "Pods-ZCalendar-ZCalendar-ZCalendar" */;
+			buildPhases = (
+				291D53787323B7B4377BB243 /* Sources */,
+				FB71AC6469769FEB2BD85FDD /* Frameworks */,
+				F9DC290877C2312F41B883F7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-ZCalendar-ZCalendar-ZCalendar";
+			productName = "Pods-ZCalendar-ZCalendar-ZCalendar";
+			productReference = 4C3F73C7CACB4ED87BE198AB /* ZCalendar.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
+		F3669D5875B8EF156B5413AC /* Pods-ZCalendar */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B0996A846AC01CCD414C787D /* Build configuration list for PBXNativeTarget "Pods-ZCalendar" */;
+			buildPhases = (
+				6453D574925A36009B4C42CB /* Sources */,
+				B3B510C2F3A717AE29F67012 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				438E2141B93B139513F65DA2 /* PBXTargetDependency */,
+			);
+			name = "Pods-ZCalendar";
+			productName = "Pods-ZCalendar";
+			productReference = D0630CCF338D209C756B7588 /* libPods-ZCalendar.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		11460711FEAC27E5DA1868DB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+			};
+			buildConfigurationList = E91734641DAD5AAADA91B06F /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 3CFAAEE5CC383DBC33BD1C61;
+			productRefGroup = 73C2130A42DDD1D52FB91BDF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				636BC7EE0915949CEF7DED40 /* Pods-Tests */,
+				AE8DAB28AF77204C4F4361F4 /* Pods-Tests-FBSnapshotTestCase */,
+				8377BB3832D4D739D82525AD /* Pods-Tests-ZCalendar-ZCalendar */,
+				F3669D5875B8EF156B5413AC /* Pods-ZCalendar */,
+				D493FD853BCCCFEB7A542546 /* Pods-ZCalendar-ZCalendar-ZCalendar */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		795D90E8DE57FFF52887E7BC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F9DC290877C2312F41B883F7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		21231B70055BCDE482C46DF6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		291D53787323B7B4377BB243 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6453D574925A36009B4C42CB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1EA5639C280761FC823583DA /* Pods-ZCalendar-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		760EA694D126658244B14D37 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DC932BE4C3155E47838CEB6E /* Pods-Tests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		86F8B31391C97CDBCFE8726C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				99430EC86FEB286E429A52D8 /* FBSnapshotTestCase.m in Sources */,
+				B6603F0994E826352E1AC334 /* FBSnapshotTestController.m in Sources */,
+				7F9081C00B7D71127A04A20C /* Pods-Tests-FBSnapshotTestCase-dummy.m in Sources */,
+				8069CE27768F838F43778745 /* UIImage+Compare.m in Sources */,
+				06D58DA2EAA1120CD4AE2EE8 /* UIImage+Diff.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3C830B228437CD7B554C0318 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-Tests-ZCalendar-ZCalendar";
+			target = 8377BB3832D4D739D82525AD /* Pods-Tests-ZCalendar-ZCalendar */;
+			targetProxy = 914570F638DBA42E9E307C01 /* PBXContainerItemProxy */;
+		};
+		438E2141B93B139513F65DA2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-ZCalendar-ZCalendar-ZCalendar";
+			target = D493FD853BCCCFEB7A542546 /* Pods-ZCalendar-ZCalendar-ZCalendar */;
+			targetProxy = EE43298017FA458EF926775E /* PBXContainerItemProxy */;
+		};
+		DB694BFFF7EC0D4C9CA3F65E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-Tests-FBSnapshotTestCase";
+			target = AE8DAB28AF77204C4F4361F4 /* Pods-Tests-FBSnapshotTestCase */;
+			targetProxy = 39361FC8FD7F7311CA8AE3D5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		2A048C8461DD907B0CB49B2E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = "RELEASE=1";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		34F5BC81A3801802C0D20C13 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8918C2D59E1F17F7613D4902 /* Pods-ZCalendar.release.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		372CF1EA8F4211D9E0006958 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6600440B0C1F062ADF1CE197 /* Pods-ZCalendar.debug.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		403941F2FF9A8F593771750D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				PRODUCT_NAME = ZCalendar;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+		425591AB55680ABEE08E5BD9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				PRODUCT_NAME = ZCalendar;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		5BDB299288D5F898032CFB71 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EFCE34BE1118B2E4A8F6BE9C /* Pods-Tests-FBSnapshotTestCase-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-Tests-FBSnapshotTestCase/Pods-Tests-FBSnapshotTestCase-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		7072F611A06BFCC8118A7B1D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 87E65ECF31EFE08F101E2D6E /* Pods-Tests.release.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		70935612280197A40D9E0A59 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				PRODUCT_NAME = ZCalendar;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		799B80681E5AB9222413CD04 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				PRODUCT_NAME = ZCalendar;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+		830100794D79F74C0870328F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EFCE34BE1118B2E4A8F6BE9C /* Pods-Tests-FBSnapshotTestCase-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-Tests-FBSnapshotTestCase/Pods-Tests-FBSnapshotTestCase-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		9F8BA4F414DD52DC9A2C8338 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B2EF431BE6A71A3BF97C668C /* Pods-Tests.debug.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		FA0FAA22C4E52BE5B2F56D3E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		00F5D2D67C8E81E530583656 /* Build configuration list for PBXNativeTarget "Pods-Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9F8BA4F414DD52DC9A2C8338 /* Debug */,
+				7072F611A06BFCC8118A7B1D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9FDE3352CDBF477B7F45998D /* Build configuration list for PBXNativeTarget "Pods-ZCalendar-ZCalendar-ZCalendar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				425591AB55680ABEE08E5BD9 /* Debug */,
+				403941F2FF9A8F593771750D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B0996A846AC01CCD414C787D /* Build configuration list for PBXNativeTarget "Pods-ZCalendar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				372CF1EA8F4211D9E0006958 /* Debug */,
+				34F5BC81A3801802C0D20C13 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B50C9BF247161B0917C32A84 /* Build configuration list for PBXNativeTarget "Pods-Tests-ZCalendar-ZCalendar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				70935612280197A40D9E0A59 /* Debug */,
+				799B80681E5AB9222413CD04 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E43F35E40FFFCF77369C45D2 /* Build configuration list for PBXNativeTarget "Pods-Tests-FBSnapshotTestCase" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				830100794D79F74C0870328F /* Debug */,
+				5BDB299288D5F898032CFB71 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E91734641DAD5AAADA91B06F /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA0FAA22C4E52BE5B2F56D3E /* Debug */,
+				2A048C8461DD907B0CB49B2E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 11460711FEAC27E5DA1868DB /* Project object */;
+}

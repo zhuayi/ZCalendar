@@ -1,0 +1,17 @@
+PODS:
+  - FBSnapshotTestCase (1.6)
+  - ZCalendar (0.1.0)
+
+DEPENDENCIES:
+  - FBSnapshotTestCase
+  - ZCalendar (from `../`)
+
+EXTERNAL SOURCES:
+  ZCalendar:
+    :path: ../
+
+SPEC CHECKSUMS:
+  FBSnapshotTestCase: 9d5fe43b29ae3a0ed8fc829477971b281038f748
+  ZCalendar: 6e925598fc0bd386b67fd87e37270b86f6aab346
+
+COCOAPODS: 0.36.0.rc.1
