@@ -18,20 +18,20 @@
 
 ### 前期准备
 - NSDate 扩展类
-	- 获取当前日期的*年* *月* *周*
-	- 获取一个月有多少天
+  - 获取当前日期的*年* *月* *周*
+  - 获取一个月有多少天
 - NSString 扩展类
-	- 根据时间戳返回时间
+  - 根据时间戳返回时间
 - drawRect 绘制类
-	- 绘制文字
-	- 绘制矩形
+  - 绘制文字
+  - 绘制矩形
 - ZCalendarModel 日期对象
-	- 日期尺寸: ```CGRect frame```
-	- 矩形颜色: ```UIColor *rectangleColor```
-	- 日期文字: ```NSString *dateText```
-	
+  - 日期尺寸: ```CGRect frame```
+  - 矩形颜色: ```UIColor *rectangleColor```
+  - 日期文字: ```NSString *dateText```
+  
 - ZCalendarStyle 自定义样式类
-	
+  
 
 
 ### 自定义外观
@@ -75,10 +75,14 @@
 自定义默认日期背景色
 
 ```objective-c
-@property(nonatomic, strong) UIColor *normalDateColoe
+@property(nonatomic, strong) UIColor *normalDateColoe;
 ```
 
+自定义日期区间
 
+```objective-c
+- (void)setYearInterval:(NSInteger)starDate endDate:(NSInteger)endData;;
+```
 
 ### 回调代理
 
@@ -97,40 +101,64 @@
 
 #### 绘制日历
 1. 根据日历视图计算每一个 cellView 需要显示多少个日期,一个日期绘制一个矩形
-	1. . 计算当月1号是周几 : ```interval = [dateComponents weekday] - 1```
-	2. 每一个 cellView 需要显示 N + interval个日期
-		1. 年和月视图, 根据*获取一个月有多少天*扩展方法获取View 需要绘制多少个矩形
-		2. 周视图7个矩形
+  1. . 计算当月1号是周几 : ```interval = [dateComponents weekday] - 1```
+  2. 每一个 cellView 需要显示 N + interval个日期
+    1. 年和月视图, 根据*获取一个月有多少天*扩展方法获取View 需要绘制多少个矩形
+    2. 周视图7个矩形
 
 
 2. 计算每个矩形的位置
-	1. width: ```_columnWidth = self.frame.size.width / 7```
-	2. height: ```_rowHeight = self.frame.size.height / 6;```  
-	3. X 轴坐标: ```_columnWidth * fmod(i , 7)```
-	4. Y 轴坐标: ```_rowHeight + _rowHeight * ceil(i / 7)```
+  1. width: ```_columnWidth = self.frame.size.width / 7```
+  2. height: ```_rowHeight = self.frame.size.height / 6;```  
+  3. X 轴坐标: ```_columnWidth * fmod(i , 7)```
+  4. Y 轴坐标: ```_rowHeight + _rowHeight * ceil(i / 7)```
 
 
 ### 架构设计
 - 入口类: ```ZCalendarView```
-	> ZCalendarView作为入口类,所有需要加载日历的控制器只需要addSubview该类即可.
+  > ZCalendarView作为入口类,所有需要加载日历的控制器只需要addSubview该类即可.
 - 管理类: ```ZCalendarCollectionView```
-	> ZCalendarCollectionView 为 cell 管理类,控制 cell 数量, cell 的展示规则
+  > ZCalendarCollectionView 为 cell 管理类,控制 cell 数量, cell 的展示规则
 - 视图类: ```ZCalendarDrawViewCell```
-	> ZCalendarDrawViewCell 为 cell 绘制类,负责绘制 cell(日历).
+  > ZCalendarDrawViewCell 为 cell 绘制类,负责绘制 cell(日历).
 - 模型类: ```ZCalendarModel```
-	> ZCalendarModel 为模型类, 有日历矩形的尺寸,位置,颜色,文字等属性
+  > ZCalendarModel 为模型类, 有日历矩形的尺寸,位置,颜色,文字等属性
 - 代理类: ```ZCalendarDelegate```
-	> ZCalendarDelegate为代理类, 负责传递日历的点击回调
+  > ZCalendarDelegate为代理类, 负责传递日历的点击回调
 
 ![][image-1]
 
 
-### 代码预览&地址
+### Example
+
+```objective-c
+self.zcalendarStyle.cellSize = CGSizeMake(frame.size.width, 200);
+// 线条颜色
+self.zcalendarStyle.lineColor = [UIColor greenColor];
+// cell边距
+self.zcalendarStyle.cellEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
+NSDateComponents *today = [[NSDate date] getDateComponentsByDate];
+// 设置选中日期颜色
+self.zcalendarStyle.selectDateColor = [UIColor redColor];
+// 设置默认日期颜色
+self.zcalendarStyle.normalDateColoe = [UIColor groupTableViewBackgroundColor];
+// 设置显示的年视图
+self.caledarType = CalendarTypeMonth;
+// 设置日期文字颜色
+self.zcalendarStyle.dateTextColor = [UIColor blackColor];
+// 设置日历显示区间, 要放在最下边
+[self setYearInterval:2010 endDate:[today year]];
+self.zcalendarStyle.header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, 44)];
+self.zcalendarStyle.header.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"MonthHeader"]];
+```    
+
+
+
  ![][image-2]
 
 > gitHub地址 : [https://github.com/zhuayi/ZCalendar][1]
 
-[1]:	https://github.com/zhuayi/ZCalendar
+[1]:  https://github.com/zhuayi/ZCalendar
 
-[image-1]:	http://ww4.sinaimg.cn/large/687dbab7jw1er8q9ojjupj20vw0cpwfq.jpg "架构图"
-[image-2]:	http://ww3.sinaimg.cn/bmiddle/687dbab7jw1er8mjqkltij20hs0vk780.jpg
+[image-1]:  http://ww4.sinaimg.cn/large/687dbab7jw1er8q9ojjupj20vw0cpwfq.jpg "架构图"
+[image-2]:  https://raw.githubusercontent.com/zhuayi/ZCalendar/master/screenshot.png
