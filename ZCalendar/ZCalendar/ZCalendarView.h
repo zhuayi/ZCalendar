@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ZCalendar.h"
 
-@interface ZCalendarView : UIView<ZCalendarDelegate>
+@interface ZCalendarView : UIView
 
 /**
  *  头部 view
@@ -19,7 +19,7 @@
 /**
  *  代理
  */
-@property(nonatomic, weak) id<ZCalendarDelegate> delegate;
+@property(nonatomic, weak) id<ZCalendarDelegate, ZCalendarCollectionViewDelegate> delegate;
 
 
 @property(nonatomic, strong) ZCalendarCollectionView *zcalendarCollectionView;

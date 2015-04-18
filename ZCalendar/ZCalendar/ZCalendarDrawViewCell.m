@@ -9,19 +9,16 @@
 #import "ZCalendarDrawViewCell.h"
 #import "ZCalendarModel.h"
 #import "NSDate+ZCalendar.h"
-
+#import "NSString+ZCalendar.h"
 @implementation ZCalendarDrawViewCell {
     CGContextRef _context;
     CGFloat dayCount;
     CGFloat rowCount;
-    NSInteger _month;
-    NSInteger _year;
+    
     CGFloat _columnWidth;
     CGFloat _rowHeight;
     NSInteger interval;
-    
-    // 当前日期
-    NSDateComponents *_currentDateComponents;
+
 }
 
 - (instancetype)initWithFrame:(CGRect)frame
@@ -57,12 +54,26 @@
                                           rectangleSize.width,
                                           rectangleSize.height);
         
+        NSInteger day = i + 1 - interval;
+        
         // 如果是今天,则换个颜色
-        if (_month == [today month] && _year == [today year] && [today day] == (i + 1 - interval)) {
+        if ([_currentDateComponents year] == [today year]
+            && [_currentDateComponents month] == [today month]
+            && day == [today day]) {
             zcalendarModel.rectangleColor = [UIColor redColor];
         } else {
             zcalendarModel.rectangleColor = [UIColor blueColor];
         }
+        
+        
+        
+        zcalendarModel.dateComponents = [[[NSString stringWithFormat:@"%ld-%ld-%ld",
+                                           [_currentDateComponents year],
+                                           [_currentDateComponents month],
+                                           day]
+                                          dateFromString]
+                                         getDateComponentsByDate];
+        
         zcalendarModel.dateText = [NSString stringWithFormat:@"%ld",i + 1 - interval];
         
         [_dateArray addObject:zcalendarModel];
@@ -75,12 +86,9 @@
 - (void)setDate:(NSDate *)date {
     
     _currentDateComponents = [date getDateComponentsByDate];
-    
     dayCount = [date getDays];
     
     interval = [_currentDateComponents weekday] - 1;
-    _month = [_currentDateComponents month];
-    _year = [_currentDateComponents year];
     rowCount = ceil((dayCount + interval) / 7) + 1;
     _rowHeight = self.frame.size.height / rowCount;
     
@@ -120,7 +128,7 @@
              textColor:_dateTextColor];
     }
     
-    NSString *text = [NSString stringWithFormat:@"%ld月", _month];
+    NSString *text = [NSString stringWithFormat:@"%ld月", [_currentDateComponents month]];
     CGSize size = [text sizeWithAttributes:[self fontStyle:16. textColor:[UIColor blackColor]]];
     CGFloat drawMonthX = 0;
     if (_caledarType == CalendarTypeMonth) {
@@ -230,21 +238,29 @@
     return pathRef;
 }
 
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    UITouch *touch = [touches anyObject];
-    
-    CGPoint touchPoint = [touch locationInView:self];
-    
+/**
+ *  根据坐标获取日期
+ *
+ *  @param point
+ */
+- (ZCalendarModel *)getDateByPoint:(CGPoint)point {
     for (ZCalendarModel *zcalendarModel in _dateArray) {
-        if (CGRectContainsPoint(zcalendarModel.frame,touchPoint)) {
-            NSLog(@"date :%ld-%ld-%@", _year, _month, zcalendarModel.dateText);
+        if (CGRectContainsPoint(zcalendarModel.frame,point)) {
             
-            NSDictionary *dict = @{ @"ZCalendarModel":zcalendarModel, @"ZCalendarDrawViewCell":self };
-            // 发送点击通知
-            [[NSNotificationCenter defaultCenter] postNotificationName:kZCalendarCellViewClick object:dict];
-            
+            return zcalendarModel;
             break;
         }
     }
+    return nil;
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    
+    ZCalendarModel *zcalendarModel =[self getDateByPoint:[[touches anyObject] locationInView:self]];
+    if (zcalendarModel) {
+        // 发送点击通知
+        [[NSNotificationCenter defaultCenter] postNotificationName:kZCalendarCellViewClick object:zcalendarModel];
+    }
+    
 }
 @end

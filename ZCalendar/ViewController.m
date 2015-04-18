@@ -30,9 +30,14 @@
 }
 
 #pragma mark - delegate
-- (void)didClickDate:(ZCalendarDrawViewCell *)zcalendarDrawViewCell zcalendarModel:(ZCalendarModel *)zcalendarModel {
+- (void)didClickDate:(ZCalendarModel *)zcalendarModel {
  
-    NSLog(@"didClickDate : %@, zcalendarDrawViewCell: %@", zcalendarModel.dateText, zcalendarDrawViewCell);
+    NSLog(@"didClickDate : %@", zcalendarModel.dateComponents);
+}
+
+- (void)didShowLeftTopCell:(ZCalendarDrawViewCell *)zcalendarDrawViewCell {
+    
+    NSLog(@"左上角日期: %ld - %ld", [zcalendarDrawViewCell.currentDateComponents year], [zcalendarDrawViewCell.currentDateComponents month]);
 }
 
 - (void)didReceiveMemoryWarning {

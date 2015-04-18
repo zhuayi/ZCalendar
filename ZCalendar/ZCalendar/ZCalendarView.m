@@ -24,9 +24,12 @@
     return self;
 }
 
-- (void)setDelegate:(id<ZCalendarDelegate>)delegate {
+- (void)setDelegate:(id<ZCalendarDelegate,ZCalendarCollectionViewDelegate>)delegate {
     
     _delegate = delegate;
+    
+    _zcalendarCollectionView.collectionViewDelegate = delegate;
+    
     // 接受通知
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(zCalendarCellViewClic:)
@@ -35,7 +38,7 @@
 
 - (void)zCalendarCellViewClic:(NSNotification *)sender {
     
-    [_delegate didClickDate:[sender.object objectForKey:@"ZCalendarDrawViewCell"] zcalendarModel:[sender.object objectForKey:@"ZCalendarModel"]];
+    [_delegate didClickDate:sender.object];
 }
 
 - (void)layoutSubviews {

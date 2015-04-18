@@ -12,6 +12,9 @@
 
 @interface ZCalendarCollectionView : UICollectionView<UICollectionViewDelegate, UICollectionViewDataSource>
 
+// ZCalendarCollectionViewDelegate
+@property(nonatomic, weak) id<ZCalendarCollectionViewDelegate>collectionViewDelegate;
+
 @property(nonatomic, strong)UICollectionViewFlowLayout *layout;
 
 /**

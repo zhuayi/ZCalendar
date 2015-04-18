@@ -11,7 +11,30 @@
 @class ZCalendarDrawViewCell;
 @protocol ZCalendarDelegate <NSObject>
 
-- (void)didClickDate:(ZCalendarDrawViewCell *)zcalendarDrawViewCell zcalendarModel:(ZCalendarModel *)zcalendarModel;
+/**
+ *  选中日期回调
+ *
+ *  @param zcalendarDrawViewCell 选中的 Cell
+ *  @param zcalendarModel         选中的 Cell 对象
+ */
+- (void)didClickDate:(ZCalendarModel *)zcalendarModel;
 
+/**
+ *  从视图左上角开始,当前显示的日期,只包含年/月信息
+ *
+ *  @param date
+ */
+- (void)didShowLeftTopCell:(ZCalendarDrawViewCell *)zcalendarDrawViewCell;
+
+@end
+
+@protocol ZCalendarCollectionViewDelegate <NSObject>
+
+/**
+ *  从视图左上角开始,当前显示的日期,只包含年/月信息
+ *
+ *  @param date
+ */
+- (void)didShowLeftTopCell:(ZCalendarDrawViewCell *)zcalendarDrawViewCell;
 
 @end

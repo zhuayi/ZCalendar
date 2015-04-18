@@ -153,11 +153,15 @@
 }
 
 
+
 #pragma mark - scrollVieDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
- 
-    NSLog(@"scrollView : %f", _starYear + floor(((scrollView.contentOffset.y) / self.frame.size.height) * (self.frame.size.height / _cellSize.height) / 12));
-//    NSLog(@"scrollView : %f", scrollView.contentOffset.y / _cellSize.height / 12);
+    
+    NSIndexPath *indexPath = [self indexPathForItemAtPoint:scrollView.contentOffset];
+//    
+    ZCalendarDrawViewCell *cell = [self cellForItemAtIndexPath:indexPath];
+//    NSLog(@"year : %@", cell.currentDateComponents);
+    [_collectionViewDelegate didShowLeftTopCell:cell];
 }
 
 @end

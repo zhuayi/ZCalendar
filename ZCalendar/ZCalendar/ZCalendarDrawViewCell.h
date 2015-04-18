@@ -12,6 +12,11 @@
 @interface ZCalendarDrawViewCell : UICollectionViewCell
 
 /**
+ *  当前日期
+ */
+@property(nonatomic, strong) NSDateComponents *currentDateComponents;
+
+/**
  *  视图, 年,月,周
  */
 @property(nonatomic, assign) CalendarType caledarType;
@@ -37,5 +42,14 @@
  *  @param date
  */
 - (void)setDate:(NSDate *)date;
+
+
+/**
+ *  根据坐标获取日期
+ *
+ *  @param point
+ */
+- (ZCalendarModel *)getDateByPoint:(CGPoint)point;
+
 
 @end

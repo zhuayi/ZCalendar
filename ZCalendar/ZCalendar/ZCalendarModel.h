@@ -27,5 +27,10 @@
 @property(nonatomic, strong) NSString *dateText;
 
 
+/**
+ *  日期
+ */
+@property(nonatomic, strong) NSDateComponents *dateComponents;
+
 
 @end
