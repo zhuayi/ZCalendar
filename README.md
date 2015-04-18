@@ -142,9 +142,12 @@
 
 ### 架构设计
 
-入口类: ZCalendarView.h 
+![][image-1]
 
-> ZCalendarView作为入口类,所有需要加载日历的控制器只需要addSubview该类即可.
+
+基类类: ZCalendarView.h 
+
+> ZCalendarView作为入口类,所有需要加载日历的控制器只需要继承该类即可.
 
 管理类: ZCalendarCollectionView.h
 
@@ -166,7 +169,7 @@
 
 > ZCalendarStyle为样式类, 提供多个属性控制视图样式
 
-![][image-1]
+
 
 
 ### Example
