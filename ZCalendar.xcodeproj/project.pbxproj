@@ -16,6 +16,7 @@
 		38A7EF061ADE5E4700CE7AA6 /* ZCalendarTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 38A7EF051ADE5E4700CE7AA6 /* ZCalendarTests.m */; };
 		38B9BCAB1AE23F4500AB0F00 /* MonthCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 38B9BCAA1AE23F4500AB0F00 /* MonthCalendarView.m */; };
 		38B9BCAE1AE242EA00AB0F00 /* MonthHeader@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 38B9BCAD1AE242EA00AB0F00 /* MonthHeader@2x.png */; };
+		38B9BCB51AE262D400AB0F00 /* ZCalendarStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 38B9BCB41AE262D400AB0F00 /* ZCalendarStyle.m */; };
 		38E0BB5C1AE114E800874716 /* NSDate+ZCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E0BB4D1AE114E800874716 /* NSDate+ZCalendar.m */; };
 		38E0BB5D1AE114E800874716 /* NSString+ZCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E0BB4F1AE114E800874716 /* NSString+ZCalendar.m */; };
 		38E0BB5E1AE114E800874716 /* ZCalendarCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E0BB521AE114E800874716 /* ZCalendarCollectionView.m */; };
@@ -52,6 +53,8 @@
 		38B9BCA91AE23F4500AB0F00 /* MonthCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonthCalendarView.h; sourceTree = "<group>"; };
 		38B9BCAA1AE23F4500AB0F00 /* MonthCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonthCalendarView.m; sourceTree = "<group>"; };
 		38B9BCAD1AE242EA00AB0F00 /* MonthHeader@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MonthHeader@2x.png"; sourceTree = "<group>"; };
+		38B9BCB31AE262D400AB0F00 /* ZCalendarStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCalendarStyle.h; sourceTree = "<group>"; };
+		38B9BCB41AE262D400AB0F00 /* ZCalendarStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCalendarStyle.m; sourceTree = "<group>"; };
 		38E0BB4C1AE114E800874716 /* NSDate+ZCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+ZCalendar.h"; sourceTree = "<group>"; };
 		38E0BB4D1AE114E800874716 /* NSDate+ZCalendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+ZCalendar.m"; sourceTree = "<group>"; };
 		38E0BB4E1AE114E800874716 /* NSString+ZCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+ZCalendar.h"; sourceTree = "<group>"; };
@@ -178,6 +181,8 @@
 				38E0BB591AE114E800874716 /* ZCalendarView.m */,
 				38E0BB5A1AE114E800874716 /* ZCalendarYearHeardView.h */,
 				38E0BB5B1AE114E800874716 /* ZCalendarYearHeardView.m */,
+				38B9BCB31AE262D400AB0F00 /* ZCalendarStyle.h */,
+				38B9BCB41AE262D400AB0F00 /* ZCalendarStyle.m */,
 			);
 			path = ZCalendar;
 			sourceTree = "<group>";
@@ -283,6 +288,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38B9BCB51AE262D400AB0F00 /* ZCalendarStyle.m in Sources */,
 				38B9BCAB1AE23F4500AB0F00 /* MonthCalendarView.m in Sources */,
 				38E0BB601AE114E800874716 /* ZCalendarModel.m in Sources */,
 				38E0BB5F1AE114E800874716 /* ZCalendarDrawViewCell.m in Sources */,

@@ -12,9 +12,9 @@
 @interface ZCalendarView : UIView
 
 /**
- *  头部 view
+ *  视图样式
  */
-@property(nonatomic, strong) UIView *header;
+@property(nonatomic, strong) ZCalendarStyle *zcalendarStyle;
 
 /**
  *  代理
@@ -25,15 +25,6 @@
 @property(nonatomic, strong) ZCalendarCollectionView *zcalendarCollectionView;
 
 
-/**
- *  每个 cell 的高度
- */
-@property(nonatomic, assign) CGSize cellSize;
-
-/**
- *  cell 的间距
- */
-@property(nonatomic, assign) UIEdgeInsets cellEdgeInsets;
 
 /**
  *  视图类型,年/月/周

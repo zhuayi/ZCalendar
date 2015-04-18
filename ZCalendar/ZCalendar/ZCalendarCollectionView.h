@@ -12,15 +12,17 @@
 
 @interface ZCalendarCollectionView : UICollectionView<UICollectionViewDelegate, UICollectionViewDataSource>
 
+/**
+ *  视图样式
+ */
+@property(nonatomic, strong) ZCalendarStyle *zcalendarStyle;
+
+
 // ZCalendarCollectionViewDelegate
 @property(nonatomic, weak) id<ZCalendarCollectionViewDelegate>collectionViewDelegate;
 
 @property(nonatomic, strong)UICollectionViewFlowLayout *layout;
 
-/**
- *  每个 cell 的高度
- */
-@property(nonatomic, assign) CGSize cellSize;
 
 /**
  *  开始时间
@@ -33,10 +35,6 @@
  */
 @property(nonatomic, assign) NSInteger endYear;
 
-/**
- *  cell 的间距
- */
-@property(nonatomic, assign) UIEdgeInsets cellEdgeInsets;
 
 /**
  *  视图, 年,月,周
@@ -51,14 +49,5 @@
  */
 - (void)setYearInterval:(NSInteger)starDate endDate:(NSInteger)endData;
 
-/**
- *  线条颜色
- */
-@property(nonatomic, strong) UIColor *lineColor;
-
-/**
- *  日期文字颜色
- */
-@property(nonatomic, strong) UIColor *dateTextColor;
 
 @end

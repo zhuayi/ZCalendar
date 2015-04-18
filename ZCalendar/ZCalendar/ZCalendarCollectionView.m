@@ -38,7 +38,7 @@
         
         _dateArray = [NSMutableArray arrayWithCapacity:0];
         
-        self.cellSize = self.frame.size;
+        self.zcalendarStyle.cellSize = self.frame.size;
     }
     return self;
 }
@@ -84,13 +84,13 @@
     _caledarType = caledarType;
 }
 
-- (void)setLineColor:(UIColor *)lineColor {
-    _lineColor = lineColor;
-}
-
-- (void)setDateTextColor:(UIColor *)dateTextColor {
-    _dateTextColor = dateTextColor;
-}
+//- (void)setLineColor:(UIColor *)lineColor {
+//    _lineColor = lineColor;
+//}
+//
+//- (void)setDateTextColor:(UIColor *)dateTextColor {
+//    _dateTextColor = dateTextColor;
+//}
 
 #pragma mark -- UICollectionViewDataSource
 
@@ -109,8 +109,7 @@
     static NSString * CellIdentifier = @"ZCalendarDrawViewCell";
     ZCalendarDrawViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
     cell.caledarType = _caledarType;
-    cell.lineColor = _lineColor;
-    cell.dateTextColor = _dateTextColor;
+    cell.zcalendarStyle = _zcalendarStyle;
 //    NSLog(@"indexPath.row : %d ", indexPath.row);
     [cell setDate:_dateArray[indexPath.section][indexPath.row]];
     
@@ -129,13 +128,13 @@
 //    } else {
 //        size = CGSizeMake(_cellSize.width, _cellSize.height);
 //    }
-    return CGSizeMake(_cellSize.width, _cellSize.height);;
+    return _zcalendarStyle.cellSize;
 }
 
 //定义每个UICollectionView 的 margin
 -(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
 {
-    return _cellEdgeInsets;
+    return _zcalendarStyle.cellEdgeInsets;
 }
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {

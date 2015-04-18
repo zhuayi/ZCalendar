@@ -25,24 +25,74 @@
 - drawRect 绘制类
 	- 绘制文字
 	- 绘制矩形
-- 日期model
+- ZCalendarModel 日期对象
 	- 日期尺寸: ```CGRect frame```
 	- 矩形颜色: ```UIColor *rectangleColor```
 	- 日期文字: ```NSString *dateText```
+	
+- ZCalendarStyle 自定义样式类
+	
 
 
-### 对外API
-> CellView 尺寸 : ```CGSize cellSize```
-> CellView边距: ```UIEdgeInsets cellEdgeInsets``` 
-> 视图类型,年/月/周 : ```CalendarType caledarType```
-> 设置日历区间 : ```setYearInterval:(NSInteger)starDate endDate:(NSInteger)endData```
-> 线条颜色: ```UIColor *lineColor```
-> 文字颜色: ```UIColor *dateTextColor```
+### 自定义外观
+
+自定义头部 view, 不显示不设置,默认为nil
+
+```objective-c
+@property(nonatomic, strong) UIView *header;
+```
+
+自定义每个cell的高度
+
+```objective-c
+@property(nonatomic, assign) CGSize cellSize;
+```
+
+自定义Cell 的间距
+
+```objective-c
+@property(nonatomic, assign) UIEdgeInsets cellEdgeInsets;
+```
+
+自定义线条颜色
+
+```objective-c
+@property(nonatomic, strong) UIColor *lineColor;
+```
+
+自定义日期文字颜色
+
+```objective-c
+@property(nonatomic, strong) UIColor *dateTextColor;
+```
+
+自定义选中的日期背景色
+
+```objective-c
+@property(nonatomic, strong) UIColor *selectDateColor;
+```
+
+自定义默认日期背景色
+
+```objective-c
+@property(nonatomic, strong) UIColor *normalDateColoe
+```
+
 
 
 ### 回调代理
-- 点击日历回调
-- 点击CellView 回调
+
+选中日期回调
+
+```objective-c
+- (void)didClickDate:(ZCalendarModel *)zcalendarModel
+```
+
+从视图左上角开始,当前显示的日期,只包含年/月信息
+
+```objective-c
+- (void)didShowLeftTopCell:(ZCalendarDrawViewCell *)zcalendarDrawViewCell
+```
 
 
 #### 绘制日历

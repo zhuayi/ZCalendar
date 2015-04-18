@@ -17,19 +17,16 @@
 @property(nonatomic, strong) NSDateComponents *currentDateComponents;
 
 /**
+ *  视图样式
+ */
+@property(nonatomic, strong) ZCalendarStyle *zcalendarStyle;
+
+
+/**
  *  视图, 年,月,周
  */
 @property(nonatomic, assign) CalendarType caledarType;
 
-/**
- *  线条颜色
- */
-@property(nonatomic, strong) UIColor *lineColor;
-
-/**
- *  日期文字颜色
- */
-@property(nonatomic, strong) UIColor *dateTextColor;
 
 /**
  *  日期数组

@@ -60,9 +60,9 @@
         if ([_currentDateComponents year] == [today year]
             && [_currentDateComponents month] == [today month]
             && day == [today day]) {
-            zcalendarModel.rectangleColor = [UIColor redColor];
+            zcalendarModel.rectangleColor = _zcalendarStyle.selectDateColor;
         } else {
-            zcalendarModel.rectangleColor = [UIColor blueColor];
+            zcalendarModel.rectangleColor = _zcalendarStyle.normalDateColoe;
         }
         
         
@@ -98,8 +98,8 @@
 - (void)drawRect:(CGRect)rect {
     _context = UIGraphicsGetCurrentContext();
     
-    if (_lineColor) {
-        CGContextSetStrokeColorWithColor(_context, _lineColor.CGColor);
+    if (_zcalendarStyle.lineColor) {
+        CGContextSetStrokeColorWithColor(_context, _zcalendarStyle.lineColor.CGColor);
         
         // 月视图才显示横线
         if (_caledarType == CalendarTypeMonth) {
@@ -125,7 +125,7 @@
         [self drawText:CGPointMake(zcalendarModel.frame.origin.x, zcalendarModel.frame.origin.y)
                   text:zcalendarModel.dateText
               fontSize:10.0
-             textColor:_dateTextColor];
+             textColor:_zcalendarStyle.dateTextColor];
     }
     
     NSString *text = [NSString stringWithFormat:@"%ld月", [_currentDateComponents month]];
