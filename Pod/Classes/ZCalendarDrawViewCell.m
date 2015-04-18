@@ -12,12 +12,12 @@
 #import "NSString+ZCalendar.h"
 @implementation ZCalendarDrawViewCell {
     CGContextRef _context;
-    CGFloat dayCount;
-    CGFloat rowCount;
+    CGFloat _dayCount;
+    CGFloat _rowCount;
     
     CGFloat _columnWidth;
     CGFloat _rowHeight;
-    NSInteger interval;
+    NSInteger _interval;
 
 }
 
@@ -40,9 +40,9 @@
     
     NSDateComponents *today = [[NSDate date] getDateComponentsByDate];
     CGSize rectangleSize = CGSizeMake(_columnWidth * 0.9, _rowHeight * 0.9);
-    for (int i = 0; i< (dayCount + interval); i++) {
+    for (int i = 0; i< (_dayCount + _interval); i++) {
         
-        if (i < interval) {
+        if (i < _interval) {
             continue;
         }
         CGFloat x = _columnWidth * fmod(i , 7);
@@ -54,7 +54,7 @@
                                           rectangleSize.width,
                                           rectangleSize.height);
         
-        NSInteger day = i + 1 - interval;
+        NSInteger day = i + 1 - _interval;
         
         // 如果是今天,则换个颜色
         if ([_currentDateComponents year] == [today year]
@@ -86,11 +86,11 @@
 - (void)setDate:(NSDate *)date {
     
     _currentDateComponents = [date getDateComponentsByDate];
-    dayCount = [date getDays];
+    _dayCount = [date getDays];
     
-    interval = [_currentDateComponents weekday] - 1;
-    rowCount = ceil((dayCount + interval) / 7) + 1;
-    _rowHeight = self.frame.size.height / rowCount;
+    _interval = [_currentDateComponents weekday] - 1;
+    _rowCount = ceil((_dayCount + _interval) / 7) + 1;
+    _rowHeight = self.frame.size.height / _rowCount;
     
     [self setNeedsDisplay];
 }
@@ -107,7 +107,7 @@
 
                 CGFloat intervalWidth = 0;
                 if (i == 1) {
-                    intervalWidth = interval * _columnWidth;
+                    intervalWidth = _interval * _columnWidth;
                 }
 
                 CGContextMoveToPoint(_context, intervalWidth, _rowHeight * i);
@@ -132,7 +132,7 @@
     CGSize size = [text sizeWithAttributes:[self fontStyle:16. textColor:[UIColor blackColor]]];
     CGFloat drawMonthX = 0;
     if (_caledarType == CalendarTypeMonth) {
-        drawMonthX = interval * _columnWidth + (_columnWidth - size.width) /2;
+        drawMonthX = _interval * _columnWidth + (_columnWidth - size.width) /2;
     }
     [self drawText:CGPointMake(drawMonthX, (_rowHeight - size.height) / 2)
               text:text fontSize:16.0 textColor:[UIColor blackColor]];

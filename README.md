@@ -99,25 +99,25 @@
 ```
 
 
-#### 绘制日历
+#### 绘制日历关键参数
 1. 根据日历视图计算每一个 cellView 需要显示多少个日期,一个日期绘制一个矩形
 
 	计算月1号是周几
 	
 	```objective-c
-	interval = [dateComponents weekday] - 1;
+	_interval = [dateComponents weekday] - 1;
 	```
 
 	计算这个月总共多少天
     
     ```objective-c
-    dayCount = [date getDays];
+    _dayCount = [date getDays];
     ```
     
     一行显示7个日期,计算需要多少行
 
     ```objective-c
-    rowCount = ceil((dayCount + interval) / 7) + 1;
+    _rowCount = ceil((dayCount + interval) / 7) + 1;
     ```
 
     计算每行的高度
