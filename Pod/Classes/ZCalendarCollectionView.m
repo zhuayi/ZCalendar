@@ -61,7 +61,7 @@
         NSMutableArray *monthArray = [[NSMutableArray alloc] initWithCapacity:0];
         for (int j = 1; j <= 12; j++) {
             
-            NSDate *date = [[NSString stringWithFormat:@"%ld-%d-1", starDate + i, j] dateFromString];
+            NSDate *date = [[NSString stringWithFormat:@"%d-%d-1", (int)starDate + i, j] dateFromString];
             [monthArray addObject:date];
         }
         
@@ -158,7 +158,7 @@
     
     NSIndexPath *indexPath = [self indexPathForItemAtPoint:scrollView.contentOffset];
 //    
-    ZCalendarDrawViewCell *cell = [self cellForItemAtIndexPath:indexPath];
+    ZCalendarDrawViewCell *cell = (ZCalendarDrawViewCell *)[self cellForItemAtIndexPath:indexPath];
 //    NSLog(@"year : %@", cell.currentDateComponents);
     [_collectionViewDelegate didShowLeftTopCell:cell];
 }

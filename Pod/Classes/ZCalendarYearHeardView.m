@@ -31,7 +31,7 @@
 - (void)setYear:(NSInteger)year {
     _year = year;
     
-    label.text = [NSString stringWithFormat:@"%ld年", _year];;
+    label.text = [NSString stringWithFormat:@"%ld年", (long)_year];;
 }
 
 @end

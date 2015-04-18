@@ -68,13 +68,13 @@
         
         
         zcalendarModel.dateComponents = [[[NSString stringWithFormat:@"%ld-%ld-%ld",
-                                           [_currentDateComponents year],
-                                           [_currentDateComponents month],
-                                           day]
+                                           (long)[_currentDateComponents year],
+                                           (long)[_currentDateComponents month],
+                                           (long)day]
                                           dateFromString]
                                          getDateComponentsByDate];
         
-        zcalendarModel.dateText = [NSString stringWithFormat:@"%ld",i + 1 - interval];
+        zcalendarModel.dateText = [NSString stringWithFormat:@"%ld", (long)day];
         
         [_dateArray addObject:zcalendarModel];
     }
@@ -128,7 +128,7 @@
              textColor:_zcalendarStyle.dateTextColor];
     }
     
-    NSString *text = [NSString stringWithFormat:@"%ld月", [_currentDateComponents month]];
+    NSString *text = [NSString stringWithFormat:@"%ld月", (long)[_currentDateComponents month]];
     CGSize size = [text sizeWithAttributes:[self fontStyle:16. textColor:[UIColor blackColor]]];
     CGFloat drawMonthX = 0;
     if (_caledarType == CalendarTypeMonth) {
