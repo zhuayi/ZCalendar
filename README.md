@@ -101,30 +101,70 @@
 
 #### 绘制日历
 1. 根据日历视图计算每一个 cellView 需要显示多少个日期,一个日期绘制一个矩形
-  1. . 计算当月1号是周几 : ```interval = [dateComponents weekday] - 1```
-  2. 每一个 cellView 需要显示 N + interval个日期
-    1. 年和月视图, 根据*获取一个月有多少天*扩展方法获取View 需要绘制多少个矩形
-    2. 周视图7个矩形
+
+	计算月1号是周几
+	
+	```objective-c
+	interval = [dateComponents weekday] - 1;
+	```
+	每一个 cellView 需要显示 N + interval个日期
+	    1. 年和月视图, 根据*获取一个月有多少天*扩展方法获取View 需要绘制多少个矩形
+	    2. 周视图7个矩形
 
 
-2. 计算每个矩形的位置
-  1. width: ```_columnWidth = self.frame.size.width / 7```
-  2. height: ```_rowHeight = self.frame.size.height / 6;```  
-  3. X 轴坐标: ```_columnWidth * fmod(i , 7)```
-  4. Y 轴坐标: ```_rowHeight + _rowHeight * ceil(i / 7)```
+2. 计算每个矩形的尺寸和位置
+
+	width
+
+	```objective-c
+	_columnWidth = self.frame.size.width / 7;
+	```
+
+	height
+	
+	 ```objective-c
+	_rowHeight = self.frame.size.height / 6;
+	```
+	
+	X
+	
+	 ```objective-c
+	_rowHeight = self.frame.size.height / 6;
+	```
+	
+	Y
+	
+	 ```objective-c
+	_rowHeight + _rowHeight * ceil(i / 7);
+	```
+
 
 
 ### 架构设计
-- 入口类: ```ZCalendarView```
-  > ZCalendarView作为入口类,所有需要加载日历的控制器只需要addSubview该类即可.
-- 管理类: ```ZCalendarCollectionView```
-  > ZCalendarCollectionView 为 cell 管理类,控制 cell 数量, cell 的展示规则
-- 视图类: ```ZCalendarDrawViewCell```
-  > ZCalendarDrawViewCell 为 cell 绘制类,负责绘制 cell(日历).
-- 模型类: ```ZCalendarModel```
-  > ZCalendarModel 为模型类, 有日历矩形的尺寸,位置,颜色,文字等属性
-- 代理类: ```ZCalendarDelegate```
-  > ZCalendarDelegate为代理类, 负责传递日历的点击回调
+
+入口类: ZCalendarView.h 
+
+> ZCalendarView作为入口类,所有需要加载日历的控制器只需要addSubview该类即可.
+
+管理类: ZCalendarCollectionView.h
+
+> ZCalendarCollectionView 为 cell 管理类,控制 cell 数量, cell 的展示规则
+  
+视图类: ZCalendarDrawViewCell.h
+
+> ZCalendarDrawViewCell 为 cell 绘制类,负责绘制 cell(日历).
+  
+模型类: ZCalendarModel.h
+
+> ZCalendarModel 为模型类, 有日历矩形的尺寸,位置,颜色,文字等属性
+  
+代理类: ZCalendarDelegate.h
+
+> ZCalendarDelegate为代理类, 负责传递日历的点击回调
+  
+自定义样式类: ZCalendarStyle.h
+
+> ZCalendarStyle为样式类, 提供多个属性控制视图样式
 
 ![][image-1]
 
