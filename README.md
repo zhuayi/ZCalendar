@@ -107,10 +107,25 @@
 	```objective-c
 	interval = [dateComponents weekday] - 1;
 	```
-	每一个 cellView 需要显示 N + interval个日期
-	    1. 年和月视图, 根据*获取一个月有多少天*扩展方法获取View 需要绘制多少个矩形
-	    2. 周视图7个矩形
 
+	计算这个月总共多少天
+    
+    ```objective-c
+    dayCount = [date getDays];
+    ```
+    
+    一行显示7个日期,计算需要多少行
+
+    ```objective-c
+    rowCount = ceil((dayCount + interval) / 7) + 1;
+    ```
+
+    计算每行的高度
+
+    ```objective-c
+    _rowHeight = self.frame.size.height / rowCount;
+    ```
+    
 
 2. 计算每个矩形的尺寸和位置
 
@@ -123,19 +138,19 @@
 	height
 	
 	 ```objective-c
-	_rowHeight = self.frame.size.height / 6;
+	_rowHeight = self.frame.size.height / rowCount;
 	```
 	
 	X
 	
 	 ```objective-c
-	_rowHeight = self.frame.size.height / 6;
+	x = _columnWidth * fmod(i , 7);
 	```
 	
 	Y
 	
 	 ```objective-c
-	_rowHeight + _rowHeight * ceil(i / 7);
+	Y = rowHeight + _rowHeight * ceil(i / 7);
 	```
 
 
