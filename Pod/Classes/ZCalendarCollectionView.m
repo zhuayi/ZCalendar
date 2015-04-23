@@ -34,8 +34,12 @@
         //注册Cell，必须要有
         [self registerClass:[ZCalendarDrawViewCell class] forCellWithReuseIdentifier:@"ZCalendarDrawViewCell"];
         
-        _headetViewClassName = headetViewClassName;
-        [self registerClass:[NSClassFromString(headetViewClassName) class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView"];
+        if (headetViewClassName) {
+            
+            _headetViewClassName = headetViewClassName;
+            [self registerClass:[NSClassFromString(headetViewClassName) class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView"];
+        }
+        
         
         _dateArray = [NSMutableArray arrayWithCapacity:0];
         

@@ -12,13 +12,13 @@
 
 - (instancetype)initWithFrame:(CGRect)frame {
     
-    self.zcalendarStyle.header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, 36)];
-    self.zcalendarStyle.header.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"MonthHeader"]];
+//    self.zcalendarStyle.header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, 36)];
+//    self.zcalendarStyle.header.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"MonthHeader"]];
     
     self = [super initWithFrame:frame headetViewClassName:@"ZCalendarYearHeardView"];
     if (self) {
         
-        self.zcalendarStyle.cellSize = CGSizeMake(95, 70);
+        self.zcalendarStyle.cellSize = CGSizeMake(95, 80);
         
         // cell边距
         self.zcalendarStyle.cellEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 10);
@@ -29,7 +29,7 @@
         self.zcalendarStyle.selectDateColor = [UIColor redColor];
         
         // 设置默认日期颜色
-        self.zcalendarStyle.normalDateColoe = [UIColor whiteColor];
+        self.zcalendarStyle.normalDateColoe = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.2];
         
         // 设置显示的年视图
         self.caledarType = CalendarTypeYear;

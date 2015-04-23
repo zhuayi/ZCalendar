@@ -23,6 +23,8 @@
     
     // 日期数组
     NSMutableArray *_dateArray;
+    
+    UIImageView *_cutOffRule;
 }
 
 - (instancetype)initWithFrame:(CGRect)frame
@@ -32,6 +34,15 @@
         _columnWidth = self.frame.size.width / 7;
         _dateArray = [[NSMutableArray alloc] initWithCapacity:0];
         
+        if (_caledarType == CalendarTypeMonth) {
+          
+            _cutOffRule = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"cut-off-rule"]];
+            _cutOffRule.frame = CGRectMake(0, self.frame.size.height, self.frame.size.width + 10, 2);
+            _cutOffRule.hidden = YES;
+            [self addSubview:_cutOffRule];
+        }
+        
+
         return self;
     }
     return self;
@@ -47,7 +58,7 @@
             continue;
         }
         CGFloat x = _columnWidth * fmod(i , 7);
-        CGFloat y = self.zcalendarStyle.monthRowHeight + _rowHeight * ceil(i / 7);
+        CGFloat y = self.zcalendarStyle.monthRowHeight - 5 + _rowHeight * ceil(i / 7);
         
         ZCalendarModel *zcalendarModel = [[ZCalendarModel alloc] init];
         zcalendarModel.frame = CGRectMake(x + (_columnWidth - rectangleSize.width) / 2,
@@ -86,8 +97,21 @@
     _currentDateComponents = [date getDateComponentsByDate];
     _dayCount = [date getDays];
     
+    if (_currentDateComponents.month > 9 && _caledarType == CalendarTypeMonth) {
+        
+        _cutOffRule.hidden = YES;
+    } else {
+        _cutOffRule.hidden = NO;
+    }
+    
     _interval = [_currentDateComponents weekday] - 1;
-    _rowCount = 6; //ceil((_dayCount + _interval) / 7);
+    if (_caledarType == CalendarTypeMonth) {
+       
+        _rowCount = ceil((_dayCount + _interval) / 7);
+    } else {
+        _rowCount = 6;
+    }
+
     _rowHeight = (self.frame.size.height - self.zcalendarStyle.monthRowHeight) / _rowCount;
     
     [_dateArray removeAllObjects];
@@ -115,10 +139,7 @@
         }
     }
     
-    if (_zcalendarStyle.cutLineImage) {
-        
-        [self drawCutLine:CGPointMake(_interval * _columnWidth, _rowHeight - 6)];
-    }
+    
     
     CGFloat textHigeht = 0;
     
@@ -139,7 +160,6 @@
     }
     
     NSString *text = [NSString stringWithFormat:@"%ld月", (long)[_currentDateComponents month]];
-    CGSize size = [text sizeWithAttributes:_zcalendarStyle.monthTextStyle];
     CGFloat drawMonthX = 0;
     if (_caledarType == CalendarTypeMonth) {
         drawMonthX = _interval * _columnWidth;
@@ -147,7 +167,12 @@
             drawMonthX = drawMonthX + 10;
         }
     }
-    [self drawText:CGPointMake(drawMonthX, (self.zcalendarStyle.monthRowHeight - size.height) / 2) text:text fontSize:_zcalendarStyle.monthTextStyle];
+    [self drawText:CGPointMake(drawMonthX, 0) text:text fontSize:_zcalendarStyle.monthTextStyle];
+    CGSize size = [text sizeWithAttributes:_zcalendarStyle.dateTextStyle];
+    if (_zcalendarStyle.cutLineImage) {
+        
+        [self drawCutLine:CGPointMake(_interval * _columnWidth, size.height + 5)];
+    }
     
     
 }

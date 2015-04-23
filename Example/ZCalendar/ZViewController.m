@@ -28,11 +28,9 @@
     
     
     
-    YearCalendarView *monthCalendarView = [[YearCalendarView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 374, self.view.frame.size.width, 374)];
+    MonthCalendarView *monthCalendarView = [[MonthCalendarView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 374, self.view.frame.size.width, 374)];
     monthCalendarView.delegate = self;
     
-    
-
     NSDictionary *data = @{ @"2015-4-15": @"50", @"2015-4-16": @"150" , @"2015-4-17": @"150" };
     [monthCalendarView.dataArray setValue:data forKey:@"2015-4"];
     
