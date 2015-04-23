@@ -34,7 +34,7 @@
         _columnWidth = self.frame.size.width / 7;
         _dateArray = [[NSMutableArray alloc] initWithCapacity:0];
         
-        if (_caledarType == CalendarTypeMonth) {
+        if (_caledarType == CalendarTypeYear) {
           
             _cutOffRule = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"cut-off-rule"]];
             _cutOffRule.frame = CGRectMake(0, self.frame.size.height, self.frame.size.width + 10, 2);
@@ -97,7 +97,7 @@
     _currentDateComponents = [date getDateComponentsByDate];
     _dayCount = [date getDays];
     
-    if (_currentDateComponents.month > 9 && _caledarType == CalendarTypeMonth) {
+    if (_currentDateComponents.month > 9 && _caledarType == CalendarTypeYear) {
         
         _cutOffRule.hidden = YES;
     } else {
