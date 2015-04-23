@@ -34,9 +34,9 @@
 @property(nonatomic, strong) UIColor *lineColor;
 
 /**
- *  日期文字颜色
+ *  日期文字样式
  */
-@property(nonatomic, strong) UIColor *dateTextColor;
+@property(nonatomic, strong) NSDictionary *dateTextStyle;
 
 
 /**
@@ -48,5 +48,15 @@
  *  默认日期颜色
  */
 @property(nonatomic, strong) UIColor *normalDateColoe;
+
+/**
+ *  月份文字样式
+ */
+@property(nonatomic, strong) NSDictionary *monthTextStyle;
+
+/**
+ *  月份分割线
+ */
+@property(nonatomic, strong) UIImage *cutLineImage;
 
 @end

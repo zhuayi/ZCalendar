@@ -25,13 +25,15 @@
     titleView.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:titleView];
     
-    MonthCalendarView *monthCalendarView = [[MonthCalendarView alloc] initWithFrame:CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.height - 64)];
+    
+    
+    MonthCalendarView *monthCalendarView = [[MonthCalendarView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 374, self.view.frame.size.width, 374)];
     
     
     monthCalendarView.delegate = self;
     
     
-    
+    self.view.backgroundColor = [UIColor colorWithRed:39./255. green:158.0 / 255.0 blue:133.0 / 255.0 alpha:1.0];
     [self.view addSubview:monthCalendarView];
 }
 

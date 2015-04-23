@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		283C87C57DE4AF749CC7EB62 /* libPods-ZCalendar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 98EC68A63A2079226855B0DA /* libPods-ZCalendar.a */; };
+		3809E27A1AE89E6D002E174B /* cut-off-rule@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3809E2791AE89E6D002E174B /* cut-off-rule@2x.png */; };
 		38F730BD1AE272B200DF7334 /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = 38F730BA1AE272B200DF7334 /* .gitkeep */; };
 		38F730BE1AE272B200DF7334 /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = 38F730BC1AE272B200DF7334 /* .gitkeep */; };
 		38F730D11AE272CF00DF7334 /* NSDate+ZCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F730C01AE272CF00DF7334 /* NSDate+ZCalendar.m */; };
@@ -52,6 +53,7 @@
 		08F396273BA5E0B1B5427CEB /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		2169ABDD0CB80D792283B6DD /* Pods-Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tests/Pods-Tests.release.xcconfig"; sourceTree = "<group>"; };
 		27F10CD902C9C7E2193FB3AB /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		3809E2791AE89E6D002E174B /* cut-off-rule@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cut-off-rule@2x.png"; sourceTree = "<group>"; };
 		38F730BA1AE272B200DF7334 /* .gitkeep */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
 		38F730BC1AE272B200DF7334 /* .gitkeep */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
 		38F730BF1AE272CF00DF7334 /* NSDate+ZCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+ZCalendar.h"; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 		38F730B91AE272B200DF7334 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				3809E2791AE89E6D002E174B /* cut-off-rule@2x.png */,
 				38F730DC1AE2776900DF7334 /* MonthHeader@2x.png */,
 				38F730BA1AE272B200DF7334 /* .gitkeep */,
 			);
@@ -360,6 +363,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6003F5A4195388D20070C39A /* Main_iPad.storyboard in Resources */,
+				3809E27A1AE89E6D002E174B /* cut-off-rule@2x.png in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
 				38F730BD1AE272B200DF7334 /* .gitkeep in Resources */,
 				38F730BE1AE272B200DF7334 /* .gitkeep in Resources */,

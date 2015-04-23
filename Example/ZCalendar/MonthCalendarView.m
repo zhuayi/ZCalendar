@@ -12,13 +12,17 @@
 
 
 - (instancetype)initWithFrame:(CGRect)frame {
+    
+    self.zcalendarStyle.header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, 36)];
+    self.zcalendarStyle.header.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"MonthHeader"]];
+    
     self = [super initWithFrame:frame];
     if (self) {
         
-        self.zcalendarStyle.cellSize = CGSizeMake(frame.size.width, 200);
+        self.zcalendarStyle.cellSize = CGSizeMake(frame.size.width, 265);
         
         // 线条颜色
-        self.zcalendarStyle.lineColor = [UIColor greenColor];
+//        self.zcalendarStyle.lineColor = [UIColor greenColor];
         
         // cell边距
         self.zcalendarStyle.cellEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
@@ -35,13 +39,29 @@
         self.caledarType = CalendarTypeMonth;
         
         // 设置日期文字颜色
-        self.zcalendarStyle.dateTextColor = [UIColor blackColor];
+        self.zcalendarStyle.dateTextStyle = @{
+                                              NSFontAttributeName: [UIFont systemFontOfSize:12.0],
+                                              NSForegroundColorAttributeName: [UIColor whiteColor]
+                                              };
+        
+        
+        /**
+         *  设置月份文字颜色
+         */
+//        self.zcalendarStyle.monthTextColor = [UIColor whiteColor];
+        self.zcalendarStyle.monthTextStyle = @{
+                                                NSFontAttributeName: [UIFont systemFontOfSize:14.0],
+                                                NSForegroundColorAttributeName: [UIColor whiteColor]
+                                                };
+        
+        self.zcalendarStyle.cutLineImage = [UIImage imageNamed:@"cut-off-rule"];
         
         // 设置日历显示区间, 要放在最下边
         [self setYearInterval:2010 endDate:[today year]];
         
-        self.zcalendarStyle.header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, 44)];
-        self.zcalendarStyle.header.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"MonthHeader"]];
+        
+        
+        
     }
     return self;
 }

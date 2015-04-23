@@ -67,14 +67,11 @@
         
         [_dateArray addObject:monthArray];
     }
-    
-    
-    
-    
+
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         
-        [self scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:[_today month] inSection:([_today year] - _starYear)]
-                     atScrollPosition:UICollectionViewScrollPositionBottom
+        [self scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:([_today month] - 1) inSection:([_today year] - _starYear)]
+                     atScrollPosition:UICollectionViewScrollPositionTop
                              animated:YES];
         
     });

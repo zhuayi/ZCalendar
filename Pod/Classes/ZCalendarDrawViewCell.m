@@ -18,7 +18,6 @@
     CGFloat _columnWidth;
     CGFloat _rowHeight;
     NSInteger _interval;
-
 }
 
 - (instancetype)initWithFrame:(CGRect)frame
@@ -39,7 +38,7 @@
     [_dateArray removeAllObjects];
     
     NSDateComponents *today = [[NSDate date] getDateComponentsByDate];
-    CGSize rectangleSize = CGSizeMake(_columnWidth * 0.9, _rowHeight * 0.9);
+    CGSize rectangleSize = CGSizeMake(_columnWidth * 0.95 , _rowHeight * 0.90);
     for (int i = 0; i< (_dayCount + _interval); i++) {
         
         if (i < _interval) {
@@ -116,26 +115,45 @@
             }
         }
     }
+    
+    if (_zcalendarStyle.cutLineImage) {
+        
+        [self drawCutLine:CGPointMake(_interval * _columnWidth, _rowHeight - 6)];
+    }
+    
     // 矩形尺寸
     for (ZCalendarModel *zcalendarModel in _dateArray) {
         
-        [zcalendarModel.rectangleColor setFill];
-        [self drawRectangle:zcalendarModel.frame lineWidth:0.0];
+        CGSize size = [zcalendarModel.dateText sizeWithAttributes:_zcalendarStyle.dateTextStyle];
+        [self drawText:CGPointMake(zcalendarModel.frame.origin.x + (_columnWidth - size.width) / 2, zcalendarModel.frame.origin.y + _rowHeight - size.height)
+                  text:zcalendarModel.dateText fontSize:_zcalendarStyle.dateTextStyle];
         
-        [self drawText:CGPointMake(zcalendarModel.frame.origin.x, zcalendarModel.frame.origin.y)
-                  text:zcalendarModel.dateText
-              fontSize:10.0
-             textColor:_zcalendarStyle.dateTextColor];
+        [zcalendarModel.rectangleColor setFill];
+        CGRect frame = zcalendarModel.frame;
+        
+        frame.size.height = zcalendarModel.frame.size.height - size.height;
+        [self drawRectangle:frame lineWidth:0.0];
     }
     
     NSString *text = [NSString stringWithFormat:@"%ld月", (long)[_currentDateComponents month]];
-    CGSize size = [text sizeWithAttributes:[self fontStyle:16. textColor:[UIColor blackColor]]];
+    CGSize size = [text sizeWithAttributes:_zcalendarStyle.monthTextStyle];
     CGFloat drawMonthX = 0;
     if (_caledarType == CalendarTypeMonth) {
-        drawMonthX = _interval * _columnWidth + (_columnWidth - size.width) /2;
+        drawMonthX = _interval * _columnWidth;
+        if (_interval == 0) {
+            drawMonthX = drawMonthX + 10;
+        }
     }
-    [self drawText:CGPointMake(drawMonthX, (_rowHeight - size.height) / 2)
-              text:text fontSize:16.0 textColor:[UIColor blackColor]];
+    [self drawText:CGPointMake(drawMonthX, (_rowHeight - size.height) / 2) text:text fontSize:_zcalendarStyle.monthTextStyle];
+    
+    
+}
+
+/**
+ *  绘制分割线
+ */
+- (void)drawCutLine:(CGPoint)point {
+    CGContextDrawImage(_context, CGRectMake(point.x, point.y, self.frame.size.width, 2), _zcalendarStyle.cutLineImage.CGImage);
 }
 
 
@@ -144,22 +162,19 @@
  *
  *  @return NSDictionary 文字样式
  */
-- (NSDictionary *)fontStyle:(CGFloat)fontSize textColor:(UIColor *)textColor {
-    NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init]; // 段落样式
-    style.alignment = NSTextAlignmentRight;
-    NSDictionary *fontDict = @{
-                               NSFontAttributeName: [UIFont systemFontOfSize:fontSize],
-                               NSForegroundColorAttributeName: textColor,
-                               NSParagraphStyleAttributeName: style
-                               };
-    
-    return fontDict;
-}
+//- (NSDictionary *)fontStyle:(CGFloat)fontSize textColor:(UIColor *)textColor {
+//    NSDictionary *fontDict = @{
+//                               NSFontAttributeName: [UIFont systemFontOfSize:fontSize],
+//                               NSForegroundColorAttributeName: textColor
+//                               };
+//    
+//    return fontDict;
+//}
 
-- (void)drawText:(CGPoint)point text:(NSString *)text fontSize:(CGFloat)fontSize textColor:(UIColor *)textColor
+- (void)drawText:(CGPoint)point text:(NSString *)text fontSize:(NSDictionary *)fontStyle
 {
     // 兼容不同长度的字符串
-    [text drawAtPoint:point withAttributes:[self fontStyle:fontSize textColor:textColor]];
+    [text drawAtPoint:point withAttributes:fontStyle];
 }
 
 /**

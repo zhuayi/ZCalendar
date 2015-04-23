@@ -15,11 +15,10 @@
     self = [super initWithFrame:frame];
     if (self) {
         
-//        _zcalendarStyle = [[ZCalendarStyle alloc] init];
         _zcalendarCollectionView = [[ZCalendarCollectionView alloc] initWithFrame:CGRectMake(0,
-                                                                                             _zcalendarStyle.header.frame.size.width,
+                                                                                             _zcalendarStyle.header.frame.size.height,
                                                                                              self.frame.size.width,
-                                                                                             self.frame.size.height - _zcalendarStyle.header.frame.size.width)];
+                                                                                             self.frame.size.height - _zcalendarStyle.header.frame.size.height)];
         
         
         
