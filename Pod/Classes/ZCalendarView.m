@@ -7,18 +7,17 @@
 //
 
 #import "ZCalendarView.h"
-
 @implementation ZCalendarView
 
 
-- (instancetype)initWithFrame:(CGRect)frame {
+- (instancetype)initWithFrame:(CGRect)frame headetViewClassName:(NSString *)headetViewClassName {
     self = [super initWithFrame:frame];
     if (self) {
         
         _zcalendarCollectionView = [[ZCalendarCollectionView alloc] initWithFrame:CGRectMake(0,
                                                                                              _zcalendarStyle.header.frame.size.height,
                                                                                              self.frame.size.width,
-                                                                                             self.frame.size.height - _zcalendarStyle.header.frame.size.height)];
+                                                                                             self.frame.size.height - _zcalendarStyle.header.frame.size.height) headetViewClassName:headetViewClassName];
         
         
         
@@ -51,7 +50,10 @@
 
 - (void)zCalendarCellViewClic:(NSNotification *)sender {
     
-    [_delegate didClickDate:sender.object];
+    if (sender.object) {
+        [_delegate didClickDate:sender.object];
+    }
+    
 }
 
 - (void)layoutSubviews {
@@ -69,19 +71,6 @@
 }
 
 
-//- (void)setCellEdgeInsets:(UIEdgeInsets)cellEdgeInsets {
-//    
-//    _cellEdgeInsets = cellEdgeInsets;
-//    
-//    _zcalendarCollectionView.cellEdgeInsets = cellEdgeInsets;
-//}
-
-//- (void)setCellSize:(CGSize)cellSize {
-//    
-//    _zcalendarCollectionView.cellSize = cellSize;
-//    _cellSize = cellSize;
-//}
-
 - (void)setYearInterval:(NSInteger)starDate endDate:(NSInteger)endData {
     [_zcalendarCollectionView setYearInterval:starDate endDate:endData];
 }
@@ -98,6 +87,16 @@
 //    if (caledarType == CalendarTypeYear) {
 //        _zcalendarCollectionView.cellEdgeInsets = UIEdgeInsetsMake(5, 5, 5, 5);
 //    }
+}
+
+- (NSMutableDictionary *)dataArray {
+    
+    if (!_dataArray) {
+        
+        _dataArray = _zcalendarCollectionView.dataArray;
+        
+    }
+    return _dataArray;
 }
 
 - (void)dealloc {

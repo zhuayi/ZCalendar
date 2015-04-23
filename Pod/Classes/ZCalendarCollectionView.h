@@ -12,6 +12,9 @@
 
 @interface ZCalendarCollectionView : UICollectionView<UICollectionViewDelegate, UICollectionViewDataSource>
 
+
+- (instancetype)initWithFrame:(CGRect)frame headetViewClassName:(NSString *)headetViewClassName;
+
 /**
  *  视图样式
  */
@@ -48,6 +51,12 @@
  *  @param endData  结束时间
  */
 - (void)setYearInterval:(NSInteger)starDate endDate:(NSInteger)endData;
+
+
+/**
+ *  数据层
+ */
+@property(nonatomic, strong)NSMutableDictionary *dataArray;
 
 
 @end

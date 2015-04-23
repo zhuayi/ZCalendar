@@ -10,6 +10,6 @@
 
 @interface ZCalendarYearHeardView : UICollectionReusableView
 
-@property(nonatomic, assign) NSInteger year;
+- (void)setYear:(NSNotification *)sender;
 
 @end

@@ -11,6 +11,8 @@
 
 @interface ZCalendarView : UIView
 
+- (instancetype)initWithFrame:(CGRect)frame headetViewClassName:(NSString *)headetViewClassName;
+
 /**
  *  视图样式
  */
@@ -31,6 +33,19 @@
  */
 @property(nonatomic, assign) CalendarType caledarType;
 
+
+/**
+ *  设置日期区间
+ *
+ *  @param starDate 开始事件
+ *  @param endData  结束事件
+ */
 - (void)setYearInterval:(NSInteger)starDate endDate:(NSInteger)endData;
+
+
+/**
+ *  数据层
+ */
+@property(nonatomic, strong)NSMutableDictionary *dataArray;
 
 @end

@@ -9,21 +9,21 @@
 #import "ZCalendarCollectionView.h"
 #import "NSDate+ZCalendar.h"
 #import "NSString+ZCalendar.h"
-#import "ZCalendarYearHeardView.h"
+//#import "ZCalendarYearHeardView.h"
 @implementation ZCalendarCollectionView {
     NSMutableArray *_dateArray;
     NSInteger _intervalMonth;
     NSInteger _columnCount;
     NSDateComponents *_today;
+    
+    NSString *_headetViewClassName;
 }
 
-- (instancetype)initWithFrame:(CGRect)frame
+
+- (instancetype)initWithFrame:(CGRect)frame headetViewClassName:(NSString *)headetViewClassName
 {
     _layout = [[UICollectionViewFlowLayout alloc] init];
     [_layout setScrollDirection:UICollectionViewScrollDirectionVertical];
-    _layout.minimumLineSpacing = 5;
-    _layout.minimumInteritemSpacing = 0;
-//    _layout.headerReferenceSize = CGSizeMake(self.frame.size.width, 50);
     self = [super initWithFrame:frame collectionViewLayout:_layout];
     if (self) {
     
@@ -34,7 +34,8 @@
         //注册Cell，必须要有
         [self registerClass:[ZCalendarDrawViewCell class] forCellWithReuseIdentifier:@"ZCalendarDrawViewCell"];
         
-//        [self registerClass:[ZCalendarYearHeardView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView"];
+        _headetViewClassName = headetViewClassName;
+        [self registerClass:[NSClassFromString(headetViewClassName) class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView"];
         
         _dateArray = [NSMutableArray arrayWithCapacity:0];
         
@@ -42,6 +43,7 @@
     }
     return self;
 }
+
 
 - (void)setYearInterval:(NSInteger)starDate endDate:(NSInteger)endData {
     _starYear = starDate;
@@ -81,6 +83,15 @@
     _caledarType = caledarType;
 }
 
+- (NSMutableDictionary *)dataArray {
+    
+    if (!_dataArray) {
+        
+        _dataArray = [[NSMutableDictionary alloc] initWithCapacity:0];
+    }
+    return _dataArray;
+}
+
 //- (void)setLineColor:(UIColor *)lineColor {
 //    _lineColor = lineColor;
 //}
@@ -107,9 +118,14 @@
     ZCalendarDrawViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
     cell.caledarType = _caledarType;
     cell.zcalendarStyle = _zcalendarStyle;
-//    NSLog(@"indexPath.row : %d ", indexPath.row);
     [cell setDate:_dateArray[indexPath.section][indexPath.row]];
+
+    NSDateComponents *components = [_dateArray[indexPath.section][indexPath.row] getDateComponentsByDate];
+    if ([_dataArray objectForKey:[NSString stringWithFormat:@"%ld-%ld", components.year, components.month]]) {
+        cell.dataArray = [_dataArray objectForKey:[NSString stringWithFormat:@"%ld-%ld", components.year, components.month]];
+    }
     
+    [cell setNeedsDisplay];
     cell.backgroundColor = [UIColor clearColor];
     return cell;
 }
@@ -128,6 +144,7 @@
     return _zcalendarStyle.cellSize;
 }
 
+
 //定义每个UICollectionView 的 margin
 -(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
 {
@@ -136,18 +153,35 @@
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
     
-    ZCalendarYearHeardView *reusableview = nil;
+    UICollectionReusableView *reusableview = nil;
     
     if (kind == UICollectionElementKindSectionHeader) {
-        ZCalendarYearHeardView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView" forIndexPath:indexPath];
-        reusableview = headerView;
+        reusableview = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView" forIndexPath:indexPath];
     }
     
-    reusableview.year = _starYear + indexPath.section;
+    if ([reusableview respondsToSelector:@selector(setYear:)]) {
+        
+        [reusableview performSelector:@selector(setYear:) withObject:_dateArray[indexPath.section][indexPath.row]];
+    }
     
     return reusableview;
 }
 
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
+    
+    return CGSizeMake(self.frame.size.width, _zcalendarStyle.sectionHeight);
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
+    
+    return 5;
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
+    
+    return 0;
+}
 
 
 #pragma mark - scrollVieDelegate

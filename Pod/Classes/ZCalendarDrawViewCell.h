@@ -9,7 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "ZCalendar.h"
 
+
 @interface ZCalendarDrawViewCell : UICollectionViewCell
+
+@property(nonatomic) CGContextRef context;
 
 /**
  *  当前日期
@@ -27,11 +30,20 @@
  */
 @property(nonatomic, assign) CalendarType caledarType;
 
+/**
+ *  事件数据数组
+ */
+@property(nonatomic, strong) NSMutableDictionary *dataArray;
+
 
 /**
- *  日期数组
+ *  绘制文字
+ *
+ *  @param point     文字坐标
+ *  @param text      文字
+ *  @param fontStyle 文字样式
  */
-@property(nonatomic, strong) NSMutableArray *dateArray;
+- (void)drawText:(CGPoint)point text:(NSString *)text fontSize:(NSDictionary *)fontStyle;
 
 /**
  *  设置日期

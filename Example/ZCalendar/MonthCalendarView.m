@@ -59,9 +59,6 @@
         // 设置日历显示区间, 要放在最下边
         [self setYearInterval:2010 endDate:[today year]];
         
-        
-        
-        
     }
     return self;
 }

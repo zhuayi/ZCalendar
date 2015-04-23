@@ -33,4 +33,5 @@
 @property(nonatomic, strong) NSDateComponents *dateComponents;
 
 
+@property(nonatomic, strong) NSObject *data;
 @end

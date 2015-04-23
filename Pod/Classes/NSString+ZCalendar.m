@@ -17,11 +17,23 @@
  *  @return date
  */
 - (NSDate *)dateFromString {
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    NSTimeZone *timeZone = [NSTimeZone localTimeZone];
-    [formatter setTimeZone:timeZone];
-    [formatter setDateFormat:@"yyyy-MM-dd"];
     
-    return [formatter dateFromString:self];
+    @try {
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        NSTimeZone *timeZone = [NSTimeZone localTimeZone];
+        [formatter setTimeZone:timeZone];
+        [formatter setDateFormat:@"yyyy-MM-dd"];
+        
+        return [formatter dateFromString:self];
+
+    }
+    @catch (NSException *exception) {
+        
+        
+    }
+    @finally {
+        
+    }
+    return nil;
 }
 @end

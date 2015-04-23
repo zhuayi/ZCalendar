@@ -59,4 +59,15 @@
  */
 @property(nonatomic, strong) UIImage *cutLineImage;
 
+/**
+ *  月份行高
+ */
+@property(nonatomic, assign) CGFloat monthRowHeight;
+
+
+/**
+ *  section高度
+ */
+@property(nonatomic, assign) CGFloat sectionHeight;
+
 @end
