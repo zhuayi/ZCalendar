@@ -22,7 +22,7 @@
 
 
 // ZCalendarCollectionViewDelegate
-@property(nonatomic, weak) id<ZCalendarCollectionViewDelegate>collectionViewDelegate;
+@property(nonatomic, weak) id<ZCalendarDelegate>zCalendarDelegate;
 
 @property(nonatomic, strong)UICollectionViewFlowLayout *layout;
 

@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "ZCalendar.h"
-@interface ZViewController : UIViewController<ZCalendarDelegate, ZCalendarCollectionViewDelegate>
+@interface ZViewController : UIViewController<ZCalendarDelegate>
 
 @end

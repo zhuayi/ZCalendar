@@ -27,14 +27,3 @@
 - (void)didShowLeftTopCell:(ZCalendarDrawViewCell *)zcalendarDrawViewCell;
 
 @end
-
-@protocol ZCalendarCollectionViewDelegate <NSObject>
-
-/**
- *  从视图左上角开始,当前显示的日期,只包含年/月信息
- *
- *  @param date
- */
-- (void)didShowLeftTopCell:(ZCalendarDrawViewCell *)zcalendarDrawViewCell;
-
-@end

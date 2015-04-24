@@ -64,7 +64,7 @@
         frame.origin.y = frame.origin.y + self.rowHeight - frame.size.height;
         textY = zCalendarmodel.frame.origin.y + self.rowHeight / 2;
         rectangleHeight = self.rowHeight / 2;
-        zCalendarmodel.frame = frame;
+//        zCalendarmodel.frame = frame;
         
         // 设置日期文字颜色
         textStyle = @{
@@ -73,7 +73,7 @@
                     };
     }
     
-    [self drawCustom:zCalendarmodel.frame lineWidth:lineWidth];
+    [self drawCustom:frame lineWidth:lineWidth];
     
     if (strings && self.caledarType != CalendarTypeYear) {
         

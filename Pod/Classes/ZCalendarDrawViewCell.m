@@ -250,7 +250,6 @@
 - (ZCalendarModel *)getDateByPoint:(CGPoint)point {
     for (ZCalendarModel *zcalendarModel in _dateArray) {
         if (CGRectContainsPoint(zcalendarModel.frame,point)) {
-            
             return zcalendarModel;
             break;
         }

@@ -81,7 +81,25 @@
 自定义日期区间
 
 ```objective-c
-- (void)setYearInterval:(NSInteger)starDate endDate:(NSInteger)endData;;
+- (void)setYearInterval:(NSInteger)starDate endDate:(NSInteger)endData;
+```
+
+月份显示的行高
+
+```objective-c
+@property(nonatomic, assign) CGFloat monthRowHeight;
+```
+
+section高度
+
+```objective-c
+@property(nonatomic, assign) CGFloat sectionHeight;
+```
+
+每行的间距
+
+```objective-c
+@property(nonatomic, assign) CGFloat minimumLineSpacing;
 ```
 
 ### 回调代理

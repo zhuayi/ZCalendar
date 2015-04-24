@@ -147,6 +147,26 @@
     return _dataArray;
 }
 
+-(void)setZCalendarDelegate:(id<ZCalendarDelegate>)zCalendarDelegate {
+    
+    _zCalendarDelegate = zCalendarDelegate;
+    
+    // 接受通知
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(zCalendarCellViewClic:)
+                                                 name:kZCalendarCellViewClick object:nil];
+}
+
+#pragma mark -- collectionViewDelegate
+
+- (void)zCalendarCellViewClic:(NSNotification *)sender {
+    
+    if (sender.object) {
+        [_zCalendarDelegate didClickDate:sender.object];
+    }
+    
+}
+
 
 #pragma mark -- UICollectionViewDataSource
 
@@ -249,15 +269,11 @@
     return 0;
 }
 
-
-#pragma mark - scrollVieDelegate
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+- (void)dealloc {
     
-    NSIndexPath *indexPath = [self indexPathForItemAtPoint:scrollView.contentOffset];
-//    
-    ZCalendarDrawViewCell *cell = (ZCalendarDrawViewCell *)[self cellForItemAtIndexPath:indexPath];
-//    NSLog(@"year : %@", cell.currentDateComponents);
-    [_collectionViewDelegate didShowLeftTopCell:cell];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    NSLog(@"%s", __func__);
 }
+
 
 @end
