@@ -13,7 +13,7 @@
 @interface ZCalendarCollectionView : UICollectionView<UICollectionViewDelegate, UICollectionViewDataSource>
 
 
-- (instancetype)initWithFrame:(CGRect)frame headetViewClassName:(NSString *)headetViewClassName;
+- (instancetype)initWithFrame:(CGRect)frame headetViewClassName:(NSString *)headetViewClassName scrollDirection:(UICollectionViewScrollDirection)scrollDirection;
 
 /**
  *  视图样式

@@ -9,6 +9,8 @@
 #import "ZViewController.h"
 #import "MonthCalendarView.h"
 #import "YearCalendarView.h"
+#import "WeekCalendarView.h"
+
 @interface ZViewController ()
 
 @end
@@ -28,7 +30,7 @@
     
     
     
-    YearCalendarView *monthCalendarView = [[YearCalendarView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 374, self.view.frame.size.width, 374)];
+    WeekCalendarView *monthCalendarView = [[WeekCalendarView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 100, self.view.frame.size.width, 100)];
     monthCalendarView.delegate = self;
     
     NSDictionary *data = @{ @"2015-4-15": @"50", @"2015-4-16": @"150" , @"2015-4-17": @"150" };
@@ -48,7 +50,7 @@
 
 - (void)didShowLeftTopCell:(ZCalendarDrawViewCell *)zcalendarDrawViewCell {
     
-    NSLog(@"左上角日期: %ld - %ld", [zcalendarDrawViewCell.currentDateComponents year], [zcalendarDrawViewCell.currentDateComponents month]);
+//    NSLog(@"左上角日期: %ld - %ld", [zcalendarDrawViewCell.currentDateComponents year], [zcalendarDrawViewCell.currentDateComponents month]);
 }
 
 - (void)didReceiveMemoryWarning {

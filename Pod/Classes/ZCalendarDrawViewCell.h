@@ -36,6 +36,18 @@
 @property(nonatomic, strong) NSMutableDictionary *dataArray;
 
 
+@property(nonatomic, strong) NSDate *firstDate; 
+
+
+/**
+ *  日期宽度
+ */
+@property(nonatomic, assign) CGFloat columnWidth;
+
+/**
+ *  日期高度
+ */
+@property(nonatomic, assign) CGFloat rowHeight;
 /**
  *  绘制文字
  *
@@ -45,12 +57,6 @@
  */
 - (void)drawText:(CGPoint)point text:(NSString *)text fontSize:(NSDictionary *)fontStyle;
 
-/**
- *  设置日期
- *
- *  @param date
- */
-- (void)setDate:(NSDate *)date;
 
 
 /**

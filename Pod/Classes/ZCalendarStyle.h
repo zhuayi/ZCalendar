@@ -70,4 +70,10 @@
  */
 @property(nonatomic, assign) CGFloat sectionHeight;
 
+
+/**
+ *  每行的间距
+ */
+@property(nonatomic, assign) CGFloat minimumLineSpacing;
+
 @end

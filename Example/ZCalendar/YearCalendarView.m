@@ -15,7 +15,7 @@
 //    self.zcalendarStyle.header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, 36)];
 //    self.zcalendarStyle.header.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"MonthHeader"]];
     
-    self = [super initWithFrame:frame headetViewClassName:@"ZCalendarYearHeardView"];
+    self = [super initWithFrame:frame headetViewClassName:@"ZCalendarYearHeardView" scrollDirection:UICollectionViewScrollDirectionVertical];
     if (self) {
         
         self.zcalendarStyle.cellSize = CGSizeMake(95, 80);

@@ -9,7 +9,8 @@
 typedef NS_ENUM(NSInteger, CalendarType) {
     //以下是枚举成员
     CalendarTypeYear, // 年视图
-    CalendarTypeMonth // 月视图
+    CalendarTypeMonth, // 月视图
+    CalendarTypeWeek   // 周
 };
 
 

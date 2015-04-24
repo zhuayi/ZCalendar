@@ -42,20 +42,46 @@
     
     [zCalendarmodel.rectangleColor setFill];
     
-    if (self.caledarType == CalendarTypeMonth) {
-        
-        CGRect frame = zCalendarmodel.frame;
+    CGRect frame = zCalendarmodel.frame;
+    NSInteger rectangleHeight = 0;
+    CGFloat textY = 0;
+    NSDictionary *textStyle;
+    if (self.caledarType == CalendarTypeMonth)
+    {
         frame.size.height = zCalendarmodel.frame.size.height - 14 - 4;
         zCalendarmodel.frame = frame;
+        textY = zCalendarmodel.frame.origin.y + 0;
+        
+        // 设置日期文字颜色
+        textStyle = @{
+                    NSFontAttributeName: [UIFont systemFontOfSize:14.0],
+                    NSForegroundColorAttributeName: [UIColor whiteColor]
+                    };
+        
+    } else if (self.caledarType == CalendarTypeWeek) {
+        
+        frame.size.height = 4.5;
+        frame.origin.y = frame.origin.y + self.rowHeight - frame.size.height;
+        textY = zCalendarmodel.frame.origin.y + self.rowHeight / 2;
+        rectangleHeight = self.rowHeight / 2;
+        zCalendarmodel.frame = frame;
+        
+        // 设置日期文字颜色
+        textStyle = @{
+                      NSFontAttributeName: [UIFont systemFontOfSize:14.0],
+                      NSForegroundColorAttributeName: [UIColor whiteColor]
+                    };
     }
     
     [self drawCustom:zCalendarmodel.frame lineWidth:lineWidth];
     
-    if (strings && self.caledarType == CalendarTypeMonth) {
+    if (strings && self.caledarType != CalendarTypeYear) {
         
-        CGSize size = [strings sizeWithAttributes:self.zcalendarStyle.dateTextStyle];
-        [self drawText:CGPointMake((zCalendarmodel.frame.origin.x + (zCalendarmodel.frame.size.width - size.width) / 2), (zCalendarmodel.frame.origin.y + (zCalendarmodel.frame.size.height - size.height) / 2)) text:strings fontSize:self.zcalendarStyle.dateTextStyle];
+        CGSize size = [strings sizeWithAttributes:textStyle];
+        [self drawText:CGPointMake((zCalendarmodel.frame.origin.x + (self.columnWidth - size.width) / 2), textY + (rectangleHeight - size.height) / 2) text:strings fontSize:textStyle];
     }
+    
+    
     
 }
 

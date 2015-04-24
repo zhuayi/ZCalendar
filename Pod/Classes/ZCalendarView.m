@@ -10,14 +10,15 @@
 @implementation ZCalendarView
 
 
-- (instancetype)initWithFrame:(CGRect)frame headetViewClassName:(NSString *)headetViewClassName {
+- (instancetype)initWithFrame:(CGRect)frame headetViewClassName:(NSString *)headetViewClassName scrollDirection:(UICollectionViewScrollDirection)scrollDirection {
     self = [super initWithFrame:frame];
     if (self) {
         
         _zcalendarCollectionView = [[ZCalendarCollectionView alloc] initWithFrame:CGRectMake(0,
                                                                                              _zcalendarStyle.header.frame.size.height,
                                                                                              self.frame.size.width,
-                                                                                             self.frame.size.height - _zcalendarStyle.header.frame.size.height) headetViewClassName:headetViewClassName];
+                                                                                             self.frame.size.height - _zcalendarStyle.header.frame.size.height) headetViewClassName:headetViewClassName
+                                                                  scrollDirection:scrollDirection];
         
         
         

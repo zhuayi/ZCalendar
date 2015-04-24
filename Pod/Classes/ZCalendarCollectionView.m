@@ -13,17 +13,16 @@
 @implementation ZCalendarCollectionView {
     NSMutableArray *_dateArray;
     NSInteger _intervalMonth;
-    NSInteger _columnCount;
     NSDateComponents *_today;
     
     NSString *_headetViewClassName;
 }
 
 
-- (instancetype)initWithFrame:(CGRect)frame headetViewClassName:(NSString *)headetViewClassName
+- (instancetype)initWithFrame:(CGRect)frame headetViewClassName:(NSString *)headetViewClassName scrollDirection:(UICollectionViewScrollDirection)scrollDirection
 {
     _layout = [[UICollectionViewFlowLayout alloc] init];
-    [_layout setScrollDirection:UICollectionViewScrollDirectionVertical];
+    _layout.scrollDirection = scrollDirection;
     self = [super initWithFrame:frame collectionViewLayout:_layout];
     if (self) {
     
@@ -55,30 +54,67 @@
     
     _today = [[NSDate date] getDateComponentsByDate];
     _intervalMonth = (endData - starDate) + 1;
-    
-    // 计算一行有几个 cell
-    _columnCount = 1;
-    if (_caledarType == CalendarTypeYear) {
-        _columnCount = 3;
-    }
-    
+   
+    NSMutableArray *daysArray = [[NSMutableArray alloc] initWithCapacity:0];
     for (int i = 0 ; i < _intervalMonth; i++) {
         
         NSMutableArray *monthArray = [[NSMutableArray alloc] initWithCapacity:0];
         for (int j = 1; j <= 12; j++) {
             
             NSDate *date = [[NSString stringWithFormat:@"%d-%d-1", (int)starDate + i, j] dateFromString];
+            
             [monthArray addObject:date];
+            
+            if (_caledarType == CalendarTypeWeek) {
+                NSInteger days = [date getDays];
+                for (int n = 1; n <= days ; n++) {
+                    NSDate *date = [[NSString stringWithFormat:@"%d-%d-%d", (int)starDate + i, j, n] dateFromString];
+                    [daysArray addObject:date];
+                }
+            }
         }
         
         [_dateArray addObject:monthArray];
     }
+    
 
+    if (_caledarType == CalendarTypeWeek) {
+    
+        // 取第一个日期,判断是周几
+        NSDate *firstDate = [daysArray firstObject];
+        NSDateComponents *firstComponents = [firstDate getDateComponentsByDate];
+        for (int i = 1; i< firstComponents.weekday; i++) {
+            
+            NSDate *date = [firstDate getDateByDaysAgo: 0 - i];
+            [daysArray insertObject:date atIndex:0];
+        }
+        
+        // 取最后日期,判断是周几
+        NSDate *lastDate = [daysArray lastObject];
+        NSDateComponents *lastComponents = [lastDate getDateComponentsByDate];
+        for (int i = 1; i<= ( 7 - lastComponents.weekday); i++) {
+            
+            NSDate *date = [lastDate getDateByDaysAgo:i];
+            [daysArray addObject:date];
+        }
+        
+        [_dateArray removeAllObjects];
+        for (int i = 0; i< (daysArray.count / 7 ); i++) {
+                [_dateArray addObject:daysArray[i*7]];
+        }
+        
+        [daysArray removeAllObjects];
+    }
+    
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         
-        [self scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:([_today month] - 1) inSection:([_today year] - _starYear)]
-                     atScrollPosition:UICollectionViewScrollPositionTop
-                             animated:YES];
+//        [self scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:([_today month] - 1) inSection:([_today year] - _starYear)]
+//                     atScrollPosition:UICollectionViewScrollPositionTop
+//                             animated:YES];
+//        
+//        [self scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:([_today month] - 1) inSection:([_today year] - _starYear)]
+//                     atScrollPosition:UICollectionViewScrollPositionTop
+//                             animated:YES];
         
     });
 }
@@ -108,12 +144,26 @@
 
 //定义展示的UICollectionViewCell的个数
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 12;
+    
+    if (_caledarType == CalendarTypeWeek) {
+        
+        return [_dateArray count];
+    }
+    return [_dateArray[section] count];
 }
 
 //定义展示的Section的个数
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return _intervalMonth;
+    
+    if (_caledarType == CalendarTypeWeek) {
+        
+        return 1;
+        
+    } else {
+       
+        return _intervalMonth;
+    }
+    
 }
 
 //每个UICollectionView展示的内容
@@ -122,14 +172,20 @@
     ZCalendarDrawViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
     cell.caledarType = _caledarType;
     cell.zcalendarStyle = _zcalendarStyle;
-    [cell setDate:_dateArray[indexPath.section][indexPath.row]];
+//
+    
+    if (_caledarType == CalendarTypeWeek) {
+        cell.firstDate = _dateArray[indexPath.row];
+    } else {
+        cell.firstDate = _dateArray[indexPath.section][indexPath.row];
+    }
 
-    NSDateComponents *components = [_dateArray[indexPath.section][indexPath.row] getDateComponentsByDate];
+    NSDateComponents *components = [cell.firstDate getDateComponentsByDate];
     if ([_dataArray objectForKey:[NSString stringWithFormat:@"%ld-%ld", components.year, components.month]]) {
         cell.dataArray = [_dataArray objectForKey:[NSString stringWithFormat:@"%ld-%ld", components.year, components.month]];
     }
     
-    [cell setNeedsDisplay];
+//    [cell setNeedsDisplay];
     cell.backgroundColor = [UIColor clearColor];
     return cell;
 }
@@ -174,12 +230,17 @@
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
     
-    return CGSizeMake(self.frame.size.width, _zcalendarStyle.sectionHeight);
+    if (_zcalendarStyle.sectionHeight > 0) {
+        
+        return CGSizeMake(self.frame.size.width, _zcalendarStyle.sectionHeight);
+    }
+    
+    return CGSizeMake(0, 0);
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
     
-    return 5;
+    return _zcalendarStyle.minimumLineSpacing;
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {

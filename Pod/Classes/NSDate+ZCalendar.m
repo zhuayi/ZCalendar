@@ -25,20 +25,32 @@
     //    NSDateComponents *comps = [[NSDateComponents alloc] init];
     NSInteger unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSWeekdayCalendarUnit | NSHourCalendarUnit |NSMinuteCalendarUnit | NSSecondCalendarUnit;
     
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    NSTimeZone *timeZone = [NSTimeZone localTimeZone];
-    [formatter setTimeZone:timeZone];
-    [formatter setDateFormat:@"yyyy-MM-dd"];
+//    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+//    NSTimeZone *timeZone = [NSTimeZone localTimeZone];
+//    [formatter setTimeZone:timeZone];
+//    [formatter setDateFormat:@"yyyy-MM-dd"];
     return [calendar components:unitFlags fromDate:self];
 }
 
 
-+ (NSDateFormatter *)getFormatter {
+- (NSDateFormatter *)getFormatter {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     NSTimeZone *timeZone = [NSTimeZone localTimeZone];
     [formatter setTimeZone:timeZone];
     [formatter setDateFormat:@"yyyy-MM-dd"];
     return formatter;
+}
+
+/**
+ *  取 N 天前
+ *
+ *  @param days  N 天前
+ *
+ *  @return
+ */
+- (NSDate *)getDateByDaysAgo:(NSInteger )days {
+
+    return [NSDate dateWithTimeInterval:days * 86400 sinceDate:self];
 }
 
 
@@ -51,6 +63,11 @@
     NSCalendar *c = [NSCalendar currentCalendar];
     NSRange days = [c rangeOfUnit:NSDayCalendarUnit inUnit:NSMonthCalendarUnit forDate:self];
     return days.length;
+}
+
+- (NSString *)dateTostring {
+    return [[self getFormatter] stringFromDate:self];
+
 }
 
 @end

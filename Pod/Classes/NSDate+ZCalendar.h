@@ -27,4 +27,17 @@
  *  @return NSInteger
  */
 - (NSInteger)getDays;
+
+
+/**
+ *  取 N 天前
+ *
+ *  @param days  N 天前
+ *
+ *  @return
+ */
+- (NSDate *)getDateByDaysAgo:(NSInteger )days;
+
+
+- (NSString *)dateTostring;
 @end

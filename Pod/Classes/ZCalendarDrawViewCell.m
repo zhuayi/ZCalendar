@@ -18,13 +18,13 @@
     CGFloat _rowCount;
     
     CGFloat _columnWidth;
-    CGFloat _rowHeight;
     NSInteger _interval;
     
     // 日期数组
     NSMutableArray *_dateArray;
     
     UIImageView *_cutOffRule;
+ 
 }
 
 - (instancetype)initWithFrame:(CGRect)frame
@@ -34,13 +34,13 @@
         _columnWidth = self.frame.size.width / 7;
         _dateArray = [[NSMutableArray alloc] initWithCapacity:0];
         
-        if (_caledarType == CalendarTypeYear) {
-          
+//        if (_caledarType == CalendarTypeYear) {
+        
             _cutOffRule = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"cut-off-rule"]];
             _cutOffRule.frame = CGRectMake(0, self.frame.size.height, self.frame.size.width + 10, 2);
             _cutOffRule.hidden = YES;
             [self addSubview:_cutOffRule];
-        }
+//        }
         
 
         return self;
@@ -51,8 +51,20 @@
 
 - (void)setNeedsDisplay {
     
+    
+    [self getDateArrayByMonthYear];
+    
+    [super setNeedsDisplay];
+}
+
+
+// 获取月,年视图数据
+- (void)getDateArrayByMonthYear {
+ 
+    [_dateArray removeAllObjects];
+    
     CGSize rectangleSize = CGSizeMake(_columnWidth * 0.95 , _rowHeight * 0.95);
-    for (int i = 0; i< (_dayCount + _interval); i++) {
+    for (int i = 0; i < (_dayCount + _interval); i++) {
         
         if (i < _interval) {
             continue;
@@ -66,55 +78,66 @@
                                           rectangleSize.width,
                                           rectangleSize.height);
         
-        NSInteger day = i + 1 - _interval;
+        zcalendarModel.dateComponents = [[_firstDate getDateByDaysAgo:i] getDateComponentsByDate];
         
+        zcalendarModel.dateText = [NSString stringWithFormat:@"%ld", zcalendarModel.dateComponents.day];
         
-        zcalendarModel.dateComponents = [[[NSString stringWithFormat:@"%ld-%ld-%ld",
-                                           (long)[_currentDateComponents year],
-                                           (long)[_currentDateComponents month],
-                                           (long)day]
-                                          dateFromString]
-                                         getDateComponentsByDate];
-        
-        zcalendarModel.dateText = [NSString stringWithFormat:@"%ld", (long)day];
-        
-        
-        if ([_dataArray objectForKey:[NSString stringWithFormat:@"%ld-%ld-%ld", _currentDateComponents.year, _currentDateComponents.month, day]]) {
-        
-            zcalendarModel.data = [_dataArray objectForKey:[NSString stringWithFormat:@"%ld-%ld-%ld", _currentDateComponents.year, _currentDateComponents.month, day]];
+    
+        NSString *key = [NSString stringWithFormat:@"%ld-%ld-%ld", zcalendarModel.dateComponents.year, zcalendarModel.dateComponents.month, zcalendarModel.dateComponents.day];
+        if ([_dataArray objectForKey:key]) {
+            
+            zcalendarModel.data = [_dataArray objectForKey:key];
         }
         
         [_dateArray addObject:zcalendarModel];
     }
-    
-    
-    [super setNeedsDisplay];
 }
 
-
-- (void)setDate:(NSDate *)date {
+- (void)setFirstDate:(NSDate *)firstDate {
+    _firstDate = firstDate;
     
-    _currentDateComponents = [date getDateComponentsByDate];
-    _dayCount = [date getDays];
+    _currentDateComponents = [firstDate getDateComponentsByDate];
     
-    if (_currentDateComponents.month > 9 && _caledarType == CalendarTypeYear) {
+    if (_caledarType == CalendarTypeWeek) {
         
-        _cutOffRule.hidden = YES;
+        _rowCount = 1;
+        
+        _rowHeight = self.frame.size.height;
+        
+        _interval = 0;
+        
+        _dayCount = 7;
+        
     } else {
-        _cutOffRule.hidden = NO;
+        
+        
+        _dayCount = [firstDate getDays];
+        
+        if (_caledarType == CalendarTypeYear) {
+            
+            if (_currentDateComponents.month > 9) {
+                
+                _cutOffRule.hidden = YES;
+            } else {
+                
+                _cutOffRule.hidden = NO;
+            }
+        } else {
+            
+            _cutOffRule.hidden = YES;
+        }
+        
+        _interval = [_currentDateComponents weekday] - 1;
+        if (_caledarType == CalendarTypeMonth) {
+            
+            _rowCount = ceil((_dayCount + _interval) / 7);
+        } else {
+            _rowCount = 6;
+        }
+        
+        _rowHeight = (self.frame.size.height - self.zcalendarStyle.monthRowHeight) / _rowCount;
     }
-    
-    _interval = [_currentDateComponents weekday] - 1;
-    if (_caledarType == CalendarTypeMonth) {
-       
-        _rowCount = ceil((_dayCount + _interval) / 7);
-    } else {
-        _rowCount = 6;
-    }
-
-    _rowHeight = (self.frame.size.height - self.zcalendarStyle.monthRowHeight) / _rowCount;
-    
-    [_dateArray removeAllObjects];
+    [self setNeedsDisplay];
 }
 
 - (void)drawRect:(CGRect)rect {
@@ -139,8 +162,6 @@
         }
     }
     
-    
-    
     CGFloat textHigeht = 0;
     
     for (ZCalendarModel *zcalendarModel in _dateArray) {
@@ -148,7 +169,17 @@
         if (_zcalendarStyle.dateTextStyle) {
             CGSize size = [zcalendarModel.dateText sizeWithAttributes:_zcalendarStyle.dateTextStyle];
             textHigeht = size.height;
-            [self drawText:CGPointMake(zcalendarModel.frame.origin.x + (_columnWidth - size.width) / 2, zcalendarModel.frame.origin.y + _rowHeight - size.height - 4)
+            
+            CGFloat textY = zcalendarModel.frame.origin.y;
+            if (_caledarType == CalendarTypeWeek) {
+                
+                textY = textY +  ((_rowHeight / 2) - size.height) / 2;
+                
+            } else {
+                textY = textY + _rowHeight - size.height - 4;
+            }
+            
+            [self drawText:CGPointMake(zcalendarModel.frame.origin.x + (_columnWidth - size.width) / 2, textY)
                       text:zcalendarModel.dateText fontSize:_zcalendarStyle.dateTextStyle];
         }
         
@@ -159,20 +190,24 @@
        
     }
     
-    NSString *text = [NSString stringWithFormat:@"%ld月", (long)[_currentDateComponents month]];
-    CGFloat drawMonthX = 0;
-    if (_caledarType == CalendarTypeMonth) {
-        drawMonthX = _interval * _columnWidth;
-        if (_interval == 0) {
-            drawMonthX = drawMonthX + 10;
+    if (_zcalendarStyle.monthRowHeight > 0) {
+        
+        NSString *text = [NSString stringWithFormat:@"%ld月", (long)[_currentDateComponents month]];
+        CGFloat drawMonthX = 0;
+        if (_caledarType == CalendarTypeMonth) {
+            drawMonthX = _interval * _columnWidth;
+            if (_interval == 0) {
+                drawMonthX = drawMonthX + 10;
+            }
+        }
+        [self drawText:CGPointMake(drawMonthX, 0) text:text fontSize:_zcalendarStyle.monthTextStyle];
+        CGSize size = [text sizeWithAttributes:_zcalendarStyle.dateTextStyle];
+        if (_zcalendarStyle.cutLineImage) {
+            
+            [self drawCutLine:CGPointMake(_interval * _columnWidth, size.height + 5)];
         }
     }
-    [self drawText:CGPointMake(drawMonthX, 0) text:text fontSize:_zcalendarStyle.monthTextStyle];
-    CGSize size = [text sizeWithAttributes:_zcalendarStyle.dateTextStyle];
-    if (_zcalendarStyle.cutLineImage) {
-        
-        [self drawCutLine:CGPointMake(_interval * _columnWidth, size.height + 5)];
-    }
+    
     
     
 }
@@ -225,11 +260,15 @@
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     
-    ZCalendarModel *zcalendarModel =[self getDateByPoint:[[touches anyObject] locationInView:self]];
-    if (zcalendarModel) {
-        // 发送点击通知
-        [[NSNotificationCenter defaultCenter] postNotificationName:kZCalendarCellViewClick object:zcalendarModel];
+    if (_caledarType != CalendarTypeYear) {
+        
+        ZCalendarModel *zcalendarModel =[self getDateByPoint:[[touches anyObject] locationInView:self]];
+        if (zcalendarModel) {
+            // 发送点击通知
+            [[NSNotificationCenter defaultCenter] postNotificationName:kZCalendarCellViewClick object:zcalendarModel];
+        }
     }
+    
     
 }
 @end
