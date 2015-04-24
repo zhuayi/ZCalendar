@@ -213,7 +213,7 @@
         cell.dataArray = [_dataArray objectForKey:[NSString stringWithFormat:@"%ld-%ld", components.year, components.month]];
     }
     
-//    [cell setNeedsDisplay];
+    [cell setNeedsDisplay];
     cell.backgroundColor = [UIColor clearColor];
     return cell;
 }

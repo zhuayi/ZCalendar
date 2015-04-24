@@ -38,10 +38,23 @@
     
     NSDictionary *data = @{ @"2015-4-15": @"50", @"2015-4-16": @"150" , @"2015-4-17": @"150" };
     [monthCalendarView.dataArray setValue:data forKey:@"2015-4"];
+    [self.view addSubview:monthCalendarView];
+   
+    MonthCalendarView *monthCalendarView2 = [[MonthCalendarView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 200 - 80, self.view.frame.size.width, 200)];
+    monthCalendarView2.zCalendarDelegate = self;
+    
+    [monthCalendarView2.dataArray setValue:data forKey:@"2015-4"];
+    [self.view addSubview:monthCalendarView2];
+    
+    YearCalendarView *monthCalendarView3 = [[YearCalendarView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 200 - 50 - 200 - 30 - 30, self.view.frame.size.width, 200)];
+    monthCalendarView3.zCalendarDelegate = self;
+    
+    [monthCalendarView3.dataArray setValue:data forKey:@"2015-4"];
+    [self.view addSubview:monthCalendarView3];
+    
     
     
     self.view.backgroundColor = [UIColor colorWithRed:39./255. green:158.0 / 255.0 blue:133.0 / 255.0 alpha:1.0];
-    [self.view addSubview:monthCalendarView];
 }
 
 #pragma mark - delegate

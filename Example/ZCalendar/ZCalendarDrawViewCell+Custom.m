@@ -36,7 +36,6 @@
         
         if ([strings intValue] > 0) {
             zCalendarmodel.rectangleColor = [UIColor blackColor];
-            
         }
     }
     
@@ -50,8 +49,8 @@
     {
         frame.size.height = zCalendarmodel.frame.size.height - 14 - 4;
         zCalendarmodel.frame = frame;
-        textY = zCalendarmodel.frame.origin.y + 0;
-        
+        textY = zCalendarmodel.frame.origin.y;
+        rectangleHeight = self.rowHeight / 2;
         // 设置日期文字颜色
         textStyle = @{
                     NSFontAttributeName: [UIFont systemFontOfSize:14.0],

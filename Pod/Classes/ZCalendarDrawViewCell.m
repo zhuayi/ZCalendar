@@ -137,7 +137,6 @@
         
         _rowHeight = (self.frame.size.height - self.zcalendarStyle.monthRowHeight) / _rowCount;
     }
-    [self setNeedsDisplay];
 }
 
 - (void)drawRect:(CGRect)rect {
