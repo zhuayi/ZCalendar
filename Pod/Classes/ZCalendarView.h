@@ -1,5 +1,5 @@
 //
-//  ZCalendarView.h
+//  ZCalendarScroolView.h
 //  ZCalendar
 //
 //  Created by zhuayi on 15/4/15.
@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "ZCalendar.h"
 
-@interface ZCalendarView : UIView
+
+@interface ZCalendarView : UICollectionView<UICollectionViewDelegate, UICollectionViewDataSource>
+
 
 - (instancetype)initWithFrame:(CGRect)frame headetViewClassName:(NSString *)headetViewClassName scrollDirection:(UICollectionViewScrollDirection)scrollDirection;
 
@@ -18,27 +20,35 @@
  */
 @property(nonatomic, strong) ZCalendarStyle *zcalendarStyle;
 
+
+// ZCalendarCollectionViewDelegate
+@property(nonatomic, weak) id<ZCalendarCollectionViewDelegate>collectionViewDelegate;
+
+@property(nonatomic, strong)UICollectionViewFlowLayout *layout;
+
+
 /**
- *  代理
+ *  开始时间
  */
-@property(nonatomic, weak) id<ZCalendarDelegate, ZCalendarCollectionViewDelegate> delegate;
-
-
-@property(nonatomic, strong) ZCalendarCollectionView *zcalendarCollectionView;
-
+@property(nonatomic, assign) NSInteger starYear;
 
 
 /**
- *  视图类型,年/月/周
+ *  结束时间
+ */
+@property(nonatomic, assign) NSInteger endYear;
+
+
+/**
+ *  视图, 年,月,周
  */
 @property(nonatomic, assign) CalendarType caledarType;
 
-
 /**
- *  设置日期区间
+ *  设置日历区间
  *
- *  @param starDate 开始事件
- *  @param endData  结束事件
+ *  @param starDate 开始时间
+ *  @param endData  结束时间
  */
 - (void)setYearInterval:(NSInteger)starDate endDate:(NSInteger)endData;
 
@@ -47,5 +57,6 @@
  *  数据层
  */
 @property(nonatomic, strong)NSMutableDictionary *dataArray;
+
 
 @end

@@ -29,9 +29,12 @@
     [self.view addSubview:titleView];
     
     
+    UIView *header = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 50 - 36, self.view.frame.size.width, 36)];
+    header.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"MonthHeader"]];
+    [self.view addSubview:header];
     
-    WeekCalendarView *monthCalendarView = [[WeekCalendarView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 100, self.view.frame.size.width, 100)];
-    monthCalendarView.delegate = self;
+    WeekCalendarView *monthCalendarView = [[WeekCalendarView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 50, self.view.frame.size.width, 50)];
+//    monthCalendarView.delegate = self;
     
     NSDictionary *data = @{ @"2015-4-15": @"50", @"2015-4-16": @"150" , @"2015-4-17": @"150" };
     [monthCalendarView.dataArray setValue:data forKey:@"2015-4"];

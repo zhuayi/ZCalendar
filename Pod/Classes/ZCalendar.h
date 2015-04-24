@@ -23,7 +23,7 @@ typedef NS_ENUM(NSInteger, CalendarType) {
 #import "ZCalendarModel.h"
 #import "ZCalendarDelegate.h"
 
-#import "ZCalendarCollectionView.h"
+#import "ZCalendarView.h"
 #import "NSDate+ZCalendar.h"
 #import "NSString+ZCalendar.h"
 

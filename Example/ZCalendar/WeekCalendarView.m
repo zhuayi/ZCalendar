@@ -11,16 +11,12 @@
 @implementation WeekCalendarView
 
 - (instancetype)initWithFrame:(CGRect)frame {
-    
-    self.zcalendarStyle.header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, 36)];
-    self.zcalendarStyle.header.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"MonthHeader"]];
-    
     self = [super initWithFrame:frame headetViewClassName:nil scrollDirection:UICollectionViewScrollDirectionHorizontal];
     if (self) {
         
-        self.zcalendarStyle.cellSize = CGSizeMake(frame.size.width, 50);
+        self.zcalendarStyle.cellSize = frame.size;
         
-        self.zcalendarCollectionView.pagingEnabled = YES;
+        self.pagingEnabled = YES;
              
         NSDateComponents *today = [[NSDate date] getDateComponentsByDate];
         
@@ -40,19 +36,7 @@
                                               NSFontAttributeName: [UIFont systemFontOfSize:12.0],
                                               NSForegroundColorAttributeName: [UIColor whiteColor]
                                               };
-        
-        
-//        /**
-//         *  设置月份文字颜色
-//         */
-//        //        self.zcalendarStyle.monthTextColor = [UIColor whiteColor];
-//        self.zcalendarStyle.monthTextStyle = @{
-//                                               NSFontAttributeName: [UIFont systemFontOfSize:14.0],
-//                                               NSForegroundColorAttributeName: [UIColor whiteColor]
-//                                               };
-        
-//        self.zcalendarStyle.cutLineImage = [UIImage imageNamed:@"cut-off-rule"];
-        
+
         // 设置日历显示区间, 要放在最下边
         [self setYearInterval:2015 endDate:[today year]];
         
