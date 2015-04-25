@@ -78,16 +78,17 @@
                                           rectangleSize.width,
                                           rectangleSize.height);
         
-        zcalendarModel.dateComponents = [[_firstDate getDateByDaysAgo:i] getDateComponentsByDate];
+//        zcalendarModel.dateComponents = [[_firstDate getDateByDaysAgo:i] getDateComponentsByDate];
         
-        zcalendarModel.dateText = [NSString stringWithFormat:@"%ld", zcalendarModel.dateComponents.day];
+        zcalendarModel.date = [_firstDate getDateByDaysAgo:i];
+        zcalendarModel.dateText = [NSString stringWithFormat:@"%ld", [zcalendarModel.date getDateComponentsByDate].day];
         
-    
-        NSString *key = [NSString stringWithFormat:@"%ld-%ld-%ld", zcalendarModel.dateComponents.year, zcalendarModel.dateComponents.month, zcalendarModel.dateComponents.day];
-        if ([_dataArray objectForKey:key]) {
-            
-            zcalendarModel.data = [_dataArray objectForKey:key];
-        }
+//    
+//        NSString *key = [NSString stringWithFormat:@"%ld-%ld-%ld", zcalendarModel.dateComponents.year, zcalendarModel.dateComponents.month, zcalendarModel.dateComponents.day];
+//        if ([_dataArray objectForKey:key]) {
+//            
+//            zcalendarModel.data = [_dataArray objectForKey:key];
+//        }
         
         [_dateArray addObject:zcalendarModel];
     }

@@ -30,14 +30,22 @@
     }
     
     NSString *strings;
-    if (zCalendarmodel.data) {
+    if (self.dataArray) {
         
-        strings = [NSString stringWithFormat:@"%@",zCalendarmodel.data];
+        NSString *dateText = [zCalendarmodel.date dateTostring];
         
-        if ([strings intValue] > 0) {
-            zCalendarmodel.rectangleColor = [UIColor blackColor];
+        if ([self.dataArray objectForKey:dateText]) {
             
+            strings = [NSString stringWithFormat:@"%@", [[self.dataArray objectForKey:dateText] objectForKey:@"aqi"]];
+            zCalendarmodel.rectangleColor = [UIColor blackColor];
         }
+////        zCalendarmodel.dateComponents
+//        strings = [NSString stringWithFormat:@"%@",zCalendarmodel.data];
+//        
+//        if ([strings intValue] > 0) {
+//            zCalendarmodel.rectangleColor = [UIColor blackColor];
+//            
+//        }
     }
     
     [zCalendarmodel.rectangleColor setFill];

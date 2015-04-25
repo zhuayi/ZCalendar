@@ -33,7 +33,7 @@
 /**
  *  事件数据数组
  */
-@property(nonatomic, strong) NSMutableDictionary *dataArray;
+@property(nonatomic, weak) NSMutableDictionary *dataArray;
 
 
 @property(nonatomic, strong) NSDate *firstDate; 

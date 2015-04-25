@@ -201,6 +201,7 @@
     cell.caledarType = _caledarType;
     cell.zcalendarStyle = _zcalendarStyle;
 //
+    cell.dataArray = _dataArray;
     
     if (_caledarType == CalendarTypeWeek) {
         cell.firstDate = _dateArray[indexPath.row];
@@ -208,10 +209,11 @@
         cell.firstDate = _dateArray[indexPath.section][indexPath.row];
     }
 
-    NSDateComponents *components = [cell.firstDate getDateComponentsByDate];
-    if ([_dataArray objectForKey:[NSString stringWithFormat:@"%ld-%ld", components.year, components.month]]) {
-        cell.dataArray = [_dataArray objectForKey:[NSString stringWithFormat:@"%ld-%ld", components.year, components.month]];
-    }
+//    NSDateComponents *components = [cell.firstDate getDateComponentsByDate];
+//    if ([_dataArray objectForKey:[NSString stringWithFormat:@"%ld-%ld", components.year, components.month]]) {
+//        cell.dataArray = [_dataArray objectForKey:[NSString stringWithFormat:@"%ld-%ld", components.year, components.month]];
+//    }
+    
     
 //    [cell setNeedsDisplay];
     cell.backgroundColor = [UIColor clearColor];
