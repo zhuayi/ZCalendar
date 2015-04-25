@@ -10,7 +10,6 @@
 #import "ZCalendarModel.h"
 #import "NSDate+ZCalendar.h"
 #import "NSString+ZCalendar.h"
-#import "ZCalendarDrawViewCell+Custom.h"
 
 @implementation ZCalendarDrawViewCell {
 
@@ -138,7 +137,6 @@
         
         _rowHeight = (self.frame.size.height - self.zcalendarStyle.monthRowHeight) / _rowCount;
     }
-    [self setNeedsDisplay];
 }
 
 - (void)drawRect:(CGRect)rect {
@@ -186,7 +184,8 @@
         
         if ([self respondsToSelector:@selector(drawRectangle:)]) {
             
-            [self drawRectangle:zcalendarModel];
+            [self performSelector:@selector(drawRectangle:) withObject:zcalendarModel];
+//            [self drawRectangle:zcalendarModel];
         }
        
     }

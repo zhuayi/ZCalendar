@@ -52,7 +52,6 @@
     
     
     self.view.backgroundColor = [UIColor colorWithRed:39./255. green:158.0 / 255.0 blue:133.0 / 255.0 alpha:1.0];
-    [self.view addSubview:monthCalendarView];
 }
 
 #pragma mark - delegate

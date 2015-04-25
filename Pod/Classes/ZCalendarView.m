@@ -215,7 +215,7 @@
 //    }
     
     
-//    [cell setNeedsDisplay];
+    [cell setNeedsDisplay];
     cell.backgroundColor = [UIColor clearColor];
     return cell;
 }
