@@ -259,7 +259,7 @@
     } else {
         
         NSDate *statDate = [[NSString stringWithFormat:@"%ld-01-01", (long)_starYear] dateFromString];
-        CGFloat weekDay = _firstComponents.weekday - 1 + ceil(([date timeIntervalSince1970] - [statDate timeIntervalSince1970]) / 86400);
+        CGFloat weekDay = _firstComponents.weekday - 1 + floor(([date timeIntervalSince1970] - [statDate timeIntervalSince1970]) / 86400);
         
         [self scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:weekDay / 7 inSection:0]
                      atScrollPosition:UICollectionViewScrollPositionLeft
