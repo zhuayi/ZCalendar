@@ -209,12 +209,6 @@
         cell.firstDate = _dateArray[indexPath.section][indexPath.row];
     }
 
-//    NSDateComponents *components = [cell.firstDate getDateComponentsByDate];
-//    if ([_dataArray objectForKey:[NSString stringWithFormat:@"%ld-%ld", components.year, components.month]]) {
-//        cell.dataArray = [_dataArray objectForKey:[NSString stringWithFormat:@"%ld-%ld", components.year, components.month]];
-//    }
-    
-    
     [cell setNeedsDisplay];
     cell.backgroundColor = [UIColor clearColor];
     return cell;

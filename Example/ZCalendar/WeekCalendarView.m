@@ -24,7 +24,7 @@
         self.zcalendarStyle.selectDateColor = [UIColor redColor];
         
         // 设置默认日期颜色
-        self.zcalendarStyle.normalDateColoe = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.1];
+        self.zcalendarStyle.normalDateColoe = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.2];
         
         // 设置显示的年视图
         self.caledarType = CalendarTypeWeek;

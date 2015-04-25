@@ -77,10 +77,9 @@
                                           rectangleSize.width,
                                           rectangleSize.height);
         
-//        zcalendarModel.dateComponents = [[_firstDate getDateByDaysAgo:i] getDateComponentsByDate];
-        
         zcalendarModel.date = [_firstDate getDateByDaysAgo:i];
-        zcalendarModel.dateText = [NSString stringWithFormat:@"%ld", [zcalendarModel.date getDateComponentsByDate].day];
+        zcalendarModel.dateComponents = [zcalendarModel.date getDateComponentsByDate];
+        zcalendarModel.dateText = [NSString stringWithFormat:@"%ld", zcalendarModel.dateComponents.day];
         
 //    
 //        NSString *key = [NSString stringWithFormat:@"%ld-%ld-%ld", zcalendarModel.dateComponents.year, zcalendarModel.dateComponents.month, zcalendarModel.dateComponents.day];
@@ -137,6 +136,7 @@
         
         _rowHeight = (self.frame.size.height - self.zcalendarStyle.monthRowHeight) / _rowCount;
     }
+    
 }
 
 - (void)drawRect:(CGRect)rect {

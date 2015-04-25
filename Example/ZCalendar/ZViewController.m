@@ -28,26 +28,28 @@
     titleView.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:titleView];
     
-    
-    UIView *header = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 50 - 36, self.view.frame.size.width, 36)];
-    header.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"MonthHeader"]];
-    [self.view addSubview:header];
-    
-    WeekCalendarView *monthCalendarView = [[WeekCalendarView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 50, self.view.frame.size.width, 50)];
-    monthCalendarView.zCalendarDelegate = self;
-    
     NSString *jsonString = @"{\"error\":0,\"data\":{\"2015-03-14\":{\"aqi\":132},\"2015-03-15\":{\"aqi\":137},\"2015-04-20\":{\"aqi\":90},\"2015-04-21\":{\"aqi\":91},\"2015-04-22\":{\"aqi\":85},\"2015-04-23\":{\"aqi\":80},\"2015-04-24\":{\"aqi\":107}}}";
     NSData *jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
     NSDictionary *data2 = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableLeaves error:nil];
-//    for (NSString *key in [data2 objectForKey:@"data"]) {
-//        
-//        NSLog(@"key : %@", [key dateFromString]);
-//        
-////        data 
-//    }
     
-//    NSDictionary *data = @{ @"2015-4-15": @"50", @"2015-4-16": @"150" , @"2015-4-17": @"150" };
-//    [monthCalendarView.dataArray setValue:data forKey:@"2015-4"];
+//    UIView *header = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 50 - 36, self.view.frame.size.width, 36)];
+//    header.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"MonthHeader"]];
+//    [self.view addSubview:header];
+    
+    WeekCalendarView *weekCalendarView = [[WeekCalendarView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 50, self.view.frame.size.width, 50)];
+    weekCalendarView.zCalendarDelegate = self;
+    [self.view addSubview:weekCalendarView];
+    weekCalendarView.dataArray = [data2 objectForKey:@"data"];
+    
+    
+    YearCalendarView *YeraCalendarView = [[YearCalendarView alloc] initWithFrame:CGRectMake(0, 64, self.view.frame.size.width, 200)];
+    YeraCalendarView.zCalendarDelegate = self;
+    [self.view addSubview:YeraCalendarView];
+    YeraCalendarView.dataArray = [data2 objectForKey:@"data"];
+    
+    MonthCalendarView *monthCalendarView = [[MonthCalendarView alloc] initWithFrame:CGRectMake(0, 264, self.view.frame.size.width, 200)];
+    monthCalendarView.zCalendarDelegate = self;
+    [self.view addSubview:monthCalendarView];
     monthCalendarView.dataArray = [data2 objectForKey:@"data"];
     
     
@@ -57,7 +59,7 @@
 #pragma mark - delegate
 - (void)didClickDate:(ZCalendarModel *)zcalendarModel {
     
-    titleView.text = [NSString stringWithFormat:@"%ld - %ld - %ld", zcalendarModel.dateComponents.year, zcalendarModel.dateComponents.month, zcalendarModel.dateComponents.day];
+    titleView.text = [zcalendarModel.date dateTostring];
 //    NSLog(@"didClickDate : %@", zcalendarModel.dateComponents);
 }
 
