@@ -38,6 +38,11 @@
  */
 @property(nonatomic, assign) NSInteger endYear;
 
+/**
+ *  选中的日期
+ */
+@property(nonatomic, strong) NSDate *selectDate;
+
 
 /**
  *  视图, 年,月,周

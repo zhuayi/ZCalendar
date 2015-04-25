@@ -22,10 +22,9 @@
 @property(nonatomic, strong) UIColor *rectangleColor;
 
 /**
- *  日期
+ *  日期文字
  */
 @property(nonatomic, strong) NSString *dateText;
-
 
 /**
  *  日期
@@ -35,5 +34,12 @@
 
 @property(nonatomic, strong) NSDate *date;
 
-
+/**
+ *  星期转换汉子
+ *
+ *  @param weekDay
+ *
+ *  @return
+ */
++ (NSString *)getWeekStringByWeekDay:(NSInteger)weekDay;
 @end

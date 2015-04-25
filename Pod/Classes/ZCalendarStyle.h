@@ -38,6 +38,11 @@
  */
 @property(nonatomic, strong) NSDictionary *dateTextStyle;
 
+/**
+ *  日期选中文字样式
+ */
+@property(nonatomic, strong) NSDictionary *dateTextSelectStyle;
+
 
 /**
  *  选中日期颜色

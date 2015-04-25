@@ -38,6 +38,7 @@
         
         self.zcalendarStyle.sectionHeight = 20;
         
+        self.selectDate = [NSDate date];
         
         /**
          *  设置月份文字颜色

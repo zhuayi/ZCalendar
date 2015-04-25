@@ -39,6 +39,10 @@
 
 @property(nonatomic, strong) NSDate *firstDate; 
 
+/**
+ *  选中的日期
+ */
+@property(nonatomic, weak) NSDate *selectDate;
 
 /**
  *  日期宽度

@@ -106,12 +106,18 @@
                 [_dateArray addObject:daysArray[i*7]];
         }
         
-//        [daysArray removeAllObjects];
+        [daysArray removeAllObjects];
     }
+    
+}
+
+- (void)setSelectDate:(NSDate *)selectDate {
+    
+    _selectDate = selectDate;
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         
-        [self scrollToItemAtDate:[NSDate date]];
+        [self scrollToItemAtDate:_selectDate];
         
     });
 }
@@ -184,13 +190,15 @@
     cell.delegate = _zCalendarDelegate;
     cell.dataArray = _dataArray;
     
+    
     if (_caledarType == CalendarTypeWeek) {
         cell.firstDate = _dateArray[indexPath.row];
     } else {
         cell.firstDate = _dateArray[indexPath.section][indexPath.row];
     }
+    
+    cell.selectDate = _selectDate;
 
-    [cell setNeedsDisplay];
     cell.backgroundColor = [UIColor clearColor];
     return cell;
 }
@@ -248,9 +256,9 @@
 
 
 
-
 #pragma mark - 
 - (void)scrollToItemAtDate:(NSDate *)date {
+    
     if (_caledarType != CalendarTypeWeek) {
         NSDateComponents *components =[date getDateComponentsByDate];
         [self scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:(components.month - 1) inSection:(components.year - _starYear)]

@@ -34,8 +34,16 @@
         // 设置日期文字颜色
         self.zcalendarStyle.dateTextStyle = @{
                                               NSFontAttributeName: [UIFont systemFontOfSize:12.0],
-                                              NSForegroundColorAttributeName: [UIColor whiteColor]
+                                              NSForegroundColorAttributeName: [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.4]
                                               };
+        
+        // 设置日期文字颜色
+        self.zcalendarStyle.dateTextSelectStyle = @{
+                                                    NSFontAttributeName: [UIFont systemFontOfSize:12.0],
+                                                    NSForegroundColorAttributeName: [UIColor whiteColor]
+                                                    };
+        
+        self.selectDate = [NSDate date];
 
         // 设置日历显示区间, 要放在最下边
         [self setYearInterval:2015 endDate:[today year]];

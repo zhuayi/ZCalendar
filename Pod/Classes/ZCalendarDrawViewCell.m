@@ -23,6 +23,8 @@
     NSMutableArray *_dateArray;
     
     UIImageView *_cutOffRule;
+    
+    NSDateComponents *_selectDateComponents;
  
 }
 
@@ -48,13 +50,10 @@
 }
 
 
-- (void)setNeedsDisplay {
-    
-    
-    [self getDateArrayByMonthYear];
-    
-    [super setNeedsDisplay];
-}
+//- (void)setNeedsDisplay {
+//
+//    [super setNeedsDisplay];
+//}
 
 
 // 获取月,年视图数据
@@ -96,7 +95,7 @@
     _firstDate = firstDate;
     
     _currentDateComponents = [firstDate getDateComponentsByDate];
-    
+
     if (_caledarType == CalendarTypeWeek) {
         
         _rowCount = 1;
@@ -137,6 +136,7 @@
         _rowHeight = (self.frame.size.height - self.zcalendarStyle.monthRowHeight) / _rowCount;
     }
     
+    [self getDateArrayByMonthYear];
 }
 
 - (void)drawRect:(CGRect)rect {
@@ -177,15 +177,22 @@
             } else {
                 textY = textY + _rowHeight - size.height - 4;
             }
-            
-            [self drawText:CGPointMake(zcalendarModel.frame.origin.x + (_columnWidth - size.width) / 2, textY)
-                      text:zcalendarModel.dateText fontSize:_zcalendarStyle.dateTextStyle];
+
+            if (zcalendarModel.dateComponents.year == _selectDateComponents.year
+                && zcalendarModel.dateComponents.month == _selectDateComponents.month
+                && zcalendarModel.dateComponents.day == _selectDateComponents.day) {
+                
+                [self drawText:CGPointMake(zcalendarModel.frame.origin.x + (_columnWidth - size.width) / 2, textY)
+                          text:zcalendarModel.dateText fontSize:_zcalendarStyle.dateTextSelectStyle];
+            } else {
+                [self drawText:CGPointMake(zcalendarModel.frame.origin.x + (_columnWidth - size.width) / 2, textY)
+                          text:zcalendarModel.dateText fontSize:_zcalendarStyle.dateTextStyle];
+            }
         }
         
         if ([self respondsToSelector:@selector(drawRectangle:)]) {
             
             [self performSelector:@selector(drawRectangle:) withObject:zcalendarModel];
-//            [self drawRectangle:zcalendarModel];
         }
        
     }
@@ -240,7 +247,11 @@
     [text drawAtPoint:point withAttributes:fontStyle];
 }
 
-
+- (void)setSelectDate:(NSDate *)selectDate {
+    _selectDateComponents = [selectDate getDateComponentsByDate];
+    _selectDate = selectDate;
+    [self setNeedsDisplay];
+}
 
 /**
  *  根据坐标获取日期
@@ -248,13 +259,26 @@
  *  @param point
  */
 - (ZCalendarModel *)getDateByPoint:(CGPoint)point {
-    for (ZCalendarModel *zcalendarModel in _dateArray) {
-        if (CGRectContainsPoint(zcalendarModel.frame,point)) {
-            return zcalendarModel;
-            break;
+    
+    @try {
+        
+        for (ZCalendarModel *zcalendarModel in _dateArray) {
+            if (CGRectContainsPoint(zcalendarModel.frame,point)) {
+                if (zcalendarModel.date) {
+                    [self setSelectDate:zcalendarModel.date];
+                    NSLog(@"zcalendarModel.date : %@", zcalendarModel.date);
+                }
+               
+                return zcalendarModel;
+                break;
+            }
         }
+        
     }
-    return [[ZCalendarModel alloc] init];
+    @catch (NSException *exception) {
+        
+    }
+    return nil;
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
