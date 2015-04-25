@@ -13,9 +13,11 @@
 @implementation ZCalendarView {
     NSMutableArray *_dateArray;
     NSInteger _intervalMonth;
-    NSDateComponents *_today;
     
     NSString *_headetViewClassName;
+    
+    // 初始日期
+    NSDateComponents *_firstComponents;
 }
 
 
@@ -53,7 +55,7 @@
     _starYear = starDate;
     _endYear = endData;
     
-    _today = [[NSDate date] getDateComponentsByDate];
+//    _today = [[NSDate date] getDateComponentsByDate];
     _intervalMonth = (endData - starDate) + 1;
    
     NSMutableArray *daysArray = [[NSMutableArray alloc] initWithCapacity:0];
@@ -83,8 +85,8 @@
     
         // 取第一个日期,判断是周几
         NSDate *firstDate = [daysArray firstObject];
-        NSDateComponents *firstComponents = [firstDate getDateComponentsByDate];
-        for (int i = 1; i< firstComponents.weekday; i++) {
+        _firstComponents = [firstDate getDateComponentsByDate];
+        for (int i = 1; i< _firstComponents.weekday; i++) {
             
             NSDate *date = [firstDate getDateByDaysAgo: 0 - i];
             [daysArray insertObject:date atIndex:0];
@@ -104,23 +106,12 @@
                 [_dateArray addObject:daysArray[i*7]];
         }
         
-        [daysArray removeAllObjects];
+//        [daysArray removeAllObjects];
     }
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         
-        if (_caledarType != CalendarTypeWeek) {
-                    [self scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:([_today month] - 1) inSection:([_today year] - _starYear)]
-                                 atScrollPosition:UICollectionViewScrollPositionTop
-                                         animated:YES];
-        } else {
-            
-        }
-
-//        
-//        [self scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:([_today month] - 1) inSection:([_today year] - _starYear)]
-//                     atScrollPosition:UICollectionViewScrollPositionTop
-//                             animated:YES];
+        [self scrollToItemAtDate:[NSDate date]];
         
     });
 }
@@ -152,19 +143,9 @@
     _zCalendarDelegate = zCalendarDelegate;
     
     // 接受通知
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(zCalendarCellViewClic:)
-                                                 name:kZCalendarCellViewClick object:nil];
-}
-
-#pragma mark -- collectionViewDelegate
-
-- (void)zCalendarCellViewClic:(NSNotification *)sender {
-    
-    if (sender.object) {
-        [_zCalendarDelegate didClickDate:sender.object];
-    }
-    
+//    [[NSNotificationCenter defaultCenter] addObserver:self
+//                                             selector:@selector(zCalendarCellViewClic:)
+//                                                 name:kZCalendarCellViewClick object:nil];
 }
 
 
@@ -200,7 +181,7 @@
     ZCalendarDrawViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
     cell.caledarType = _caledarType;
     cell.zcalendarStyle = _zcalendarStyle;
-//
+    cell.delegate = _zCalendarDelegate;
     cell.dataArray = _dataArray;
     
     if (_caledarType == CalendarTypeWeek) {
@@ -265,11 +246,30 @@
     return 0;
 }
 
+
+
+
+#pragma mark - 
+- (void)scrollToItemAtDate:(NSDate *)date {
+    if (_caledarType != CalendarTypeWeek) {
+        NSDateComponents *components =[date getDateComponentsByDate];
+        [self scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:(components.month - 1) inSection:(components.year - _starYear)]
+                     atScrollPosition:UICollectionViewScrollPositionTop
+                             animated:YES];
+    } else {
+        
+        NSDate *statDate = [[NSString stringWithFormat:@"%ld-01-01", (long)_starYear] dateFromString];
+        CGFloat weekDay = _firstComponents.weekday - 1 + ceil(([date timeIntervalSince1970] - [statDate timeIntervalSince1970]) / 86400);
+        
+        [self scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:weekDay / 7 inSection:0]
+                     atScrollPosition:UICollectionViewScrollPositionLeft
+                             animated:YES];
+    }
+}
+
 - (void)dealloc {
     
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     NSLog(@"%s", __func__);
 }
-
-
 @end

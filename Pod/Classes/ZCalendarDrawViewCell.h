@@ -9,10 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "ZCalendar.h"
 
-
-@interface ZCalendarDrawViewCell : UICollectionViewCell
+@interface ZCalendarDrawViewCell : UICollectionViewCell<ZCalendarDelegate>
 
 @property(nonatomic) CGContextRef context;
+
+@property(nonatomic, weak) id<ZCalendarDelegate> delegate;
 
 /**
  *  当前日期

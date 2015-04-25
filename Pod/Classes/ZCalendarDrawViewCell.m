@@ -77,7 +77,7 @@
                                           rectangleSize.width,
                                           rectangleSize.height);
         
-        zcalendarModel.date = [_firstDate getDateByDaysAgo:i];
+        zcalendarModel.date = [_firstDate getDateByDaysAgo:(i - _interval)];
         zcalendarModel.dateComponents = [zcalendarModel.date getDateComponentsByDate];
         zcalendarModel.dateText = [NSString stringWithFormat:@"%ld", zcalendarModel.dateComponents.day];
         
@@ -254,20 +254,17 @@
             break;
         }
     }
-    return nil;
+    return [[ZCalendarModel alloc] init];
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+   
+    ZCalendarModel *zcalendarModel = [self getDateByPoint:[[touches anyObject] locationInView:self]];
+    [_delegate didClickDate:self zCalendarModel:zcalendarModel];
     
-    if (_caledarType != CalendarTypeYear) {
-        
-        ZCalendarModel *zcalendarModel =[self getDateByPoint:[[touches anyObject] locationInView:self]];
-        if (zcalendarModel) {
-            // 发送点击通知
-            [[NSNotificationCenter defaultCenter] postNotificationName:kZCalendarCellViewClick object:zcalendarModel];
-        }
-    }
-    
-    
+}
+
+- (void)dealloc {
+    NSLog(@"%s", __func__);
 }
 @end

@@ -58,5 +58,10 @@
  */
 @property(nonatomic, strong)NSMutableDictionary *dataArray;
 
-
+/**
+ *  滚动到对应日期
+ *
+ *  @param date
+ */
+- (void)scrollToItemAtDate:(NSDate *)date;
 @end

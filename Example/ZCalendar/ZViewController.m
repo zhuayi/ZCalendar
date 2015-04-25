@@ -17,6 +17,9 @@
 
 @implementation ZViewController {
     UILabel *titleView;
+    WeekCalendarView *weekCalendarView;
+    YearCalendarView *YeraCalendarView;
+    MonthCalendarView *monthCalendarView;
 }
 
 - (void)viewDidLoad {
@@ -36,18 +39,18 @@
 //    header.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"MonthHeader"]];
 //    [self.view addSubview:header];
     
-    WeekCalendarView *weekCalendarView = [[WeekCalendarView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 50, self.view.frame.size.width, 50)];
+    weekCalendarView = [[WeekCalendarView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 50, self.view.frame.size.width, 50)];
     weekCalendarView.zCalendarDelegate = self;
     [self.view addSubview:weekCalendarView];
     weekCalendarView.dataArray = [data2 objectForKey:@"data"];
     
     
-    YearCalendarView *YeraCalendarView = [[YearCalendarView alloc] initWithFrame:CGRectMake(0, 64, self.view.frame.size.width, 200)];
+    YeraCalendarView = [[YearCalendarView alloc] initWithFrame:CGRectMake(0, 64, self.view.frame.size.width, 200)];
     YeraCalendarView.zCalendarDelegate = self;
     [self.view addSubview:YeraCalendarView];
     YeraCalendarView.dataArray = [data2 objectForKey:@"data"];
     
-    MonthCalendarView *monthCalendarView = [[MonthCalendarView alloc] initWithFrame:CGRectMake(0, 264, self.view.frame.size.width, 200)];
+    monthCalendarView = [[MonthCalendarView alloc] initWithFrame:CGRectMake(0, 264, self.view.frame.size.width, 200)];
     monthCalendarView.zCalendarDelegate = self;
     [self.view addSubview:monthCalendarView];
     monthCalendarView.dataArray = [data2 objectForKey:@"data"];
@@ -57,10 +60,26 @@
 }
 
 #pragma mark - delegate
-- (void)didClickDate:(ZCalendarModel *)zcalendarModel {
+- (void)didClickDate:(ZCalendarDrawViewCell *)zCalendarDrawViewCell zCalendarModel:(ZCalendarModel *)zCalendarModel {
     
-    titleView.text = [zcalendarModel.date dateTostring];
-//    NSLog(@"didClickDate : %@", zcalendarModel.dateComponents);
+//    titleView.text = [zcalendarModel.date dateTostring];
+    if (zCalendarDrawViewCell.caledarType == CalendarTypeYear) {
+        
+        NSLog(@"didClickDate : %@, %ld", zCalendarDrawViewCell, zCalendarDrawViewCell.currentDateComponents.year);
+        
+        [monthCalendarView scrollToItemAtDate:zCalendarDrawViewCell.firstDate];
+    }
+    if (zCalendarDrawViewCell.caledarType == CalendarTypeMonth) {
+        
+        NSLog(@"didClickDate : %@, %ld", zCalendarDrawViewCell, zCalendarDrawViewCell.currentDateComponents.year);
+        
+        if (zCalendarModel.date) {
+            [weekCalendarView scrollToItemAtDate:zCalendarModel.date];
+        }
+        
+    }
+    
+    
 }
 
 - (void)didShowLeftTopCell:(ZCalendarDrawViewCell *)zcalendarDrawViewCell {
