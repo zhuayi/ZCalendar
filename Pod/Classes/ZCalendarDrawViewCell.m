@@ -10,7 +10,7 @@
 #import "ZCalendarModel.h"
 #import "NSDate+ZCalendar.h"
 #import "NSString+ZCalendar.h"
-
+#import "UIView+ZQuartz.h"
 @implementation ZCalendarDrawViewCell {
 
     CGFloat _dayCount;
@@ -34,26 +34,16 @@
     if (self) {
         _columnWidth = self.frame.size.width / 7;
         _dateArray = [[NSMutableArray alloc] initWithCapacity:0];
-        
-//        if (_caledarType == CalendarTypeYear) {
-        
+    
             _cutOffRule = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"cut-off-rule"]];
             _cutOffRule.frame = CGRectMake(0, self.frame.size.height, self.frame.size.width + 10, 2);
             _cutOffRule.hidden = YES;
             [self addSubview:_cutOffRule];
-//        }
-        
 
         return self;
     }
     return self;
 }
-
-
-//- (void)setNeedsDisplay {
-//
-//    [super setNeedsDisplay];
-//}
 
 
 // 获取月,年视图数据
@@ -79,14 +69,7 @@
         zcalendarModel.date = [_firstDate getDateByDaysAgo:(i - _interval)];
         zcalendarModel.dateComponents = [zcalendarModel.date getDateComponentsByDate];
         zcalendarModel.dateText = [NSString stringWithFormat:@"%ld", zcalendarModel.dateComponents.day];
-        
-//    
-//        NSString *key = [NSString stringWithFormat:@"%ld-%ld-%ld", zcalendarModel.dateComponents.year, zcalendarModel.dateComponents.month, zcalendarModel.dateComponents.day];
-//        if ([_dataArray objectForKey:key]) {
-//            
-//            zcalendarModel.data = [_dataArray objectForKey:key];
-//        }
-        
+ 
         [_dateArray addObject:zcalendarModel];
     }
 }
@@ -107,7 +90,6 @@
         _dayCount = 7;
         
     } else {
-        
         
         _dayCount = [firstDate getDays];
         
@@ -161,13 +143,11 @@
         }
     }
     
-    CGFloat textHigeht = 0;
     
     for (ZCalendarModel *zcalendarModel in _dateArray) {
         
         if (_zcalendarStyle.dateTextStyle) {
             CGSize size = [zcalendarModel.dateText sizeWithAttributes:_zcalendarStyle.dateTextStyle];
-            textHigeht = size.height;
             
             CGFloat textY = zcalendarModel.frame.origin.y;
             if (_caledarType == CalendarTypeWeek) {
@@ -190,9 +170,9 @@
             }
         }
         
-        if ([self respondsToSelector:@selector(drawRectangle:)]) {
+        if ([self respondsToSelector:@selector(drawCustom:)]) {
             
-            [self performSelector:@selector(drawRectangle:) withObject:zcalendarModel];
+            [self performSelector:@selector(drawCustom:) withObject:zcalendarModel];
         }
        
     }
@@ -211,41 +191,11 @@
         CGSize size = [text sizeWithAttributes:_zcalendarStyle.dateTextStyle];
         if (_zcalendarStyle.cutLineImage) {
             
-            [self drawCutLine:CGPointMake(_interval * _columnWidth, size.height + 5)];
+            [self drawImage:CGRectMake(_interval * _columnWidth, size.height + 5, self.frame.size.width, 2) image:_zcalendarStyle.cutLineImage];
         }
     }
-    
-    
-    
 }
 
-/**
- *  绘制分割线
- */
-- (void)drawCutLine:(CGPoint)point {
-    CGContextDrawImage(self.context, CGRectMake(point.x, point.y, self.frame.size.width, 2), _zcalendarStyle.cutLineImage.CGImage);
-}
-
-
-/**
- *  获取绘制文字样子
- *
- *  @return NSDictionary 文字样式
- */
-//- (NSDictionary *)fontStyle:(CGFloat)fontSize textColor:(UIColor *)textColor {
-//    NSDictionary *fontDict = @{
-//                               NSFontAttributeName: [UIFont systemFontOfSize:fontSize],
-//                               NSForegroundColorAttributeName: textColor
-//                               };
-//    
-//    return fontDict;
-//}
-
-- (void)drawText:(CGPoint)point text:(NSString *)text fontSize:(NSDictionary *)fontStyle
-{
-    // 兼容不同长度的字符串
-    [text drawAtPoint:point withAttributes:fontStyle];
-}
 
 - (void)setSelectDate:(NSDate *)selectDate {
     _selectDateComponents = [selectDate getDateComponentsByDate];

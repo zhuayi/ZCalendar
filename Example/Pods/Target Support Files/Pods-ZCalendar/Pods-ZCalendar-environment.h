@@ -6,9 +6,15 @@
 // project.
 
 
+// UIView-ZQuartz
+#define COCOAPODS_POD_AVAILABLE_UIView_ZQuartz
+#define COCOAPODS_VERSION_MAJOR_UIView_ZQuartz 0
+#define COCOAPODS_VERSION_MINOR_UIView_ZQuartz 2
+#define COCOAPODS_VERSION_PATCH_UIView_ZQuartz 0
+
 // ZCalendar
 #define COCOAPODS_POD_AVAILABLE_ZCalendar
-#define COCOAPODS_VERSION_MAJOR_ZCalendar 0
-#define COCOAPODS_VERSION_MINOR_ZCalendar 1
+#define COCOAPODS_VERSION_MAJOR_ZCalendar 1
+#define COCOAPODS_VERSION_MINOR_ZCalendar 0
 #define COCOAPODS_VERSION_PATCH_ZCalendar 0
 

@@ -9,12 +9,12 @@
 // FBSnapshotTestCase
 #define COCOAPODS_POD_AVAILABLE_FBSnapshotTestCase
 #define COCOAPODS_VERSION_MAJOR_FBSnapshotTestCase 1
-#define COCOAPODS_VERSION_MINOR_FBSnapshotTestCase 6
+#define COCOAPODS_VERSION_MINOR_FBSnapshotTestCase 7
 #define COCOAPODS_VERSION_PATCH_FBSnapshotTestCase 0
 
 // ZCalendar
 #define COCOAPODS_POD_AVAILABLE_ZCalendar
-#define COCOAPODS_VERSION_MAJOR_ZCalendar 0
-#define COCOAPODS_VERSION_MINOR_ZCalendar 1
+#define COCOAPODS_VERSION_MAJOR_ZCalendar 1
+#define COCOAPODS_VERSION_MINOR_ZCalendar 0
 #define COCOAPODS_VERSION_PATCH_ZCalendar 0
 

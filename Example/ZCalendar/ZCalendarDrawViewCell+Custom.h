@@ -12,6 +12,6 @@
 @interface ZCalendarDrawViewCell (Custom)
 
 
-- (void)drawRectangle:(ZCalendarModel *)zCalendarmodel;
+- (void)drawCustom:(ZCalendarModel *)zCalendarmodel;
 
 @end

@@ -8,30 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		283C87C57DE4AF749CC7EB62 /* libPods-ZCalendar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 98EC68A63A2079226855B0DA /* libPods-ZCalendar.a */; };
-		3809E27A1AE89E6D002E174B /* cut-off-rule@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3809E2791AE89E6D002E174B /* cut-off-rule@2x.png */; };
 		3809E27D1AE8BDBD002E174B /* ZCalendarDrawViewCell+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = 3809E27C1AE8BDBD002E174B /* ZCalendarDrawViewCell+Custom.m */; };
 		381C4F811AEA2E8A00EADE83 /* screenshot.png in Resources */ = {isa = PBXBuildFile; fileRef = 381C4F801AEA2E8A00EADE83 /* screenshot.png */; };
+		3826A6B61AECB3860014E160 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6003F59F195388D20070C39A /* Main_iPhone.storyboard */; };
 		384727471AE9F24A0016067C /* WeekCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 384727461AE9F24A0016067C /* WeekCalendarView.m */; };
 		38ACFA491AE8D65400C39FD2 /* YearCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 38ACFA481AE8D65400C39FD2 /* YearCalendarView.m */; };
 		38ACFA4C1AE8E68400C39FD2 /* ZCalendarYearHeardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 38ACFA4B1AE8E68400C39FD2 /* ZCalendarYearHeardView.m */; };
-		38F730BD1AE272B200DF7334 /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = 38F730BA1AE272B200DF7334 /* .gitkeep */; };
-		38F730BE1AE272B200DF7334 /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = 38F730BC1AE272B200DF7334 /* .gitkeep */; };
-		38F730D11AE272CF00DF7334 /* NSDate+ZCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F730C01AE272CF00DF7334 /* NSDate+ZCalendar.m */; };
-		38F730D21AE272CF00DF7334 /* NSString+ZCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F730C21AE272CF00DF7334 /* NSString+ZCalendar.m */; };
-		38F730D31AE272CF00DF7334 /* ZCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F730C51AE272CF00DF7334 /* ZCalendarView.m */; };
-		38F730D41AE272CF00DF7334 /* ZCalendarDrawViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F730C81AE272CF00DF7334 /* ZCalendarDrawViewCell.m */; };
-		38F730D51AE272CF00DF7334 /* ZCalendarModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F730CA1AE272CF00DF7334 /* ZCalendarModel.m */; };
-		38F730D61AE272CF00DF7334 /* ZCalendarStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F730CC1AE272CF00DF7334 /* ZCalendarStyle.m */; };
 		38F730DB1AE272F700DF7334 /* MonthCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F730DA1AE272F700DF7334 /* MonthCalendarView.m */; };
-		38F730DD1AE2776900DF7334 /* MonthHeader@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 38F730DC1AE2776900DF7334 /* MonthHeader@2x.png */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
 		6003F592195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
 		6003F598195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F596195388D20070C39A /* InfoPlist.strings */; };
 		6003F59A195388D20070C39A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F599195388D20070C39A /* main.m */; };
 		6003F59E195388D20070C39A /* ZAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F59D195388D20070C39A /* ZAppDelegate.m */; };
-		6003F5A1195388D20070C39A /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6003F59F195388D20070C39A /* Main_iPhone.storyboard */; };
-		6003F5A4195388D20070C39A /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5A2195388D20070C39A /* Main_iPad.storyboard */; };
 		6003F5A7195388D20070C39A /* ZViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5A6195388D20070C39A /* ZViewController.m */; };
 		6003F5A9195388D20070C39A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5A8195388D20070C39A /* Images.xcassets */; };
 		6003F5B0195388D20070C39A /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F5AF195388D20070C39A /* XCTest.framework */; };
@@ -56,7 +45,6 @@
 		08F396273BA5E0B1B5427CEB /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		2169ABDD0CB80D792283B6DD /* Pods-Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tests/Pods-Tests.release.xcconfig"; sourceTree = "<group>"; };
 		27F10CD902C9C7E2193FB3AB /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
-		3809E2791AE89E6D002E174B /* cut-off-rule@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cut-off-rule@2x.png"; sourceTree = "<group>"; };
 		3809E27B1AE8BDBD002E174B /* ZCalendarDrawViewCell+Custom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ZCalendarDrawViewCell+Custom.h"; sourceTree = "<group>"; };
 		3809E27C1AE8BDBD002E174B /* ZCalendarDrawViewCell+Custom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ZCalendarDrawViewCell+Custom.m"; sourceTree = "<group>"; };
 		381C4F801AEA2E8A00EADE83 /* screenshot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = screenshot.png; path = ../screenshot.png; sourceTree = "<group>"; };
@@ -66,25 +54,8 @@
 		38ACFA481AE8D65400C39FD2 /* YearCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YearCalendarView.m; sourceTree = "<group>"; };
 		38ACFA4A1AE8E68400C39FD2 /* ZCalendarYearHeardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCalendarYearHeardView.h; sourceTree = "<group>"; };
 		38ACFA4B1AE8E68400C39FD2 /* ZCalendarYearHeardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCalendarYearHeardView.m; sourceTree = "<group>"; };
-		38F730BA1AE272B200DF7334 /* .gitkeep */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
-		38F730BC1AE272B200DF7334 /* .gitkeep */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
-		38F730BF1AE272CF00DF7334 /* NSDate+ZCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+ZCalendar.h"; sourceTree = "<group>"; };
-		38F730C01AE272CF00DF7334 /* NSDate+ZCalendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+ZCalendar.m"; sourceTree = "<group>"; };
-		38F730C11AE272CF00DF7334 /* NSString+ZCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+ZCalendar.h"; sourceTree = "<group>"; };
-		38F730C21AE272CF00DF7334 /* NSString+ZCalendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ZCalendar.m"; sourceTree = "<group>"; };
-		38F730C31AE272CF00DF7334 /* ZCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCalendar.h; sourceTree = "<group>"; };
-		38F730C41AE272CF00DF7334 /* ZCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCalendarView.h; sourceTree = "<group>"; };
-		38F730C51AE272CF00DF7334 /* ZCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCalendarView.m; sourceTree = "<group>"; };
-		38F730C61AE272CF00DF7334 /* ZCalendarDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCalendarDelegate.h; sourceTree = "<group>"; };
-		38F730C71AE272CF00DF7334 /* ZCalendarDrawViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCalendarDrawViewCell.h; sourceTree = "<group>"; };
-		38F730C81AE272CF00DF7334 /* ZCalendarDrawViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCalendarDrawViewCell.m; sourceTree = "<group>"; };
-		38F730C91AE272CF00DF7334 /* ZCalendarModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCalendarModel.h; sourceTree = "<group>"; };
-		38F730CA1AE272CF00DF7334 /* ZCalendarModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCalendarModel.m; sourceTree = "<group>"; };
-		38F730CB1AE272CF00DF7334 /* ZCalendarStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCalendarStyle.h; sourceTree = "<group>"; };
-		38F730CC1AE272CF00DF7334 /* ZCalendarStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCalendarStyle.m; sourceTree = "<group>"; };
 		38F730D91AE272F700DF7334 /* MonthCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonthCalendarView.h; sourceTree = "<group>"; };
 		38F730DA1AE272F700DF7334 /* MonthCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonthCalendarView.m; sourceTree = "<group>"; };
-		38F730DC1AE2776900DF7334 /* MonthHeader@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MonthHeader@2x.png"; sourceTree = "<group>"; };
 		3BE33747630E0C0D596521E3 /* Pods-Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tests/Pods-Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		44D73E3E70E64209C69DAE1C /* libPods-Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58A195388D20070C39A /* ZCalendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZCalendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -140,48 +111,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		38F730B81AE272B200DF7334 /* Pod */ = {
-			isa = PBXGroup;
-			children = (
-				38F730B91AE272B200DF7334 /* Assets */,
-				38F730BB1AE272B200DF7334 /* Classes */,
-			);
-			name = Pod;
-			path = ../../Pod;
-			sourceTree = "<group>";
-		};
-		38F730B91AE272B200DF7334 /* Assets */ = {
-			isa = PBXGroup;
-			children = (
-				3809E2791AE89E6D002E174B /* cut-off-rule@2x.png */,
-				38F730DC1AE2776900DF7334 /* MonthHeader@2x.png */,
-				38F730BA1AE272B200DF7334 /* .gitkeep */,
-			);
-			path = Assets;
-			sourceTree = "<group>";
-		};
-		38F730BB1AE272B200DF7334 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				38F730BF1AE272CF00DF7334 /* NSDate+ZCalendar.h */,
-				38F730C01AE272CF00DF7334 /* NSDate+ZCalendar.m */,
-				38F730C11AE272CF00DF7334 /* NSString+ZCalendar.h */,
-				38F730C21AE272CF00DF7334 /* NSString+ZCalendar.m */,
-				38F730C31AE272CF00DF7334 /* ZCalendar.h */,
-				38F730C41AE272CF00DF7334 /* ZCalendarView.h */,
-				38F730C51AE272CF00DF7334 /* ZCalendarView.m */,
-				38F730C61AE272CF00DF7334 /* ZCalendarDelegate.h */,
-				38F730C71AE272CF00DF7334 /* ZCalendarDrawViewCell.h */,
-				38F730C81AE272CF00DF7334 /* ZCalendarDrawViewCell.m */,
-				38F730C91AE272CF00DF7334 /* ZCalendarModel.h */,
-				38F730CA1AE272CF00DF7334 /* ZCalendarModel.m */,
-				38F730CB1AE272CF00DF7334 /* ZCalendarStyle.h */,
-				38F730CC1AE272CF00DF7334 /* ZCalendarStyle.m */,
-				38F730BC1AE272B200DF7334 /* .gitkeep */,
-			);
-			path = Classes;
-			sourceTree = "<group>";
-		};
 		6003F581195388D10070C39A = {
 			isa = PBXGroup;
 			children = (
@@ -229,7 +158,6 @@
 				384727461AE9F24A0016067C /* WeekCalendarView.m */,
 				3809E27B1AE8BDBD002E174B /* ZCalendarDrawViewCell+Custom.h */,
 				3809E27C1AE8BDBD002E174B /* ZCalendarDrawViewCell+Custom.m */,
-				38F730B81AE272B200DF7334 /* Pod */,
 				6003F59C195388D20070C39A /* ZAppDelegate.h */,
 				6003F59D195388D20070C39A /* ZAppDelegate.m */,
 				6003F59F195388D20070C39A /* Main_iPhone.storyboard */,
@@ -375,15 +303,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6003F5A4195388D20070C39A /* Main_iPad.storyboard in Resources */,
-				3809E27A1AE89E6D002E174B /* cut-off-rule@2x.png in Resources */,
+				3826A6B61AECB3860014E160 /* Main_iPhone.storyboard in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
-				38F730BD1AE272B200DF7334 /* .gitkeep in Resources */,
-				38F730BE1AE272B200DF7334 /* .gitkeep in Resources */,
-				6003F5A1195388D20070C39A /* Main_iPhone.storyboard in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
 				381C4F811AEA2E8A00EADE83 /* screenshot.png in Resources */,
-				38F730DD1AE2776900DF7334 /* MonthHeader@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -466,18 +389,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				38ACFA4C1AE8E68400C39FD2 /* ZCalendarYearHeardView.m in Sources */,
-				38F730D61AE272CF00DF7334 /* ZCalendarStyle.m in Sources */,
-				38F730D51AE272CF00DF7334 /* ZCalendarModel.m in Sources */,
-				38F730D41AE272CF00DF7334 /* ZCalendarDrawViewCell.m in Sources */,
 				3809E27D1AE8BDBD002E174B /* ZCalendarDrawViewCell+Custom.m in Sources */,
 				6003F59E195388D20070C39A /* ZAppDelegate.m in Sources */,
-				38F730D21AE272CF00DF7334 /* NSString+ZCalendar.m in Sources */,
 				38F730DB1AE272F700DF7334 /* MonthCalendarView.m in Sources */,
 				6003F5A7195388D20070C39A /* ZViewController.m in Sources */,
-				38F730D31AE272CF00DF7334 /* ZCalendarView.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
 				384727471AE9F24A0016067C /* WeekCalendarView.m in Sources */,
-				38F730D11AE272CF00DF7334 /* NSDate+ZCalendar.m in Sources */,
 				38ACFA491AE8D65400C39FD2 /* YearCalendarView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

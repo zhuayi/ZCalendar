@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ZCalendar.h"
 
-@interface ZCalendarDrawViewCell : UICollectionViewCell<ZCalendarDelegate>
+@interface ZCalendarDrawViewCell : UICollectionViewCell
 
 @property(nonatomic) CGContextRef context;
 
@@ -23,7 +23,7 @@
 /**
  *  视图样式
  */
-@property(nonatomic, strong) ZCalendarStyle *zcalendarStyle;
+@property(nonatomic, weak) ZCalendarStyle *zcalendarStyle;
 
 
 /**
@@ -47,12 +47,12 @@
 /**
  *  日期宽度
  */
-@property(nonatomic, assign) CGFloat columnWidth;
+@property(nonatomic, assign, readonly) CGFloat columnWidth;
 
 /**
  *  日期高度
  */
-@property(nonatomic, assign) CGFloat rowHeight;
+@property(nonatomic, assign, readonly) CGFloat rowHeight;
 /**
  *  绘制文字
  *

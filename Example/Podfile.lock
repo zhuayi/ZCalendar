@@ -1,17 +1,27 @@
 PODS:
-  - FBSnapshotTestCase (1.6)
-  - ZCalendar (0.1.0)
+  - FBSnapshotTestCase (1.7)
+  - UIView-ZQuartz (0.2.0)
+  - ZCalendar (1.0.0)
 
 DEPENDENCIES:
   - FBSnapshotTestCase
+  - UIView-ZQuartz (from `https://github.com/zhuayi/UIView-ZQuartz.git`)
   - ZCalendar (from `../`)
 
 EXTERNAL SOURCES:
+  UIView-ZQuartz:
+    :git: https://github.com/zhuayi/UIView-ZQuartz.git
   ZCalendar:
     :path: ../
 
-SPEC CHECKSUMS:
-  FBSnapshotTestCase: 9d5fe43b29ae3a0ed8fc829477971b281038f748
-  ZCalendar: 6e925598fc0bd386b67fd87e37270b86f6aab346
+CHECKOUT OPTIONS:
+  UIView-ZQuartz:
+    :commit: 902cf2ecf5be7969d1d7252c429a4693fad2b4ca
+    :git: https://github.com/zhuayi/UIView-ZQuartz.git
 
-COCOAPODS: 0.36.0.rc.1
+SPEC CHECKSUMS:
+  FBSnapshotTestCase: 1eea5145c1f2fa907812ab92e1d6063a8d809b4e
+  UIView-ZQuartz: e4966214db3f5808f751acaaebc015c7670d1c92
+  ZCalendar: d0fd74f07a943bc40f8b4ce919db6096b2de78fd
+
+COCOAPODS: 0.37.0.beta.1

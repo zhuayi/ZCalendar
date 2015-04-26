@@ -74,10 +74,13 @@
         NSLog(@"didClickDate : %@, %ld", zCalendarDrawViewCell, zCalendarDrawViewCell.currentDateComponents.year);
         
         if (zCalendarModel.date) {
-            [weekCalendarView scrollToItemAtDate:zCalendarModel.date];
+            weekCalendarView.selectDate = zCalendarModel.date;
+            [weekCalendarView reloadData];
+//            [self setContentOffset:CGPointMake(0, 0) animated:YES];
+//            [_zCalendarDelegate didClickDate:zCalendarDrawViewCell zCalendarModel:zCalendarModel];
         }
-        
     }
+    
     
     
 }
