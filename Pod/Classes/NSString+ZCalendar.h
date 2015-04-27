@@ -16,7 +16,7 @@
  *
  *  @return date
  */
-- (NSDate *)dateFromString;
+//- (NSDate *)dateFromString;
 
 
 @end

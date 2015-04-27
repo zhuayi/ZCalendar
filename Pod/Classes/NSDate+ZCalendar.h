@@ -39,5 +39,5 @@
 - (NSDate *)getDateByDaysAgo:(NSInteger )days;
 
 
-- (NSString *)dateTostring;
+//- (NSString *)dateTostring;
 @end

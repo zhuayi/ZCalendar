@@ -64,15 +64,16 @@
         NSMutableArray *monthArray = [[NSMutableArray alloc] initWithCapacity:0];
         for (int j = 1; j <= 12; j++) {
             
-            NSDate *date = [[NSString stringWithFormat:@"%d-%d-1", (int)starDate + i, j] dateFromString];
+            
+            NSDate *date = [[DateFormatterHelp sharedInstance] dateFromString:[NSString stringWithFormat:@"%d-%d-1", (int)starDate + i, j]];
             
             [monthArray addObject:date];
             
             if (_caledarType == CalendarTypeWeek) {
                 NSInteger days = [date getDays];
                 for (int n = 1; n <= days ; n++) {
-                    NSDate *date = [[NSString stringWithFormat:@"%d-%d-%d", (int)starDate + i, j, n] dateFromString];
-                    [daysArray addObject:date];
+                    NSDate *date2 = [[DateFormatterHelp sharedInstance] dateFromString:[NSString stringWithFormat:@"%d-%d-%d", (int)starDate + i, j, n]];
+                    [daysArray addObject:date2];
                 }
             }
         }
@@ -260,13 +261,13 @@
 - (void)scrollToItemAtDate:(NSDate *)date {
     
     if (_caledarType != CalendarTypeWeek) {
-        NSDateComponents *components =[date getDateComponentsByDate];
+        NSDateComponents *components = [date getDateComponentsByDate];
         [self scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:(components.month - 1) inSection:(components.year - _starYear)]
                      atScrollPosition:UICollectionViewScrollPositionCenteredVertically
                              animated:YES];
     } else {
         
-        NSDate *statDate = [[NSString stringWithFormat:@"%ld-01-01", (long)_starYear] dateFromString];
+        NSDate *statDate = [[DateFormatterHelp sharedInstance] dateFromString:[NSString stringWithFormat:@"%ld-01-01", (long)_starYear]];
         CGFloat weekDay = _firstComponents.weekday - 1 + floor(([date timeIntervalSince1970] - [statDate timeIntervalSince1970]) / 86400);
         
         [self scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:weekDay / 7 inSection:0]

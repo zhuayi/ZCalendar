@@ -68,6 +68,7 @@
         
         zcalendarModel.date = [_firstDate getDateByDaysAgo:(i - _interval)];
         zcalendarModel.dateComponents = [zcalendarModel.date getDateComponentsByDate];
+        
         zcalendarModel.dateText = [NSString stringWithFormat:@"%ld", zcalendarModel.dateComponents.day];
  
         [_dateArray addObject:zcalendarModel];

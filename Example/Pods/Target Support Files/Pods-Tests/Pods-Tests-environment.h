@@ -15,6 +15,6 @@
 // ZCalendar
 #define COCOAPODS_POD_AVAILABLE_ZCalendar
 #define COCOAPODS_VERSION_MAJOR_ZCalendar 1
-#define COCOAPODS_VERSION_MINOR_ZCalendar 0
+#define COCOAPODS_VERSION_MINOR_ZCalendar 1
 #define COCOAPODS_VERSION_PATCH_ZCalendar 0
 

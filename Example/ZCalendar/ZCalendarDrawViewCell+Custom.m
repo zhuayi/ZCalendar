@@ -24,7 +24,7 @@
 
     if (self.dataArray) {
         
-        NSString *dateText = [zCalendarmodel.date dateTostring];
+        NSString *dateText = [[DateFormatterHelp sharedInstance] stringFromDate:zCalendarmodel.date];
         
         if ([self.dataArray objectForKey:dateText]) {
             zCalendarmodel.rectangleColor = [UIColor blackColor];
@@ -53,7 +53,7 @@
     NSString *strings;
     if (self.dataArray) {
         
-        NSString *dateText = [zCalendarmodel.date dateTostring];
+        NSString *dateText = [[DateFormatterHelp sharedInstance] stringFromDate:zCalendarmodel.date];
         
         if ([self.dataArray objectForKey:dateText]) {
             zCalendarmodel.rectangleColor = [UIColor blackColor];
@@ -103,7 +103,7 @@
     NSString *strings;
     if (self.dataArray) {
         
-        NSString *dateText = [zCalendarmodel.date dateTostring];
+        NSString *dateText = [[DateFormatterHelp sharedInstance] stringFromDate:zCalendarmodel.date];
         
         if ([self.dataArray objectForKey:dateText]) {
             zCalendarmodel.rectangleColor = [UIColor blackColor];
