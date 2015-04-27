@@ -12,7 +12,7 @@
 #import "NSString+ZCalendar.h"
 #import "UIView+ZQuartz.h"
 @implementation ZCalendarDrawViewCell {
-
+    
     CGFloat _dayCount;
     CGFloat _rowCount;
     
@@ -25,7 +25,7 @@
     UIImageView *_cutOffRule;
     
     NSDateComponents *_selectDateComponents;
- 
+    
 }
 
 - (instancetype)initWithFrame:(CGRect)frame
@@ -34,12 +34,12 @@
     if (self) {
         _columnWidth = self.frame.size.width / 7;
         _dateArray = [[NSMutableArray alloc] initWithCapacity:0];
-    
-            _cutOffRule = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"cut-off-rule"]];
-            _cutOffRule.frame = CGRectMake(0, self.frame.size.height, self.frame.size.width + 10, 2);
-            _cutOffRule.hidden = YES;
-            [self addSubview:_cutOffRule];
-
+        
+        _cutOffRule = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"cut-off-rule"]];
+        _cutOffRule.frame = CGRectMake(0, self.frame.size.height, self.frame.size.width + 10, 2);
+        _cutOffRule.hidden = YES;
+        [self addSubview:_cutOffRule];
+        
         return self;
     }
     return self;
@@ -48,7 +48,7 @@
 
 // 获取月,年视图数据
 - (void)getDateArrayByMonthYear {
- 
+    
     [_dateArray removeAllObjects];
     
     CGSize rectangleSize = CGSizeMake(_columnWidth * 0.95 , _rowHeight * 0.95);
@@ -70,7 +70,7 @@
         zcalendarModel.dateComponents = [zcalendarModel.date getDateComponentsByDate];
         
         zcalendarModel.dateText = [NSString stringWithFormat:@"%ld", zcalendarModel.dateComponents.day];
- 
+        
         [_dateArray addObject:zcalendarModel];
     }
 }
@@ -79,7 +79,7 @@
     _firstDate = firstDate;
     
     _currentDateComponents = [firstDate getDateComponentsByDate];
-
+    
     if (_caledarType == CalendarTypeWeek) {
         
         _rowCount = 1;
@@ -131,12 +131,12 @@
         // 月视图才显示横线
         if (_caledarType == CalendarTypeMonth) {
             for (int i = 1; i < 2; i++) {
-
+                
                 CGFloat intervalWidth = 0;
                 if (i == 1) {
                     intervalWidth = _interval * _columnWidth;
                 }
-
+                
                 CGContextMoveToPoint(self.context, intervalWidth, _rowHeight * i);
                 CGContextAddLineToPoint(self.context, self.frame.size.width, _rowHeight * i);
                 CGContextStrokePath(self.context);
@@ -158,7 +158,7 @@
             } else {
                 textY = textY + _rowHeight - size.height - 4;
             }
-
+            
             if (zcalendarModel.dateComponents.year == _selectDateComponents.year
                 && zcalendarModel.dateComponents.month == _selectDateComponents.month
                 && zcalendarModel.dateComponents.day == _selectDateComponents.day) {
@@ -175,7 +175,7 @@
             
             [self performSelector:@selector(drawCustom:) withObject:zcalendarModel];
         }
-       
+        
     }
     
     if (_zcalendarStyle.monthRowHeight > 0) {
@@ -219,7 +219,7 @@
                     [self setSelectDate:zcalendarModel.date];
                     NSLog(@"zcalendarModel.date : %@", zcalendarModel.date);
                 }
-               
+                
                 return zcalendarModel;
                 break;
             }
@@ -232,11 +232,15 @@
     return nil;
 }
 
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-   
-    ZCalendarModel *zcalendarModel = [self getDateByPoint:[[touches anyObject] locationInView:self]];
-    [_delegate didClickDate:self zCalendarModel:zcalendarModel];
+-(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event  {
     
+    [NSObject cancelPreviousPerformRequestsWithTarget:self];
+    UITouch *touch = [touches anyObject];
+    CGPoint touchPoint = [touch locationInView:self];
+    if (touch.tapCount == 1) {
+        ZCalendarModel *zcalendarModel = [self getDateByPoint:touchPoint];
+        [_delegate didClickDate:self zCalendarModel:zcalendarModel];
+    }
 }
 
 - (void)dealloc {
