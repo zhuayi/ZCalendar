@@ -80,9 +80,11 @@
 //            [_zCalendarDelegate didClickDate:zCalendarDrawViewCell zCalendarModel:zCalendarModel];
         }
     }
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView date:(NSDate *)date caledarType:(CalendarType)caledarType{
     
-    
-    
+    NSLog(@"date : caledarType : %ld, %@", caledarType , date);
 }
 
 - (void)didShowLeftTopCell:(ZCalendarDrawViewCell *)zcalendarDrawViewCell {

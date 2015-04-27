@@ -24,6 +24,6 @@
  *
  *  @param date
  */
-//- (void)didShowLeftTopCell:(ZCalendarDrawViewCell *)zcalendarDrawViewCell;
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView date:(NSDate *)date caledarType:(CalendarType)caledarType;
 
 @end

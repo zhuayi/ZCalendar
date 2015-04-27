@@ -262,7 +262,7 @@
     if (_caledarType != CalendarTypeWeek) {
         NSDateComponents *components =[date getDateComponentsByDate];
         [self scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:(components.month - 1) inSection:(components.year - _starYear)]
-                     atScrollPosition:UICollectionViewScrollPositionTop
+                     atScrollPosition:UICollectionViewScrollPositionCenteredVertically
                              animated:YES];
     } else {
         
@@ -273,6 +273,30 @@
                      atScrollPosition:UICollectionViewScrollPositionLeft
                              animated:YES];
     }
+}
+
+- (void)getDateByContentOffset:(UIScrollView *)scrollView {
+    NSIndexPath *indexPath = [self indexPathForItemAtPoint:CGPointMake(scrollView.contentOffset.x + scrollView.frame.size.width / 2, scrollView.contentOffset.y)];
+    
+    NSDate *date;
+    if (_caledarType == CalendarTypeWeek) {
+        date = _dateArray[indexPath.row];
+    } else {
+        date = _dateArray[indexPath.section][indexPath.row];
+    }
+    
+    [_zCalendarDelegate scrollViewDidEndDecelerating:scrollView date:date caledarType:_caledarType];
+}
+
+
+- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
+    
+    [self getDateByContentOffset:scrollView];
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    
+    [self getDateByContentOffset:scrollView];
 }
 
 - (void)dealloc {
