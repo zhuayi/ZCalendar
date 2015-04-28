@@ -20,7 +20,7 @@
 - (void)didClickDate:(ZCalendarDrawViewCell *)zCalendarDrawViewCell zCalendarModel:(ZCalendarModel *)zCalendarModel;
 
 /**
- *  从视图左上角开始,当前显示的日期,只包含年/月信息
+ *  滚动到指定日期
  *
  *  @param date
  */

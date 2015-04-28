@@ -152,10 +152,10 @@ section高度
 - (void)didClickDate:(ZCalendarModel *)zcalendarModel
 ```
 
-从视图左上角开始,当前显示的日期,只包含年/月信息
+滚动到指定日期
 
 ```objective-c
-- (void)didShowLeftTopCell:(ZCalendarDrawViewCell *)zcalendarDrawViewCell
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView date:(NSDate *)date caledarType:(CalendarType)caledarType
 ```
 
 #### 绘制日历关键参数
