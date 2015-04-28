@@ -60,7 +60,7 @@ ZCalendar is available under the MIT license. See the LICENSE file for more info
 
 - 根据时间戳返回时间
 
-- drawRect 绘制类
+- 二维绘图引擎ZQuartz
 
 - 绘制文字
 
