@@ -1,6 +1,31 @@
 
 # 日历
 
+[![CI Status](http://img.shields.io/travis/zhuayi/ZCalendar.svg?style=flat)](https://travis-ci.org/zhuayi/ZCalendar) [![Version](https://img.shields.io/cocoapods/v/ZCalendar.svg?style=flat)](http://cocoapods.org/pods/ZCalendar) [![License](https://img.shields.io/cocoapods/l/ZCalendar.svg?style=flat)](http://cocoapods.org/pods/ZCalendar) [![Platform](https://img.shields.io/cocoapods/p/ZCalendar.svg?style=flat)](http://cocoapods.org/pods/ZCalendar)
+
+## Usage
+
+To run the example project, clone the repo, and run `pod install` from the Example directory first.
+
+
+## Installation
+
+ZCalendar is available through [CocoaPods](http://cocoapods.org). To install
+it, simply add the following line to your Podfile:
+
+```ruby
+`pod "ZCalendar"
+```
+
+## Author
+
+renxin, renxin@baidu.com
+
+## License
+
+ZCalendar is available under the MIT license. See the LICENSE file for more info.
+
+
 ### 其他第三方库缺点
 
 > 目前网上开源的第三方库都是在UICollectionView基础上开发的,每一个日期都是一个 cellView, 1年365天久是365个view, 虽然UICollectionView有复用机制,但一个视图下显示30个 View, 在性能要求极端的情况无疑不是一个好的方法. 
@@ -251,7 +276,6 @@ MonthCalendarView.m
 
 ![][image-2]
 
-> gitHub地址 : [https://github.com/zhuayi/ZCalendar][1]
 
 [1]:	https://github.com/zhuayi/ZCalendar
 
