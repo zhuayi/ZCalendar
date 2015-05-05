@@ -71,4 +71,13 @@
 - (void)scrollToItemAtDate:(NSDate *)date animated:(BOOL)animated;
 
 - (void)setSelectDate:(NSDate *)selectDate animated:(BOOL)animated;
+
+/**
+ *  根据日期选择对应的 cell
+ *
+ *  @param date  日期
+ *
+ *  @return  return cell
+ */
+- (ZCalendarDrawViewCell *)getCalendarDrawViewCellByDate:(NSDate *)date;
 @end

@@ -219,7 +219,6 @@
                     [self setSelectDate:zcalendarModel.date];
                     NSLog(@"zcalendarModel.date : %@", zcalendarModel.date);
                 }
-                
                 return zcalendarModel;
                 break;
             }
@@ -233,6 +232,10 @@
 }
 
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event  {
+    
+    if (_zcalendarStyle.isClick == NO) {
+        return;
+    }
     
     [NSObject cancelPreviousPerformRequestsWithTarget:self];
     UITouch *touch = [touches anyObject];

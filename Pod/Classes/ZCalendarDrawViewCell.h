@@ -37,7 +37,7 @@
 @property(nonatomic, weak) NSMutableDictionary *dataArray;
 
 
-@property(nonatomic, strong) NSDate *firstDate; 
+@property(nonatomic, strong) NSDate *firstDate;
 
 /**
  *  选中的日期
@@ -53,15 +53,6 @@
  *  日期高度
  */
 @property(nonatomic, assign, readonly) CGFloat rowHeight;
-/**
- *  绘制文字
- *
- *  @param point     文字坐标
- *  @param text      文字
- *  @param fontStyle 文字样式
- */
-- (void)drawText:(CGPoint)point text:(NSString *)text fontSize:(NSDictionary *)fontStyle;
-
 
 
 /**

@@ -305,6 +305,22 @@
 }
 
 
+- (ZCalendarDrawViewCell *)getCalendarDrawViewCellByDate:(NSDate *)date {
+    
+    ZCalendarDrawViewCell *cell;
+    if (_caledarType != CalendarTypeWeek) {
+        NSDateComponents *components = [date getDateComponentsByDate];
+        cell = [self cellForItemAtIndexPath:[NSIndexPath indexPathForItem:(components.month - 1) inSection:(components.year - _starYear)]];
+    } else {
+        
+        NSDate *statDate = [[DateFormatterHelp sharedInstance] dateFromString:[NSString stringWithFormat:@"%ld-01-01", (long)_starYear]];
+        CGFloat weekDay = _firstComponents.weekday - 1 + floor(([date timeIntervalSince1970] - [statDate timeIntervalSince1970]) / 86400);
+        
+        cell = [self cellForItemAtIndexPath:[NSIndexPath indexPathForItem:weekDay / 7 inSection:0]];
+    }
+    return cell;
+}
+
 - (void)dealloc {
     
     [[NSNotificationCenter defaultCenter] removeObserver:self];

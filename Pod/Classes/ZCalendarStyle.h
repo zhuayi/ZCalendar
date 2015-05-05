@@ -81,4 +81,9 @@
  */
 @property(nonatomic, assign) CGFloat minimumLineSpacing;
 
+/**
+ *  是否日期允许点击
+ */
+@property(nonatomic, assign) BOOL isClick;
+
 @end
