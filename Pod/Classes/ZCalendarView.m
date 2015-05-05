@@ -24,11 +24,11 @@
 - (instancetype)initWithFrame:(CGRect)frame headetViewClassName:(NSString *)headetViewClassName scrollDirection:(UICollectionViewScrollDirection)scrollDirection
 {
     _layout = [[UICollectionViewFlowLayout alloc] init];
-//    _layout.scrollDirection = scrollDirection;
+    //    _layout.scrollDirection = scrollDirection;
     [_layout setScrollDirection:scrollDirection];
     self = [super initWithFrame:frame collectionViewLayout:_layout];
     if (self) {
-    
+        
         self.backgroundColor = [UIColor clearColor];
         self.delegate = self;
         self.dataSource = self;
@@ -55,9 +55,9 @@
     _starYear = starDate;
     _endYear = endData;
     
-//    _today = [[NSDate date] getDateComponentsByDate];
+    //    _today = [[NSDate date] getDateComponentsByDate];
     _intervalMonth = (endData - starDate) + 1;
-   
+    
     NSMutableArray *daysArray = [[NSMutableArray alloc] initWithCapacity:0];
     for (int i = 0 ; i < _intervalMonth; i++) {
         
@@ -81,9 +81,9 @@
         [_dateArray addObject:monthArray];
     }
     
-
-    if (_caledarType == CalendarTypeWeek) {
     
+    if (_caledarType == CalendarTypeWeek) {
+        
         // 取第一个日期,判断是周几
         NSDate *firstDate = [daysArray firstObject];
         _firstComponents = [firstDate getDateComponentsByDate];
@@ -104,7 +104,7 @@
         
         [_dateArray removeAllObjects];
         for (int i = 0; i< (daysArray.count / 7 ); i++) {
-                [_dateArray addObject:daysArray[i*7]];
+            [_dateArray addObject:daysArray[i*7]];
         }
         
         [daysArray removeAllObjects];
@@ -113,12 +113,16 @@
 }
 
 - (void)setSelectDate:(NSDate *)selectDate {
+    [self setSelectDate:selectDate animated:NO];
+}
+
+- (void)setSelectDate:(NSDate *)selectDate animated:(BOOL)animated {
     
     _selectDate = selectDate;
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         
-        [self scrollToItemAtDate:_selectDate];
+        [self scrollToItemAtDate:_selectDate animated:animated];
         
     });
 }
@@ -150,9 +154,9 @@
     _zCalendarDelegate = zCalendarDelegate;
     
     // 接受通知
-//    [[NSNotificationCenter defaultCenter] addObserver:self
-//                                             selector:@selector(zCalendarCellViewClic:)
-//                                                 name:kZCalendarCellViewClick object:nil];
+    //    [[NSNotificationCenter defaultCenter] addObserver:self
+    //                                             selector:@selector(zCalendarCellViewClic:)
+    //                                                 name:kZCalendarCellViewClick object:nil];
 }
 
 
@@ -176,7 +180,7 @@
         return 1;
         
     } else {
-       
+        
         return _intervalMonth;
     }
     
@@ -199,7 +203,7 @@
     }
     
     cell.selectDate = _selectDate;
-
+    
     cell.backgroundColor = [UIColor clearColor];
     return cell;
 }
@@ -208,7 +212,7 @@
 
 //定义每个Item 的大小
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-
+    
     return _zcalendarStyle.cellSize;
 }
 
@@ -257,14 +261,14 @@
 
 
 
-#pragma mark - 
-- (void)scrollToItemAtDate:(NSDate *)date {
+#pragma mark -
+- (void)scrollToItemAtDate:(NSDate *)date animated:(BOOL)animated {
     
     if (_caledarType != CalendarTypeWeek) {
         NSDateComponents *components = [date getDateComponentsByDate];
         [self scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:(components.month - 1) inSection:(components.year - _starYear)]
-                     atScrollPosition:UICollectionViewScrollPositionCenteredVertically
-                             animated:YES];
+                     atScrollPosition:UICollectionViewScrollPositionTop
+                             animated:animated];
     } else {
         
         NSDate *statDate = [[DateFormatterHelp sharedInstance] dateFromString:[NSString stringWithFormat:@"%ld-01-01", (long)_starYear]];
@@ -272,7 +276,7 @@
         
         [self scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:weekDay / 7 inSection:0]
                      atScrollPosition:UICollectionViewScrollPositionLeft
-                             animated:YES];
+                             animated:animated];
     }
 }
 
@@ -299,6 +303,7 @@
     
     [self getDateByContentOffset:scrollView];
 }
+
 
 - (void)dealloc {
     

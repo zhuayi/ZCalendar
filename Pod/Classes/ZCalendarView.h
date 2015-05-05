@@ -61,12 +61,14 @@
 /**
  *  数据层
  */
-@property(nonatomic, strong)NSMutableDictionary *dataArray;
+@property(nonatomic, strong) NSMutableDictionary *dataArray;
 
 /**
  *  滚动到对应日期
  *
  *  @param date
  */
-- (void)scrollToItemAtDate:(NSDate *)date;
+- (void)scrollToItemAtDate:(NSDate *)date animated:(BOOL)animated;
+
+- (void)setSelectDate:(NSDate *)selectDate animated:(BOOL)animated;
 @end
