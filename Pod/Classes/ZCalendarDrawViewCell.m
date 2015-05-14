@@ -36,7 +36,7 @@
         _dateArray = [[NSMutableArray alloc] initWithCapacity:0];
         
         _cutOffRule = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"cut-off-rule"]];
-        _cutOffRule.frame = CGRectMake(0, self.frame.size.height, self.frame.size.width + 10, 2);
+        _cutOffRule.frame = CGRectMake(0, self.frame.size.height, self.frame.size.width + 10, 1);
         _cutOffRule.hidden = YES;
         [self addSubview:_cutOffRule];
         
@@ -192,7 +192,7 @@
         CGSize size = [text sizeWithAttributes:_zcalendarStyle.dateTextStyle];
         if (_zcalendarStyle.cutLineImage) {
             
-            [self drawImage:CGRectMake(_interval * _columnWidth, size.height + 5, self.frame.size.width, 2) image:_zcalendarStyle.cutLineImage];
+            [self drawImage:CGRectMake(_interval * _columnWidth, size.height + 5, self.frame.size.width, 1) image:_zcalendarStyle.cutLineImage];
         }
     }
 }
