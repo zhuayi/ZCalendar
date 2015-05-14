@@ -51,7 +51,6 @@
     
     [_dateArray removeAllObjects];
     
-    CGSize rectangleSize = CGSizeMake(_columnWidth * 0.95 , _rowHeight * 0.95);
     for (int i = 0; i < (_dayCount + _interval); i++) {
         
         if (i < _interval) {
@@ -61,10 +60,11 @@
         CGFloat y = self.zcalendarStyle.monthRowHeight - 5 + _rowHeight * ceil(i / 7);
         
         ZCalendarModel *zcalendarModel = [[ZCalendarModel alloc] init];
-        zcalendarModel.frame = CGRectMake(x + (_columnWidth - rectangleSize.width) / 2,
-                                          y + (_rowHeight - rectangleSize.height) / 2,
-                                          rectangleSize.width,
-                                          rectangleSize.height);
+        
+        CGRect frame = CGRectMake(x, y, _columnWidth, _rowHeight);
+        CGRectInset(frame, 0.95, 0.95);
+        
+        zcalendarModel.frame = CGRectInset(frame, 0.95, 0.95);
         
         zcalendarModel.date = [_firstDate getDateByDaysAgo:(i - _interval)];
         zcalendarModel.dateComponents = [zcalendarModel.date getDateComponentsByDate];
@@ -163,10 +163,10 @@
                 && zcalendarModel.dateComponents.month == _selectDateComponents.month
                 && zcalendarModel.dateComponents.day == _selectDateComponents.day) {
                 
-                [self drawText:CGPointMake(zcalendarModel.frame.origin.x + (_columnWidth - size.width) / 2, textY)
+                [self drawText:CGPointMake(zcalendarModel.frame.origin.x + (zcalendarModel.frame.size.width - size.width) / 2, textY)
                           text:zcalendarModel.dateText fontSize:_zcalendarStyle.dateTextSelectStyle];
             } else {
-                [self drawText:CGPointMake(zcalendarModel.frame.origin.x + (_columnWidth - size.width) / 2, textY)
+                [self drawText:CGPointMake(zcalendarModel.frame.origin.x + (zcalendarModel.frame.size.width - size.width) / 2, textY)
                           text:zcalendarModel.dateText fontSize:_zcalendarStyle.dateTextStyle];
             }
         }
