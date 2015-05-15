@@ -42,7 +42,7 @@
 /**
  *  选中的日期
  */
-@property(nonatomic, weak) NSDate *selectDate;
+@property(nonatomic, strong) NSDate *selectDate;
 
 /**
  *  日期宽度
