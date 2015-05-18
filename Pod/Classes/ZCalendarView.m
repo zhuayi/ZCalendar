@@ -213,6 +213,15 @@
 //定义每个Item 的大小
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     
+    if (_caledarType == CalendarTypeMonth) {
+        
+        NSDate *date = _dateArray[indexPath.section][indexPath.row];
+        CGFloat rowCount = ceil(([date getDays] + [date getDateComponentsByDate].weekday - 1) / 7.0);
+        CGFloat rowHeight = (_zcalendarStyle.cellSize.height - _zcalendarStyle.monthRowHeight) / 6.0;
+        NSLog(@"rowCount is :%ld", (long)rowCount);
+        return CGSizeMake(_zcalendarStyle.cellSize.width, rowCount * rowHeight + _zcalendarStyle.monthRowHeight);
+    }
+    
     return _zcalendarStyle.cellSize;
 }
 

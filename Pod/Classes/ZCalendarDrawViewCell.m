@@ -62,14 +62,13 @@
         ZCalendarModel *zcalendarModel = [[ZCalendarModel alloc] init];
         
         CGRect frame = CGRectMake(x, y, _columnWidth, _rowHeight);
-        CGRectInset(frame, 0.95, 0.95);
         
         zcalendarModel.frame = CGRectInset(frame, 0.95, 0.95);
         
         zcalendarModel.date = [_firstDate getDateByDaysAgo:(i - _interval)];
         zcalendarModel.dateComponents = [zcalendarModel.date getDateComponentsByDate];
         
-        zcalendarModel.dateText = [NSString stringWithFormat:@"%ld", zcalendarModel.dateComponents.day];
+        zcalendarModel.dateText = [NSString stringWithFormat:@"%ld", (long)zcalendarModel.dateComponents.day];
         
         [_dateArray addObject:zcalendarModel];
     }
@@ -113,10 +112,11 @@
             
             _rowCount = ceil((_dayCount + _interval) / 7);
         } else {
-            _rowCount = 6;
+            _rowCount = 6.0;
+            
         }
-        
         _rowHeight = (self.frame.size.height - self.zcalendarStyle.monthRowHeight) / _rowCount;
+        
     }
     
     [self getDateArrayByMonthYear];
