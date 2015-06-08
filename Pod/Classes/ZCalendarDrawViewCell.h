@@ -11,8 +11,6 @@
 
 @interface ZCalendarDrawViewCell : UICollectionViewCell
 
-@property(nonatomic) CGContextRef context;
-
 @property(nonatomic, weak) id<ZCalendarDelegate> delegate;
 
 /**

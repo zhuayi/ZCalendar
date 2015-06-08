@@ -65,13 +65,15 @@
 //    titleView.text = [zcalendarModel.date dateTostring];
     if (zCalendarDrawViewCell.caledarType == CalendarTypeYear) {
         
-        NSLog(@"didClickDate : %@, %ld", zCalendarDrawViewCell, zCalendarDrawViewCell.currentDateComponents.year);
+        NSLog(@"didClickDate : %@, %d", zCalendarDrawViewCell, zCalendarDrawViewCell.currentDateComponents.year);
         
-        [monthCalendarView scrollToItemAtDate:zCalendarDrawViewCell.firstDate];
+//        [monthCalendarView scrollToItemAtDate:zCalendarDrawViewCell.firstDate];
+        [monthCalendarView scrollToItemAtDate:zCalendarDrawViewCell.firstDate animated:YES];
+        
     }
     if (zCalendarDrawViewCell.caledarType == CalendarTypeMonth) {
         
-        NSLog(@"didClickDate : %@, %ld", zCalendarDrawViewCell, zCalendarDrawViewCell.currentDateComponents.year);
+        NSLog(@"didClickDate : %@, %d", zCalendarDrawViewCell, zCalendarDrawViewCell.currentDateComponents.year);
         
         if (zCalendarModel.date) {
             weekCalendarView.selectDate = zCalendarModel.date;
@@ -84,7 +86,7 @@
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView date:(NSDate *)date caledarType:(CalendarType)caledarType{
     
-    NSLog(@"date : caledarType : %ld, %@", caledarType , date);
+    NSLog(@"date : caledarType : %d, %@", caledarType , date);
 }
 
 - (void)didShowLeftTopCell:(ZCalendarDrawViewCell *)zcalendarDrawViewCell {

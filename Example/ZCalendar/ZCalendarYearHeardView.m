@@ -35,7 +35,7 @@
 - (void)setYear:(NSDate *)sender {
     
     if (sender) {
-        label.text = [NSString stringWithFormat:@"%ld年", (long)[sender getDateComponentsByDate].year];
+        label.text = [NSString stringWithFormat:@"%d年", [sender getDateComponentsByDate].year];
     }
 }
 

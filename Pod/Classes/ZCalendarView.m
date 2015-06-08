@@ -64,17 +64,21 @@
         NSMutableArray *monthArray = [[NSMutableArray alloc] initWithCapacity:0];
         for (int j = 1; j <= 12; j++) {
             
-            
-            NSDate *date = [[DateFormatterHelp sharedInstance] dateFromString:[NSString stringWithFormat:@"%d-%d-1", (int)starDate + i, j]];
-            
-            [monthArray addObject:date];
-            
-            if (_caledarType == CalendarTypeWeek) {
-                NSInteger days = [date getDays];
-                for (int n = 1; n <= days ; n++) {
-                    NSDate *date2 = [[DateFormatterHelp sharedInstance] dateFromString:[NSString stringWithFormat:@"%d-%d-%d", (int)starDate + i, j, n]];
-                    [daysArray addObject:date2];
+            @autoreleasepool {
+                
+                NSDate *date = [[DateFormatterHelp sharedInstance] dateFromString:[NSString stringWithFormat:@"%d-%d-1", (int)starDate + i, j]];
+                
+                [monthArray addObject:date];
+                
+                if (_caledarType == CalendarTypeWeek) {
+                    NSInteger days = [date getDays];
+                    for (int n = 1; n <= days ; n++) {
+                        NSDate *date2 = [[DateFormatterHelp sharedInstance] dateFromString:[NSString stringWithFormat:@"%d-%d-%d", (int)starDate + i, j, n]];
+                        [daysArray addObject:date2];
+                    }
                 }
+
+                
             }
         }
         
@@ -89,8 +93,10 @@
         _firstComponents = [firstDate getDateComponentsByDate];
         for (int i = 1; i< _firstComponents.weekday; i++) {
             
-            NSDate *date = [firstDate getDateByDaysAgo: 0 - i];
-            [daysArray insertObject:date atIndex:0];
+            @autoreleasepool {
+                NSDate *date = [firstDate getDateByDaysAgo: 0 - i];
+                [daysArray insertObject:date atIndex:0];
+            }
         }
         
         // 取最后日期,判断是周几
@@ -218,7 +224,7 @@
         NSDate *date = _dateArray[indexPath.section][indexPath.row];
         CGFloat rowCount = ceil(([date getDays] + [date getDateComponentsByDate].weekday - 1) / 7.0);
         CGFloat rowHeight = (_zcalendarStyle.cellSize.height - _zcalendarStyle.monthRowHeight) / 6.0;
-        NSLog(@"rowCount is :%ld", (long)rowCount);
+//        NSLog(@"rowCount is :%d", rowCount);
         return CGSizeMake(_zcalendarStyle.cellSize.width, rowCount * rowHeight + _zcalendarStyle.monthRowHeight);
     }
     
@@ -280,7 +286,7 @@
                              animated:animated];
     } else {
         
-        NSDate *statDate = [[DateFormatterHelp sharedInstance] dateFromString:[NSString stringWithFormat:@"%ld-01-01", (long)_starYear]];
+        NSDate *statDate = [[DateFormatterHelp sharedInstance] dateFromString:[NSString stringWithFormat:@"%d-01-01", _starYear]];
         CGFloat weekDay = _firstComponents.weekday - 1 + floor(([date timeIntervalSince1970] - [statDate timeIntervalSince1970]) / 86400);
         
         [self scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:weekDay / 7 inSection:0]
@@ -322,7 +328,7 @@
         cell = [self cellForItemAtIndexPath:[NSIndexPath indexPathForItem:(components.month - 1) inSection:(components.year - _starYear)]];
     } else {
         
-        NSDate *statDate = [[DateFormatterHelp sharedInstance] dateFromString:[NSString stringWithFormat:@"%ld-01-01", (long)_starYear]];
+        NSDate *statDate = [[DateFormatterHelp sharedInstance] dateFromString:[NSString stringWithFormat:@"%d-01-01", _starYear]];
         CGFloat weekDay = _firstComponents.weekday - 1 + floor(([date timeIntervalSince1970] - [statDate timeIntervalSince1970]) / 86400);
         
         cell = [self cellForItemAtIndexPath:[NSIndexPath indexPathForItem:weekDay / 7 inSection:0]];

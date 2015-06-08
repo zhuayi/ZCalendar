@@ -13,6 +13,8 @@
 #import "UIView+ZQuartz.h"
 @implementation ZCalendarDrawViewCell {
     
+    CGContextRef _context;
+    
     CGFloat _dayCount;
     CGFloat _rowCount;
     
@@ -59,18 +61,21 @@
         CGFloat x = _columnWidth * fmod(i , 7);
         CGFloat y = self.zcalendarStyle.monthRowHeight - 5 + _rowHeight * ceil(i / 7);
         
-        ZCalendarModel *zcalendarModel = [[ZCalendarModel alloc] init];
-        
-        CGRect frame = CGRectMake(x, y, _columnWidth, _rowHeight);
-        
-        zcalendarModel.frame = CGRectInset(frame, 0.95, 0.95);
-        
-        zcalendarModel.date = [_firstDate getDateByDaysAgo:(i - _interval)];
-        zcalendarModel.dateComponents = [zcalendarModel.date getDateComponentsByDate];
-        
-        zcalendarModel.dateText = [NSString stringWithFormat:@"%ld", (long)zcalendarModel.dateComponents.day];
-        
-        [_dateArray addObject:zcalendarModel];
+        @autoreleasepool {
+            
+            ZCalendarModel *zcalendarModel = [[ZCalendarModel alloc] init];
+            
+            CGRect frame = CGRectMake(x, y, _columnWidth, _rowHeight);
+            
+            zcalendarModel.frame = CGRectInset(frame, 0.95, 0.95);
+            
+            zcalendarModel.date = [_firstDate getDateByDaysAgo:(i - _interval)];
+            zcalendarModel.dateComponents = [zcalendarModel.date getDateComponentsByDate];
+            
+            zcalendarModel.dateText = [NSString stringWithFormat:@"%d", zcalendarModel.dateComponents.day];
+            
+            [_dateArray addObject:zcalendarModel];
+        }
     }
 }
 
@@ -123,10 +128,10 @@
 }
 
 - (void)drawRect:(CGRect)rect {
-    self.context = UIGraphicsGetCurrentContext();
+    _context = UIGraphicsGetCurrentContext();
     
     if (_zcalendarStyle.lineColor) {
-        CGContextSetStrokeColorWithColor(self.context, _zcalendarStyle.lineColor.CGColor);
+        CGContextSetStrokeColorWithColor(_context, _zcalendarStyle.lineColor.CGColor);
         
         // 月视图才显示横线
         if (_caledarType == CalendarTypeMonth) {
@@ -137,9 +142,9 @@
                     intervalWidth = _interval * _columnWidth;
                 }
                 
-                CGContextMoveToPoint(self.context, intervalWidth, _rowHeight * i);
-                CGContextAddLineToPoint(self.context, self.frame.size.width, _rowHeight * i);
-                CGContextStrokePath(self.context);
+                CGContextMoveToPoint(_context, intervalWidth, _rowHeight * i);
+                CGContextAddLineToPoint(_context, self.frame.size.width, _rowHeight * i);
+                CGContextStrokePath(_context);
             }
         }
     }
@@ -173,14 +178,16 @@
         
         if ([self respondsToSelector:@selector(drawCustom:)]) {
             
-            [self performSelector:@selector(drawCustom:) withObject:zcalendarModel];
+//            @autoreleasepool {
+                [self performSelector:@selector(drawCustom:) withObject:zcalendarModel];
+//            }
         }
         
     }
     
     if (_zcalendarStyle.monthRowHeight > 0) {
         
-        NSString *text = [NSString stringWithFormat:@"%ld月", (long)[_currentDateComponents month]];
+        NSString *text = [NSString stringWithFormat:@"%d月", [_currentDateComponents month]];
         CGFloat drawMonthX = 0;
         if (_caledarType == CalendarTypeMonth) {
             drawMonthX = _interval * _columnWidth;
@@ -195,6 +202,7 @@
             [self drawImage:CGRectMake(_interval * _columnWidth, size.height + 5, self.frame.size.width, 1) image:_zcalendarStyle.cutLineImage];
         }
     }
+    
 }
 
 
@@ -247,6 +255,7 @@
 }
 
 - (void)dealloc {
+    
     NSLog(@"%s", __func__);
 }
 @end
