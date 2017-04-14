@@ -1,14 +1,10 @@
 source 'https://github.com/CocoaPods/Specs.git'
 
-target 'ZCalendar', :exclusive => true do
+target 'ZCalendar' do
   pod "ZCalendar", :path => "../"
   
   # 二维绘图引擎ZQuartz
   pod 'UIView-ZQuartz', :git => 'https://github.com/zhuayi/UIView-ZQuartz.git'
 end
 
-target 'Tests', :exclusive => true do
-  pod "ZCalendar", :path => "../"
 
-  pod 'FBSnapshotTestCase'
-end

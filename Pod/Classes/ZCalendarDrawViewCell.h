@@ -21,7 +21,7 @@
 /**
  *  视图样式
  */
-@property(nonatomic, weak) ZCalendarStyle *zcalendarStyle;
+@property(nonatomic, strong) ZCalendarStyle *zcalendarStyle;
 
 
 /**
@@ -32,7 +32,7 @@
 /**
  *  事件数据数组
  */
-@property(nonatomic, weak) NSMutableDictionary *dataArray;
+@property(nonatomic, strong) NSMutableDictionary *dataArray;
 
 
 @property(nonatomic, strong) NSDate *firstDate;

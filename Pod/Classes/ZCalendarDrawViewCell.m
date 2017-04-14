@@ -48,6 +48,11 @@
 }
 
 
+- (void)setDataArray:(NSMutableDictionary *)dataArray {
+    _dataArray = dataArray;
+    
+}
+
 // 获取月,年视图数据
 - (void)getDateArrayByMonthYear {
     
@@ -123,7 +128,7 @@
         _rowHeight = (self.frame.size.height - self.zcalendarStyle.monthRowHeight) / _rowCount;
         
     }
-    
+    _selectDateComponents = nil;
     [self getDateArrayByMonthYear];
 }
 
@@ -158,7 +163,7 @@
             CGFloat textY = zcalendarModel.frame.origin.y;
             if (_caledarType == CalendarTypeWeek) {
                 
-                textY = textY +  ((_rowHeight / 2) - size.height) / 2;
+                textY = (self.frame.size.height - size.height) / 2;
                 
             } else {
                 textY = textY + _rowHeight - size.height - 4;

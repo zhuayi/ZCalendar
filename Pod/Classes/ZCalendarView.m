@@ -201,17 +201,19 @@
     cell.delegate = _zCalendarDelegate;
     cell.dataArray = _dataArray;
     
-    
     if (_caledarType == CalendarTypeWeek) {
         cell.firstDate = _dateArray[indexPath.row];
     } else {
         cell.firstDate = _dateArray[indexPath.section][indexPath.row];
     }
     
-    cell.selectDate = _selectDate;
-    
     cell.backgroundColor = [UIColor clearColor];
     return cell;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    ((ZCalendarDrawViewCell *)cell).selectDate = _selectDate;
 }
 
 #pragma mark --UICollectionViewDelegateFlowLayout
@@ -273,8 +275,6 @@
     
     return 0;
 }
-
-
 
 #pragma mark -
 - (void)scrollToItemAtDate:(NSDate *)date animated:(BOOL)animated {
